@@ -1,11 +1,25 @@
+"use client";
+import { motion } from "framer-motion";
+import React from "react";
+
 export default function Home() {
+    const text = "Kristian Kähkönen".split("");
     return (
-        <main className="flex min-h-screen">
-            <div className="m-auto text-center">
-                <p>Portfolio website, work in progress. Please come back later!</p>
-                <a className="underline" href="https://github.com/kristianka/kristiankahkonen.com">
-                    Check out the source code and progress here!
-                </a>
+        <main className="flex min-h-screen dark:bg-black">
+            <div className="m-5 text-3xl tracking-wider dark:text-white">
+                {text.map((el, i) => (
+                    <motion.span
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{
+                            duration: 0.25,
+                            delay: i / 15
+                        }}
+                        key={i}
+                    >
+                        {el}
+                    </motion.span>
+                ))}
             </div>
         </main>
     );
