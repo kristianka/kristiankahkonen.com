@@ -1,18 +1,19 @@
+# Used for deploying to production
 services:
-
   nextjs:
+    container_name: nextjs
     build: .
     environment:
       - NODE_ENV=production
-    restart: unless-stopped
 
   nginx:
-    container_name: ngix
+    container_name: nginx
     image: nginx:1.26.0-alpine
     ports:
       - 80:80
+      - 443:443
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./certs:/etc/nginx/certs 
     depends_on:
       - nextjs
-    restart: unless-stopped
