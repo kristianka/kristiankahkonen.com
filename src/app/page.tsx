@@ -3,8 +3,18 @@ import React from "react";
 
 export default function Home() {
     return (
-        <main className="flex min-h-screen bg-slate-50 dark:bg-zinc-900">
-            <AboutMe />
+        <main className="">
+            <div>
+                <div className="m-5 grid grid-cols-2">
+                    <AboutMe />
+                    <p className="m-auto">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae amet
+                        ea, architecto eius nostrum et quia iusto labore deserunt, reprehenderit
+                        officia harum inventore itaque! Possimus necessitatibus tenetur vero
+                        doloremque optio!
+                    </p>
+                </div>
+            </div>
         </main>
     );
 }
