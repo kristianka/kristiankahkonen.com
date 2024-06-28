@@ -13,7 +13,7 @@ export const Header = () => {
                     <li className="m-auto">
                         <ModeToggle />
                     </li>
-                    <li className="m-auto hover:underline">
+                    <li className="m-auto hover:underline hidden sm:inline-block">
                         <Link href="/">Home</Link>
                     </li>
                     <li className="m-auto hover:underline">

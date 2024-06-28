@@ -25,9 +25,9 @@ export const AboutMe = () => {
     }, []);
 
     return (
-        <main className="flex min-h-screen">
-            <div className="m-auto">
-                <h1 className="text-4xl tracking-wider dark:text-white">
+        <main className="flex">
+            <div className="m3-5">
+                <h1 className="text-3xl sm:text-4xl tracking-wider dark:text-white">
                     {text.map((el, i) => (
                         <motion.span
                             initial={{ opacity: 0 }}
@@ -47,7 +47,7 @@ export const AboutMe = () => {
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="text-4xl font-extrabold tracking-wide"
+                    className="text-3xl sm:text-4xl font-extrabold tracking-wide"
                 >
                     {currentTitle}
                 </motion.h2>

@@ -7,12 +7,12 @@ export default function Home() {
             <div>
                 <div className="m-5 grid grid-cols-2">
                     <AboutMe />
-                    <p className="m-auto">
+                    <div className="m-auto">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae amet
                         ea, architecto eius nostrum et quia iusto labore deserunt, reprehenderit
                         officia harum inventore itaque! Possimus necessitatibus tenetur vero
                         doloremque optio!
-                    </p>
+                    </div>
                 </div>
             </div>
         </main>
