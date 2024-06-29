@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-export const AboutMe = () => {
+export const TitleAnimation = () => {
     const text = "Kristian Kähkönen".split("");
     const titles = [
         "Software Engineer",
