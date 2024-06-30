@@ -57,7 +57,7 @@ export const Skills = () => {
         <div>
             <div className="mt-10 sm:mt-20">
                 <h2 className="text-2xl sm:text-4xl tracking-wide font-bold m-auto">Skills</h2>
-                <div className="bg-indigo-600 text-white rounded-lg p-3 mt-5">
+                <div className="bg-violet-600 dark:bg-violet-700 text-white rounded-lg p-3 mt-5">
                     <ul className="flex flex-col sm:flex-row p-1">
                         <h3 className="text-2xl sm:text-4xl tracking-wide font-bold p-5 sm:p-10 m-auto">
                             Frontend
@@ -71,7 +71,7 @@ export const Skills = () => {
                         </div>
                     </ul>
                 </div>
-                <div className="bg-indigo-600 text-white rounded-lg p-3 mt-5">
+                <div className="bg-violet-600 dark:bg-violet-700 text-white rounded-lg p-3 mt-5">
                     <ul className="flex flex-col sm:flex-row p-1">
                         <h3 className="text-2xl sm:text-4xl tracking-wide font-bold p-5 sm:p-10 m-auto">
                             Backend
@@ -85,7 +85,7 @@ export const Skills = () => {
                         </div>
                     </ul>
                 </div>
-                <div className="bg-indigo-600 text-white rounded-lg p-3 mt-5">
+                <div className="bg-violet-600 dark:bg-violet-700 text-white rounded-lg p-3 mt-5">
                     <ul className="flex flex-col sm:flex-row p-1">
                         <h3 className="text-2xl sm:text-4xl tracking-wide font-bold p-5 sm:p-10 m-auto">
                             DevOps
