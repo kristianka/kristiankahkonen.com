@@ -36,7 +36,7 @@ export const Skills = () => {
         "Docker",
         "GitHub",
         "Linux",
-        "CI/CD pipelines",
+        "CI/CD Pipelines",
         "GitHub",
         "GitLab",
         // "Kubernetes",
@@ -45,6 +45,9 @@ export const Skills = () => {
         "PowerShell",
         "Python",
         "Security",
+        "Server Management",
+        "Domain Management",
+        "SSL Certificates",
         "AWS",
         "Google Cloud",
         "Oracle Cloud"
