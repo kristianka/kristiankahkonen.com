@@ -3,7 +3,7 @@ import { ModeToggle } from "./ModeToggle";
 
 export const Header = () => {
     return (
-        <header className="uppercase flex items-center p-5 dark:text-white">
+        <header className="uppercase sm:flex items-center p-5 dark:text-white">
             <Link
                 href="/"
                 className="mr-5 sm:mr-10 sm:text-2xl font-bold tracking-wider hover:underline"
@@ -13,8 +13,8 @@ export const Header = () => {
             </Link>
             {/* <p className="">Work in progress! 🚧</p> */}
             <nav className="overflow-x-auto">
-                <ul className="flex space-x-5 text-right sm:text-lg">
-                    <li className="m-auto hover:underline hidden sm:inline-block">
+                <ul className="flex sm:space-x-5 sm:text-right sm:text-lg">
+                    <li className="mt-auto mb-auto mr-auto sm:m-auto text-left hover:underline">
                         <Link href="/">Projects</Link>
                     </li>
                     <li className="m-auto hover:underline">

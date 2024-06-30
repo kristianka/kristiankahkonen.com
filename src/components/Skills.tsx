@@ -50,7 +50,7 @@ export const Skills = () => {
 
     return (
         <div>
-            <div className="mt-20">
+            <div className="mt-10 sm:mt-20">
                 <h2 className="text-2xl sm:text-4xl tracking-wide font-bold m-auto">Skills</h2>
                 <div className="bg-indigo-600 text-white rounded-lg p-3 mt-5">
                     <ul className="flex flex-col sm:flex-row p-1">
