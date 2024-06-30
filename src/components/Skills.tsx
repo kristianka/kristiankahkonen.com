@@ -7,6 +7,7 @@ export const Skills = () => {
         "React Query",
         "Redux (RTK)",
         "Next.js",
+        "SEO",
         "Framer Motion",
         "Playwright",
         "Cypress",
@@ -43,6 +44,7 @@ export const Skills = () => {
         "Bash",
         "PowerShell",
         "Python",
+        "Security",
         "AWS",
         "Google Cloud",
         "Oracle Cloud"
