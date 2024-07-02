@@ -10,10 +10,11 @@ jobs:
         timeout-minutes: 15
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v4
-            - uses: actions/setup-node@v4
+            - uses: actions/checkout@v4.1.7
+            - uses: actions/setup-node@v4.0.2
               with:
-                  node-version: lts/*
+                  node-version: "22"
+                  cache: "npm"
 
             - name: Start Docker
               run: docker compose -f "docker-compose.dev.yml" up --build -d
