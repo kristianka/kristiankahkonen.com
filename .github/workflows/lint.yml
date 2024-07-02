@@ -1,5 +1,4 @@
 name: NextJS lint
-
 on:
     push:
         branches:
