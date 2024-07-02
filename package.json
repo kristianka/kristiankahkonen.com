@@ -16,7 +16,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test:e2e-dockerized": "cross-env URL=localhost npx playwright test",
+    "test:e2e-dockerized": "cross-env URL=http://localhost npx playwright test",
     "test:e2e-local": "npx playwright test"
   },
   "dependencies": {
