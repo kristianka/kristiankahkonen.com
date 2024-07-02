@@ -25,7 +25,7 @@ jobs:
             # Cache Playwright browsers to fasten up the process
             - name: Store Playwright's Version
               run: |
-                  PLAYWRIGHT_VERSION=$(npm ls @playwright/test | grep @playwright | sed 's/.*@//')
+                  PLAYWRIGHT_VERSION=$(npm ls @playwright/test | grep @playwright/test | awk '{print $NF}' | sed 's/.*@//')
                   echo "Playwright's Version: $PLAYWRIGHT_VERSION"
                   echo "PLAYWRIGHT_VERSION=$PLAYWRIGHT_VERSION" >> $GITHUB_ENV
 
