@@ -30,6 +30,7 @@ export const TitleAnimation = () => {
                 <h1 className="text-3xl sm:text-4xl tracking-wider dark:text-white">
                     {text.map((el, i) => (
                         <motion.span
+                            data-testid="nameAnimation"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{
@@ -43,6 +44,7 @@ export const TitleAnimation = () => {
                     ))}
                 </h1>
                 <motion.h2
+                    data-testid="jobTitleAnimation"
                     key={currentTitle}
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
