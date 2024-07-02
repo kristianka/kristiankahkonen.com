@@ -2,11 +2,22 @@
   "name": "kristiankahkonen.com",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Kristian Kähkönen"
+  },
+  "homepage": "https://kristiankahkonen.com",
+  "description": "Personal portfolio of Kristian Kähkönen",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kristianka/kristiankahkonen.com"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test:e2e-dockerized": "cross-env URL=localhost npx playwright test",
+    "test:e2e-local": "npx playwright test"
   },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.1.1",
@@ -29,6 +40,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "cross-env": "^7.0.3",
     "eslint": "^8",
     "eslint-config-next": "14.2.4",
     "postcss": "^8",

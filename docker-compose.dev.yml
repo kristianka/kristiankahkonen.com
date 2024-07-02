@@ -1,4 +1,4 @@
-# Used for GitHub Actions
+# Used for GitHub Actions, missing certs
 services:
   nextjs-dev:
     container_name: nextjs-dev

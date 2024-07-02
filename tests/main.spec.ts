@@ -1,7 +1,8 @@
 import { test, expect } from "@playwright/test";
 
-// change to http://localhost:3000 if run outside docker locally
-const url = "http://localhost";
+// dev is in localhost:3000, Docker is in localhost
+// docker url is passed on command line
+const url = process.env.URL || "http://localhost:3000";
 
 test.describe("kristiankahkonen.com", async () => {
     // Go to the main page
