@@ -3,7 +3,7 @@ import { ModeToggle } from "./ModeToggle";
 
 export const Header = () => {
     return (
-        <header className="uppercase sm:flex items-center p-5 dark:text-white">
+        <header className="pl-5 p-3 rounded-md shadow-sm uppercase sm:flex items-center bg-white dark:bg-[#121212] dark:text-white sticky top-0 z-10 mb-10">
             <Link
                 data-testid="headerHomeLink"
                 href="/"
