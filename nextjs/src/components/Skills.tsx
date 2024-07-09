@@ -1,3 +1,6 @@
+"use client";
+import { motion } from "framer-motion";
+
 export const Skills = () => {
     const frontendSkills = [
         "React",
@@ -38,7 +41,6 @@ export const Skills = () => {
     ];
     const devOpsSkills = [
         "Docker",
-        "GitHub",
         "Linux",
         "CI/CD Pipelines",
         "GitHub",
@@ -82,6 +84,8 @@ export const Skills = () => {
             <div className="mt-10 sm:mt-20">
                 <h2 className="text-2xl sm:text-4xl tracking-wide font-bold m-auto mb-5">Skills</h2>
                 {/* Frontend, collapses to card on mobile */}
+                <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} />
+
                 <div className="bg-violet-600 dark:bg-violet-700 text-white rounded-lg p-3 mt-5">
                     <div className="grid grid-row-3 sm:grid-cols-3 p-1">
                         <h3 className="col-span-1 text-2xl sm:text-4xl tracking-wide font-bold p-4 sm:p-10 m-auto">

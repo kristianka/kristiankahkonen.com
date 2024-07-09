@@ -2,14 +2,13 @@
 services:
   nextjs-dev:
     container_name: nextjs-dev
-    build: .
+    build: ./nextjs
 
   nginx-dev:
     container_name: nginx-dev
     image: nginx:1.26.0-alpine
     ports:
       - 80:80
-      - 443:443
     volumes:
       - ./nginx.dev.conf:/etc/nginx/nginx.conf
     depends_on:
