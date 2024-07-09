@@ -1,5 +1,6 @@
 import { Skills } from "@/components/Skills";
 import { TitleAnimation } from "@/components/TitleAnimation";
+import { Contact } from "@/components/Contact";
 import React, { Suspense } from "react";
 
 export default function Home() {
@@ -24,6 +25,7 @@ export default function Home() {
                 </div>
             </div>
             <Skills />
+            <Contact />
         </main>
     );
 }
