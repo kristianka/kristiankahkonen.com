@@ -29,8 +29,8 @@ export const fetchBlogs = async () => {
 export default async function Home() {
     const blogs = await fetchBlogs();
     return (
-        <main className="flex">
-            <div className="ml-auto mr-auto">
+        <main className="flex justify-center">
+            <div className="sm:max-w-max w-full sm:mx-auto">
                 <ul className="">
                     {blogs &&
                         blogs.data.map((blog: Blog) => (
@@ -42,7 +42,7 @@ export default async function Home() {
                                 </h3>
                                 {/* Don't make the text gray on tailwind typography prose. It's hard to read. */}
                                 <Markdown
-                                    className="m-auto prose dark:prose-invert text-black dark:text-white"
+                                    className="prose dark:prose-invert text-black dark:text-white"
                                     remarkPlugins={[remarkGfm]}
                                     rehypePlugins={[rehypeRaw]}
                                 >
