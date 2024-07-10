@@ -1,3 +1,4 @@
+import { MarkdownComponents } from "@/components/Markdown";
 import { ResById } from "@/types";
 import axios from "axios";
 import Markdown from "react-markdown";
@@ -31,15 +32,15 @@ export default async function Page({ params }: { params: { slug: string } }) {
         <main className="flex justify-center m-5">
             <div key={blog.id} className="sm:max-w-max w-full sm:mx-auto">
                 <div>
-                    <h2 className=" text-clip text-3xl sm:text-4xl mb-10">
+                    <h2 className="text-clip text-3xl sm:text-4xl mb-10">
                         {blog.attributes.title}
                     </h2>
                     <h3 className="mb-3 text-lg sm:text-xl">{blog.attributes.description}</h3>
-                    <h4 className="prose">
+                    <h4 className="prose dark:prose-invert">
                         Published on {new Date(blog.attributes.publishedAt).toLocaleDateString()} at{" "}
                         {new Date(blog.attributes.publishedAt).toLocaleTimeString()}
                     </h4>
-                    <h4 className="prose">
+                    <h4 className="prose dark:prose-invert">
                         Last updated on {new Date(blog.attributes.updatedAt).toLocaleDateString()}{" "}
                         at {new Date(blog.attributes.updatedAt).toLocaleTimeString()}
                     </h4>
@@ -49,6 +50,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                         className="mt-10 mb-10 prose dark:prose-invert text-black dark:text-white"
                         remarkPlugins={[remarkGfm]}
                         rehypePlugins={[rehypeRaw]}
+                        components={MarkdownComponents}
                     >
                         {blog.attributes.content}
                     </Markdown>
