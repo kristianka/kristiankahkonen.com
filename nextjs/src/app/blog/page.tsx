@@ -1,53 +1,42 @@
 import axios from "axios";
-import Image from "next/image";
-import Markdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
-import remarkGfm from "remark-gfm";
-
-interface Res {
-    data: Blog[];
-}
-
-interface Blog {
-    id: number;
-    attributes: {
-        title: string;
-        description: string;
-        content: string;
-    };
-}
+import Link from "next/link";
+import { Res } from "@/types";
 
 export const fetchBlogs = async () => {
-    const res = await axios.get<Res>(`http://${process.env.STRAPI_IP}/api/blogs`, {
-        headers: {
-            Authorization: `Bearer ${process.env.STRAPI_KEY}`
-        }
-    });
-    return res.data;
+    try {
+        const res = await axios.get<Res>(`http://${process.env.STRAPI_IP}/api/blogs`, {
+            headers: {
+                Authorization: `Bearer ${process.env.STRAPI_KEY}`
+            }
+        });
+        return res.data;
+    } catch (error) {
+        console.error(error);
+        return { data: [] };
+    }
 };
 
 export default async function Home() {
     const blogs = await fetchBlogs();
+    // sort to show the latest blog first
+    blogs.data.sort(
+        (a, b) =>
+            new Date(b.attributes.publishedAt).getTime() -
+            new Date(a.attributes.publishedAt).getTime()
+    );
     return (
         <main className="flex justify-center">
-            <div className="sm:max-w-max w-full sm:mx-auto">
-                <ul className="">
-                    {blogs &&
-                        blogs.data.map((blog: Blog) => (
-                            <li className="rounded-lg p-5 m-5" key={blog.id}>
-                                <h2>Article {blog.id}</h2>
-                                <h2 className="text-2xl sm:text-3xl">{blog.attributes.title}</h2>
-                                <h3 className="text-lg sm:text-xl">
-                                    {blog.attributes.description}
-                                </h3>
-                                {/* Don't make the text gray on tailwind typography prose. It's hard to read. */}
-                                <Markdown
-                                    className="prose dark:prose-invert text-black dark:text-white"
-                                    remarkPlugins={[remarkGfm]}
-                                    rehypePlugins={[rehypeRaw]}
-                                >
-                                    {blog.attributes.content}
-                                </Markdown>
+            <div className="mx-auto">
+                {/* <h1>Join my email list</h1> */}
+                {blogs.data.length === 0 && <h1>No blogs found</h1>}
+                <h1 className="text-3xl sm:text-4xl">Blogs</h1>
+                <ul>
+                    {blogs.data.length > 0 &&
+                        blogs.data.map((blog) => (
+                            <li key={blog.id}>
+                                <Link href={`/blog/${blog.id}`}>
+                                    <h2 className="text-xl sm:text-2xl">{blog.attributes.title}</h2>
+                                </Link>
                             </li>
                         ))}
                 </ul>
