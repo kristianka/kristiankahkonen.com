@@ -9,7 +9,7 @@ export const Header = () => {
                 href="/"
                 className="mr-5 sm:mr-10 text-xl sm:text-2xl font-bold tracking-wider hover:underline"
             >
-                Kristian Kähkönen
+                Kristian <br /> Kähkönen
             </Link>
             {/* <p className="">Work in progress! 🚧</p> */}
             <nav className="overflow-x-auto uppercase">
