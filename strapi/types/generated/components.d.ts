@@ -1,5 +1,5 @@
-import type { Struct, Schema } from '@strapi/strapi';
+import type { Schema, Attribute } from '@strapi/strapi';
 
-declare module '@strapi/strapi' {
-  export module Public {}
+declare module '@strapi/types' {
+  export module Shared {}
 }

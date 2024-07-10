@@ -1,5 +1,5 @@
 {
-  "name": "kahkonen-blog",
+  "name": "strapi",
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application",
@@ -10,27 +10,23 @@
     "strapi": "strapi",
     "deploy": "strapi deploy"
   },
-  "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18"
-  },
+  "devDependencies": {},
   "dependencies": {
-    "@strapi/strapi": "5.0.0-rc.2",
-    "@strapi/plugin-users-permissions": "5.0.0-rc.2",
-    "@strapi/plugin-cloud": "5.0.0-rc.2",
+    "@strapi/strapi": "4.25.2",
+    "@strapi/plugin-users-permissions": "4.25.2",
+    "@strapi/plugin-i18n": "4.25.2",
+    "@strapi/plugin-cloud": "4.25.2",
+    "better-sqlite3": "8.6.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-router-dom": "^6.0.0",
-    "styled-components": "^6.0.0",
-    "better-sqlite3": "9.4.3"
+    "react-router-dom": "5.3.4",
+    "styled-components": "5.3.3"
   },
   "author": {
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "f628e4c9-483d-40cb-8f9a-0a27df3aec46"
+    "uuid": "53770575-ba2e-425d-b3ac-f1bdb18da11a"
   },
   "engines": {
     "node": ">=18.0.0 <=20.x.x",

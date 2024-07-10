@@ -1,4 +1,4 @@
-export default [
+module.exports = [
   'strapi::logger',
   'strapi::errors',
   'strapi::security',
