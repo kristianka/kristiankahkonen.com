@@ -22,6 +22,7 @@ jobs:
 
             - name: Install dependencies
               run: npm ci
+              working-directory: ./nextjs
 
             # Cache Playwright browsers. This will speed up the workflow by reusing the browsers
             # invalidate when package-lock.json changes, like when you update Playwright
@@ -35,6 +36,8 @@ jobs:
 
             - name: Install Playwright Browsers
               run: npx playwright install --with-deps
+              working-directory: ./nextjs
 
             - name: Run Playwright tests
               run: npm run test:e2e-dockerized
+              working-directory: ./nextjs
