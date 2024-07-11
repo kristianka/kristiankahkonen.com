@@ -2,7 +2,7 @@
 const nextConfig = {
     output: "standalone",
     images: {
-        domains: ["kristiankahkonen.com", "localhost"]
+        domains: ["localhost"]
     }
 };
 

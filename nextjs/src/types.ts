@@ -15,5 +15,35 @@ export interface Blog {
         createdAt: string;
         updatedAt: string;
         publishedAt: string;
+        cover: {
+            data: {
+                id: number;
+                attributes: {
+                    formats: {
+                        thumbnail: {
+                            width: number;
+                            height: number;
+                            url: string;
+                        };
+                    };
+                };
+            };
+        };
+        createdBy: {
+            data: {
+                attributes: {
+                    firstname: string;
+                    lastname: string;
+                };
+            };
+        };
+        updatedBy: {
+            data: {
+                attributes: {
+                    firstname: string;
+                    lastname: string;
+                };
+            };
+        };
     };
 }

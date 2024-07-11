@@ -5,14 +5,16 @@ import { FaAnglesRight } from "react-icons/fa6";
 
 export const fetchBlogs = async () => {
     try {
-        const res = await axios.get<Res>(`http://${process.env.STRAPI_IP}/api/blogs`, {
-            headers: {
-                Authorization: `Bearer ${process.env.STRAPI_KEY}`
+        const res = await axios.get<Res>(
+            `http://${process.env.STRAPI_IP}/api/blogs?populate=createdBy`,
+            {
+                headers: {
+                    Authorization: `Bearer ${process.env.STRAPI_KEY}`
+                }
             }
-        });
+        );
         return res.data;
     } catch (error) {
-        console.error(error);
         return { data: [] };
     }
 };
@@ -35,7 +37,7 @@ export default async function Home() {
                     {blogs.data.length > 0 &&
                         blogs.data.map((blog) => (
                             <li
-                                className=" border md:w-1/2 sm:mx-auto dark:bg-gray-950 hover:bg-slate-50 dark:hover:bg-slate-900 m-5 p-5 rounded-lg shadow-md"
+                                className=" border md:w-1/2 sm:mx-auto  hover:bg-slate-50 dark:hover:bg-cyan-950 m-5 p-5 rounded-lg shadow-md"
                                 key={blog.id}
                             >
                                 <Link className="" href={`/blog/${blog.id}`}>
@@ -44,7 +46,7 @@ export default async function Home() {
                                             <h2 className="text-2xl sm:text-3xl">
                                                 {blog.attributes.title}
                                             </h2>
-                                            <h3 className="truncate text-lg sm:text-xl">
+                                            <h3 className="prose dark:prose-invert  truncate text-lg sm:text-xl">
                                                 {blog.attributes.description}
                                             </h3>
                                         </div>
@@ -57,7 +59,10 @@ export default async function Home() {
                                                 at{" "}
                                                 {new Date(
                                                     blog.attributes.publishedAt
-                                                ).toLocaleTimeString()}
+                                                ).toLocaleTimeString([], {
+                                                    hour: "2-digit",
+                                                    minute: "2-digit"
+                                                })}
                                             </h4>
                                             <div className="flex justify-between items-center">
                                                 <h4 className="prose dark:prose-invert">
@@ -68,7 +73,10 @@ export default async function Home() {
                                                     at{" "}
                                                     {new Date(
                                                         blog.attributes.updatedAt
-                                                    ).toLocaleTimeString()}
+                                                    ).toLocaleTimeString([], {
+                                                        hour: "2-digit",
+                                                        minute: "2-digit"
+                                                    })}
                                                 </h4>
                                                 <div className="flex justify-end">
                                                     <FaAnglesRight className="w-4 h-4 sm:w-6 sm:h-6" />
