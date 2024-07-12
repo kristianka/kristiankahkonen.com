@@ -34,8 +34,7 @@ services:
     env_file: ./strapi/.env
     image: postgres:14.5-alpine
     volumes:
-      - strapi-data:/var/lib/postgresql/data/ #using a volume
-      #- ./data:/var/lib/postgresql/data/ # if you want to use a bind folder
+      - strapi-data-dev:/var/lib/postgresql/data/ #using a volume
 
   nginx-dev:
     container_name: nginx-dev
@@ -52,4 +51,4 @@ services:
 
       
 volumes:
-  strapi-data:
+  strapi-data-dev:

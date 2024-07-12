@@ -1,10 +1,36 @@
-# Used for deploying to production
+# Used for deploying to production, with certs
 services:
   nextjs:
     container_name: nextjs
-    build: ./nextjs
+    build:
+      context: ./nextjs
+      dockerfile: Dockerfile.prod
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=production  
+
+  strapi:
+    container_name: strapi
+    build: ./strapi
+    image: strapi:latest
+    env_file: ./strapi/.env
+    volumes:
+      - ./strapi/config:/opt/app/config
+      - ./strapi/src:/opt/app/src
+      - ./strapi/package.json:/opt/package.json
+      - ./strapi/package-lock.json:/opt/package-lock.json
+      # no yarn
+      - ./strapi/.env:/opt/app/.env
+      - ./strapi/public/uploads:/opt/app/public/uploads
+    depends_on:
+      - strapiDB
+      
+  strapiDB:
+    container_name: strapiDB
+    platform: linux/amd64 #for platform error on Apple M1 chips
+    env_file: ./strapi/.env
+    image: postgres:14.5-alpine
+    volumes:
+      - strapi-data:/var/lib/postgresql/data/ #using a volume
 
   nginx:
     container_name: nginx
@@ -15,5 +41,12 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
       - ./nextjs/certs:/etc/nginx/certs 
+
     depends_on:
       - nextjs
+      - strapi
+      - strapiDB
+
+      
+volumes:
+  strapi-data:
