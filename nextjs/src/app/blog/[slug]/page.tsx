@@ -1,4 +1,5 @@
 import { MarkdownComponents } from "@/components/Markdown";
+import { DateToLocal } from "@/components/ui/DateToLocal";
 import { ResById } from "@/types";
 import axios from "axios";
 import Markdown from "react-markdown";
@@ -43,12 +44,10 @@ export default async function Page({ params }: { params: { slug: string } }) {
                     )}
                     {/* <h3 className="mb-3 text-lg sm:text-xl">{blog.attributes.description}</h3> */}
                     <h4 className="prose dark:prose-invert">
-                        Published on {new Date(blog.attributes.publishedAt).toLocaleDateString()} at{" "}
-                        {new Date(blog.attributes.publishedAt).toLocaleTimeString()}
+                        <DateToLocal date={blog.attributes.publishedAt} type="published" />
                     </h4>
                     <h4 className="prose dark:prose-invert">
-                        Last updated on {new Date(blog.attributes.updatedAt).toLocaleDateString()}{" "}
-                        at {new Date(blog.attributes.updatedAt).toLocaleTimeString()}
+                        <DateToLocal date={blog.attributes.publishedAt} type="updated" />
                     </h4>
 
                     {/* Don't make the text gray on tailwind typography prose. It's hard to read. */}
