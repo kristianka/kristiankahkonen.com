@@ -3,24 +3,25 @@ import Link from "next/link";
 import { Res } from "@/types";
 import { FaAnglesRight } from "react-icons/fa6";
 
-export const fetchBlogs = async () => {
+const fetchBlogs = async () => {
     try {
-        const res = await axios.get<Res>(
-            `http://${process.env.STRAPI_IP}/api/blogs?populate=createdBy`,
-            {
-                headers: {
-                    Authorization: `Bearer ${process.env.STRAPI_KEY}`
-                }
+        const res = await axios.get<Res>("/blogs?populate=createdBy", {
+            baseURL: process.env.STRAPI_IP,
+            headers: {
+                Authorization: `Bearer ${process.env.STRAPI_KEY}`
             }
-        );
+        });
+        console.log("RES", res.data);
         return res.data;
     } catch (error) {
+        console.log("Error while fetching blogs");
         return { data: [] };
     }
 };
 
 export default async function Home() {
     const blogs = await fetchBlogs();
+    console.log("hi");
     // sort to show the latest blog first
     blogs.data.sort(
         (a, b) =>

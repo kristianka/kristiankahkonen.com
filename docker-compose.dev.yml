@@ -1,24 +1,21 @@
 # Used for GitHub Actions, missing certs
 services:
-  # nextjs-dev:
-  #   container_name: nextjs-dev
-  #   build: ./nextjs
+  nextjs-dev:
+    container_name: nextjs-dev
+    build:
+      context: ./nextjs
+      dockerfile: Dockerfile.dev
+    # mount the entire Next.js application directory for HMR
+    environment:
+      - NODE_ENV=development 
+      - WATCHPACK_POLLING=true
+    volumes:
+      - ./nextjs:/app 
 
-  # nginx-dev:
-  #   container_name: nginx-dev
-  #   image: nginx:1.26.0-alpine
-  #   ports:
-  #     - 80:80
-  #   volumes:
-  #     - ./nginx.dev.conf:/etc/nginx/nginx.conf
-  #   depends_on:
-  #     - nextjs-dev
-
-  strapi:
-    container_name: strapi
+  strapi-dev:
+    container_name: strapi-dev
     build: ./strapi
     image: strapi:latest
-    restart: unless-stopped
     env_file: ./strapi/.env
     volumes:
       - ./strapi/config:/opt/app/config
@@ -28,32 +25,31 @@ services:
       # no yarn
       - ./strapi/.env:/opt/app/.env
       - ./strapi/public/uploads:/opt/app/public/uploads
-    ports:
-      - '1337:1337'
-    networks:
-      - strapi
     depends_on:
-      - strapiDB
+      - strapiDB-dev
       
-  strapiDB:
-    container_name: strapiDB
+  strapiDB-dev:
+    container_name: strapiDB-dev
     platform: linux/amd64 #for platform error on Apple M1 chips
-    restart: unless-stopped
     env_file: ./strapi/.env
     image: postgres:14.5-alpine
     volumes:
       - strapi-data:/var/lib/postgresql/data/ #using a volume
       #- ./data:/var/lib/postgresql/data/ # if you want to use a bind folder
 
+  nginx-dev:
+    container_name: nginx-dev
+    image: nginx:1.26.0-alpine
     ports:
-      - '5432:5432'
-    networks:
-      - strapi
+      - 80:80
+    volumes:
+      - ./nginx.dev.conf:/etc/nginx/nginx.conf
+    
+    depends_on:
+      - nextjs-dev
+      - strapi-dev
+      - strapiDB-dev
+
       
 volumes:
   strapi-data:
-
-networks:
-  strapi:
-    name: Strapi
-    driver: bridge

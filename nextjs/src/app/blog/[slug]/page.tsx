@@ -5,19 +5,17 @@ import Markdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 
-export const fetchBlogs = async (id: string) => {
+const fetchBlogs = async (id: string) => {
     try {
-        const res = await axios.get<ResById>(
-            `http://${process.env.STRAPI_IP}/api/blogs/${id}?populate=createdBy`,
-            {
-                headers: {
-                    Authorization: `Bearer ${process.env.STRAPI_KEY}`
-                }
+        const res = await axios.get<ResById>(`/blogs/${id}?populate=createdBy`, {
+            baseURL: process.env.STRAPI_IP,
+            headers: {
+                Authorization: `Bearer ${process.env.STRAPI_KEY}`
             }
-        );
+        });
         return res.data;
     } catch (error) {
-        console.error(error);
+        console.error("Error while fetching blog");
         return null;
     }
 };
