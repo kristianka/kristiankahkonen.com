@@ -15,7 +15,7 @@ const fetchBlogs = async () => {
         console.log("RES", res.data);
         return res.data;
     } catch (error) {
-        console.log("Error while fetching blogs");
+        console.log("Error while fetching blogs", error);
         return { data: [] };
     }
 };
