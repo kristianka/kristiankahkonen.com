@@ -7,6 +7,9 @@ RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev l
 ARG NODE_ENV=development
 ENV NODE_ENV=${NODE_ENV}
 
+# Set the timezone to Finnish time
+ENV TZ=Europe/Helsinki
+
 WORKDIR /opt/
 COPY package.json package-lock.json ./
 RUN npm install -g node-gyp

@@ -12,6 +12,10 @@ WORKDIR /opt/app
 COPY . .
 RUN npm run build
 
+# Set the timezone to Finnish time
+ENV TZ=Europe/Helsinki
+
+
 # Creating final production image
 FROM node:18-alpine
 RUN apk add --no-cache vips-dev
