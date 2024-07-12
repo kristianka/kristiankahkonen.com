@@ -10,7 +10,9 @@ services:
 
   strapi:
     container_name: strapi
-    build: ./strapi
+    build:
+      context: ./strapi
+      dockerfile: Dockerfile.prod
     image: strapi:latest
     env_file: ./strapi/.env
     volumes:
