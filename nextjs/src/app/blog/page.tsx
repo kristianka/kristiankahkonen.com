@@ -2,6 +2,7 @@ import axios from "axios";
 import Link from "next/link";
 import { Res } from "@/types";
 import { FaAnglesRight } from "react-icons/fa6";
+import { DateToLocal } from "@/components/ui/DateToLocal";
 
 const fetchBlogs = async () => {
     try {
@@ -21,13 +22,13 @@ const fetchBlogs = async () => {
 
 export default async function Home() {
     const blogs = await fetchBlogs();
-    console.log("hi");
     // sort to show the latest blog first
     blogs.data.sort(
         (a, b) =>
             new Date(b.attributes.publishedAt).getTime() -
             new Date(a.attributes.publishedAt).getTime()
     );
+    console.log(new Date().toUTCString());
     return (
         <main className="">
             <div className="">
@@ -53,31 +54,17 @@ export default async function Home() {
                                         </div>
                                         <div className="">
                                             <h4 className="prose dark:prose-invert">
-                                                Published on{" "}
-                                                {new Date(
-                                                    blog.attributes.publishedAt
-                                                ).toLocaleDateString()}{" "}
-                                                at{" "}
-                                                {new Date(
-                                                    blog.attributes.publishedAt
-                                                ).toLocaleTimeString([], {
-                                                    hour: "2-digit",
-                                                    minute: "2-digit"
-                                                })}
+                                                <DateToLocal
+                                                    date={blog.attributes.publishedAt}
+                                                    type="published"
+                                                />
                                             </h4>
                                             <div className="flex justify-between items-center">
                                                 <h4 className="prose dark:prose-invert">
-                                                    Last updated on{" "}
-                                                    {new Date(
-                                                        blog.attributes.updatedAt
-                                                    ).toLocaleDateString()}{" "}
-                                                    at{" "}
-                                                    {new Date(
-                                                        blog.attributes.updatedAt
-                                                    ).toLocaleTimeString([], {
-                                                        hour: "2-digit",
-                                                        minute: "2-digit"
-                                                    })}
+                                                    <DateToLocal
+                                                        date={blog.attributes.updatedAt}
+                                                        type="updated"
+                                                    />
                                                 </h4>
                                                 <div className="flex justify-end">
                                                     <FaAnglesRight className="w-4 h-4 sm:w-6 sm:h-6" />

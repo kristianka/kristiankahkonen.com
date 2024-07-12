@@ -2,7 +2,7 @@
 const nextConfig = {
     output: "standalone",
     images: {
-        domains: ["localhost"]
+        domains: ["localhost", "strapi-dev", "strapi"]
     }
 };
 
