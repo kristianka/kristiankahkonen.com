@@ -12,32 +12,6 @@ services:
     volumes:
       - ./nextjs:/app 
 
-  strapi-dev:
-    container_name: strapi-dev
-    build: ./strapi
-    image: strapi:latest
-    env_file: ./strapi/.env
-    volumes:
-      - ./strapi/config:/opt/app/config
-      - ./strapi/src:/opt/app/src
-      - ./strapi/package.json:/opt/package.json
-      - ./strapi/package-lock.json:/opt/package-lock.json
-      # no yarn
-      - ./strapi/.env:/opt/app/.env
-      - ./strapi/public/uploads:/opt/app/public/uploads
-    depends_on:
-      - strapiDB-dev
-      
-  strapiDB-dev:
-    container_name: strapiDB-dev
-    platform: linux/amd64 
-    # platform: linux/amd64 #for ARM platforms like Oracle Cloud and M1 chips
-
-    env_file: ./strapi/.env
-    image: postgres:14.5-alpine
-    volumes:
-      - strapi-data-dev:/var/lib/postgresql/data/ #using a volume
-
   nginx-dev:
     container_name: nginx-dev
     image: nginx:1.26.0-alpine
@@ -45,12 +19,5 @@ services:
       - 80:80
     volumes:
       - ./nginx.dev.conf:/etc/nginx/nginx.conf
-    
     depends_on:
       - nextjs-dev
-      - strapi-dev
-      - strapiDB-dev
-
-      
-volumes:
-  strapi-data-dev:
