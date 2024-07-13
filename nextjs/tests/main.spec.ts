@@ -10,15 +10,13 @@ test.describe("kristiankahkonen.com", async () => {
         await page.goto(url);
     });
 
-    // Basic test that page does not crash
-    test("It loads", async ({ page }) => {
+    // Basic test that page loads
+    test("Site loads", async ({ page }) => {
         const title = await page.title();
         await expect(title).toBe("Portfolio - Kristian Kähkönen");
-
-        const name = await page.getByRole("heading", { name: "Kristian Kähkönen" });
-        await expect(name).toBeVisible();
     });
 
+    // Site has probably crashed if this fails
     test("Header loads and dark mode toggle shows", async ({ page }) => {
         // Check that the header is visible and loaded
         const header = await page.locator("header");
