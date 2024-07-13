@@ -1,0 +1,17 @@
+# Used for GitHub Actions, missing certs
+services:
+  nextjs-test:
+    container_name: nextjs-test
+    build:
+      context: ./nextjs
+      dockerfile: Dockerfile.prod
+
+  nginx-test:
+    container_name: nginx-test
+    image: nginx:1.26.0-alpine
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.test.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - nextjs-test
