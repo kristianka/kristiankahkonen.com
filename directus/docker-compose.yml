@@ -1,0 +1,33 @@
+services:
+
+  database:
+    image: postgis/postgis:13-master
+    # Required when running on platform other than amd64, like Apple M1/M2:
+    # platform: linux/amd64
+    volumes:
+      - ./data/database:/var/lib/postgresql/data
+    env_file:
+      - .env
+
+  cache:
+    image: redis:6
+
+  directus:
+    image: directus/directus:10.13.1
+    ports:
+      - 8055:8055
+    volumes:
+      - ./uploads:/directus/uploads
+      - ./extensions:/directus/extensions
+    env_file:
+      - .env
+    environment:
+        CACHE_ENABLED: "true"
+        CACHE_AUTO_PURGE: "true"
+        CACHE_STORE: "redis"
+        REDIS: "redis://cache:6379"
+    depends_on:
+      - cache
+      - database
+
+
