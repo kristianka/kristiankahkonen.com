@@ -12,7 +12,7 @@ export const fetchBlogs = async () => {
         const res = (await client.request(readItems("blog"))) as Blog[];
         return res;
     } catch (error) {
-        console.log("Error while fetching blogs", error);
+        console.error("Error while fetching blogs", error);
         return [];
     }
 };
