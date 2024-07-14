@@ -1,16 +1,63 @@
-# Used for GitHub Actions, missing certs
+# Used for dev, missing certs
 services:
+  database-dev:
+    container_name: database-dev
+    image: postgis/postgis:13-master
+    # Required when running on platform other than amd64, like Apple M1/M2:
+    # platform: linux/amd64
+    volumes:
+      - ./directus/data/database:/var/lib/postgresql/data
+    env_file:
+      - ./directus/.dev.env
+    networks:
+      - app-network
+
+
+  cache-dev:
+    container_name: cache-dev
+    image: redis:6
+    networks:
+      - app-network
+
+
+  directus-dev:
+    container_name: directus-dev
+    image: directus/directus:10.13.1
+    volumes:
+      - ./directus/uploads:/directus/uploads
+      - ./directus/extensions:/directus/extensions
+    env_file:
+      - ./directus/.dev.env
+    environment:
+        CACHE_ENABLED: "true"
+        CACHE_AUTO_PURGE: "true"
+        CACHE_STORE: "redis"
+        REDIS: "redis://cache-dev:6379"
+        CORS_ENABLED: true
+    depends_on:
+      - cache-dev
+      - database-dev
+    networks:
+      - app-network
+
+
   nextjs-dev:
     container_name: nextjs-dev
     build:
       context: ./nextjs
       dockerfile: Dockerfile.dev
     # mount the entire Next.js application directory for HMR
+    env_file:
+      - ./nextjs/.dev.env
     environment:
       - NODE_ENV=development 
       - WATCHPACK_POLLING=true
     volumes:
-      - ./nextjs:/app 
+      - ./nextjs:/app
+    networks:
+      - app-network
+    
+
 
   nginx-dev:
     container_name: nginx-dev
@@ -21,3 +68,11 @@ services:
       - ./nginx.dev.conf:/etc/nginx/nginx.conf
     depends_on:
       - nextjs-dev
+      - directus-dev
+    networks:
+      - app-network
+
+
+networks:
+  app-network:
+    driver: bridge
