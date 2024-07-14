@@ -38,10 +38,11 @@ export default defineConfig({
             use: { ...devices["Desktop Chrome"] }
         },
 
-        {
-            name: "firefox",
-            use: { ...devices["Desktop Firefox"] }
-        },
+        // broken: https://github.com/microsoft/playwright/issues/20749
+        // {
+        //     name: "firefox",
+        //     use: { ...devices["Desktop Firefox"] }
+        // },
 
         {
             name: "webkit",
