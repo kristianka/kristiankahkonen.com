@@ -9,9 +9,9 @@ import Loading from "./loading";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: "Portfolio - Kristian Kähkönen",
-    description: "Kristian Kähkönen's portfolio. A software developer from Finland.",
-    keywords: ["Kristian Kähkönen", "portfolio", "finland", "finnish", "software developer"]
+    title: "Kristian Kähkönen",
+    description: "Kristian Kähkönen's blog & portfolio. A software developer from Finland.",
+    keywords: ["Kristian Kähkönen", "blog", "portfolio", "finland", "finnish", "software developer"]
 };
 
 export default function RootLayout({
