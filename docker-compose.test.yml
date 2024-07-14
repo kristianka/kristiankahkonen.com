@@ -2,6 +2,8 @@
 services:
   nextjs-test:
     container_name: nextjs-test
+    env_file:
+      - ./nextjs/.test.env
     build:
       context: ./nextjs
       dockerfile: Dockerfile.prod

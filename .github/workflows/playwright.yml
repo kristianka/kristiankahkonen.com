@@ -17,6 +17,10 @@ jobs:
                   node-version: "22"
                   # cache: "npm"
 
+            - name: Setup .env for services
+              run: |
+                  echo "${{ secrets.ENV_VALUES }}" > nextjs/.test.env
+
             - name: Start Docker
               run: docker compose -f "docker-compose.test.yml" up --build -d
 
