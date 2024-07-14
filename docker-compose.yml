@@ -3,7 +3,7 @@ services:
 
   database:
     container_name: database
-    image: postgis/postgis:13-master
+    image: postgres:latest
     # Required when running on platform other than amd64, like Apple M1/M2:
     # platform: linux/amd64
     volumes:
@@ -14,11 +14,11 @@ services:
       - app-network
 
 
-  cache:
-    container_name: cache
-    image: redis:6
-    networks:
-      - app-network
+  # cache:
+  #   container_name: cache
+  #   image: redis:6
+  #   networks:
+  #     - app-network
 
 
   directus:
@@ -29,13 +29,13 @@ services:
       - ./directus/extensions:/directus/extensions
     env_file:
       - ./directus/.env
-    environment:
-        CACHE_ENABLED: "true"
-        CACHE_AUTO_PURGE: "true"
-        CACHE_STORE: "redis"
-        REDIS: "redis://cache:6379"
+    # environment:
+    #     CACHE_ENABLED: "true"
+    #     CACHE_AUTO_PURGE: "true"
+    #     CACHE_STORE: "redis"
+    #     REDIS: "redis://cache:6379"
     depends_on:
-      - cache
+      # - cache
       - database
     networks:
       - app-network
