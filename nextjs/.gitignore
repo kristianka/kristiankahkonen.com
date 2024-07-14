@@ -41,3 +41,4 @@ certs
 /blob-report/
 /playwright/.cache/
 .env
+.dev.env
