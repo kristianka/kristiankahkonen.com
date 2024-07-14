@@ -1,3 +1,6 @@
+// force site to be dynamic, otherwise blogs will not be fetched on production
+export const dynamic = "force-dynamic";
+
 import Link from "next/link";
 import { FaAnglesRight } from "react-icons/fa6";
 
