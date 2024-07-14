@@ -13,11 +13,11 @@ services:
       - app-network
 
 
-  cache-dev:
-    container_name: cache-dev
-    image: redis:6
-    networks:
-      - app-network
+  # cache-dev:
+  #   container_name: cache-dev
+  #   image: redis:6
+  #   networks:
+  #     - app-network
 
 
   directus-dev:
@@ -28,14 +28,13 @@ services:
       - ./directus/extensions:/directus/extensions
     env_file:
       - ./directus/.dev.env
-    environment:
-        CACHE_ENABLED: "true"
-        CACHE_AUTO_PURGE: "true"
-        CACHE_STORE: "redis"
-        REDIS: "redis://cache-dev:6379"
-        # CORS_ENABLED: true
+    # environment:
+    #     CACHE_ENABLED: "true"
+    #     CACHE_AUTO_PURGE: "true"
+    #     CACHE_STORE: "redis"
+    #     REDIS: "redis://cache-dev:6379"
     depends_on:
-      - cache-dev
+      # - cache-dev
       - database-dev
     networks:
       - app-network
