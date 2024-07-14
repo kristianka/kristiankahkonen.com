@@ -2,3 +2,4 @@ database/
 uploads/
 data/
 .env
+.dev.env
