@@ -28,10 +28,11 @@ export default async function Page({ params }: { params: { slug: string } }) {
                     <h4 className="prose dark:prose-invert">
                         <DateToLocal date={blog.date_created} type="published" />
                     </h4>
-                    <h4 className="prose dark:prose-invert">
-                        <DateToLocal date={blog.date_updated} type="updated" />
-                    </h4>
-
+                    {blog.date_updated && (
+                        <h4 className="prose dark:prose-invert">
+                            <DateToLocal date={blog.date_updated} type="updated" />
+                        </h4>
+                    )}
                     {/* Don't make the text gray on tailwind typography prose. It's hard to read. */}
                     <Markdown
                         className="mt-10 mb-10 prose dark:prose-invert text-black dark:text-white"

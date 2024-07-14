@@ -41,23 +41,39 @@ export default async function Home() {
                                             </h3>
                                         </div>
                                         <div className="">
-                                            <h4 className="prose dark:prose-invert">
-                                                <DateToLocal
-                                                    date={blog.date_created}
-                                                    type="published"
-                                                />
-                                            </h4>
-                                            <div className="flex justify-between items-center">
+                                            {!blog.date_updated ? (
+                                                <div className="flex justify-between items-center">
+                                                    <h4 className="prose dark:prose-invert">
+                                                        <DateToLocal
+                                                            date={blog.date_created}
+                                                            type="published"
+                                                        />
+                                                    </h4>
+                                                    <div className="flex justify-end">
+                                                        <FaAnglesRight className="w-4 h-4 sm:w-6 sm:h-6" />
+                                                    </div>
+                                                </div>
+                                            ) : (
                                                 <h4 className="prose dark:prose-invert">
                                                     <DateToLocal
-                                                        date={blog.date_updated}
-                                                        type="updated"
+                                                        date={blog.date_created}
+                                                        type="published"
                                                     />
                                                 </h4>
-                                                <div className="flex justify-end">
-                                                    <FaAnglesRight className="w-4 h-4 sm:w-6 sm:h-6" />
+                                            )}
+                                            {blog.date_updated && (
+                                                <div className="flex justify-between items-center">
+                                                    <h4 className="prose dark:prose-invert">
+                                                        <DateToLocal
+                                                            date={blog.date_updated}
+                                                            type="updated"
+                                                        />
+                                                    </h4>
+                                                    <div className="flex justify-end">
+                                                        <FaAnglesRight className="w-4 h-4 sm:w-6 sm:h-6" />
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            )}
                                         </div>
                                     </div>
                                 </Link>
