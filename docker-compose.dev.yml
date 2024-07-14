@@ -33,7 +33,7 @@ services:
         CACHE_AUTO_PURGE: "true"
         CACHE_STORE: "redis"
         REDIS: "redis://cache-dev:6379"
-        CORS_ENABLED: true
+        # CORS_ENABLED: true
     depends_on:
       - cache-dev
       - database-dev
