@@ -1,38 +1,57 @@
 # Used for deploying to production, with certs
 services:
+
+  database:
+    container_name: database
+    image: postgis/postgis:13-master
+    # Required when running on platform other than amd64, like Apple M1/M2:
+    # platform: linux/amd64
+    volumes:
+      - ./directus/data/database:/var/lib/postgresql/data
+    env_file:
+      - ./directus/.env
+    networks:
+      - app-network
+
+
+  cache:
+    container_name: cache
+    image: redis:6
+    networks:
+      - app-network
+
+
+  directus:
+    container_name: directus
+    image: directus/directus:10.13.1
+    volumes:
+      - ./directus/uploads:/directus/uploads
+      - ./directus/extensions:/directus/extensions
+    env_file:
+      - ./directus/.env
+    environment:
+        CACHE_ENABLED: "true"
+        CACHE_AUTO_PURGE: "true"
+        CACHE_STORE: "redis"
+        REDIS: "redis://cache:6379"
+    depends_on:
+      - cache
+      - database
+    networks:
+      - app-network
+
+
   nextjs:
     container_name: nextjs
     build:
       context: ./nextjs
       dockerfile: Dockerfile.prod
+    env_file:
+      - ./nextjs/.env
     environment:
       - NODE_ENV=production  
-
-  strapi:
-    container_name: strapi
-    build:
-      context: ./strapi
-      dockerfile: Dockerfile.prod
-    image: strapi:latest
-    env_file: ./strapi/.env
-    volumes:
-      - ./strapi/config:/opt/app/config
-      - ./strapi/src:/opt/app/src
-      - ./strapi/package.json:/opt/package.json
-      - ./strapi/package-lock.json:/opt/package-lock.json
-      # no yarn
-      - ./strapi/.env:/opt/app/.env
-      - ./strapi/public/uploads:/opt/app/public/uploads
-    depends_on:
-      - strapiDB
-      
-  strapiDB:
-    container_name: strapiDB
-    platform: linux/amd64 #for platform error on Apple M1 chips
-    env_file: ./strapi/.env
-    image: postgres:14.5-alpine
-    volumes:
-      - strapi-data:/var/lib/postgresql/data/ #using a volume
+    networks:
+      - app-network
 
   nginx:
     container_name: nginx
@@ -43,12 +62,12 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
       - ./nextjs/certs:/etc/nginx/certs 
-
     depends_on:
       - nextjs
-      - strapi
-      - strapiDB
+      - directus
+    networks:
+      - app-network
 
-      
-volumes:
-  strapi-data:
+networks:
+  app-network:
+    driver: bridge
