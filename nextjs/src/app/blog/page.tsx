@@ -1,12 +1,17 @@
 // force site to be dynamic, otherwise blogs will not be fetched on production
 export const dynamic = "force-dynamic";
-
 import Link from "next/link";
+import type { Metadata } from "next";
 import { FaAnglesRight } from "react-icons/fa6";
 
 import { DateToLocal } from "@/components/ui/DateToLocal";
 import { Blog } from "@/types";
 import { fetchBlogs } from "@/services/BlogRequests";
+
+export const metadata: Metadata = {
+    title: "Blogs - Kristian Kähkönen",
+    description: "A collection of blogs written by Kristian Kähkönen."
+};
 
 export default async function Home() {
     const blogs: Blog[] = await fetchBlogs();

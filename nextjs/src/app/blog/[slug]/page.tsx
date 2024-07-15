@@ -6,6 +6,30 @@ import { MarkdownComponents } from "@/components/Markdown";
 import { DateToLocal } from "@/components/ui/DateToLocal";
 import { fetchBlogById, getBlogAuthor } from "@/services/BlogRequests";
 
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+    const blog = await fetchBlogById(params.slug);
+
+    if (!blog) {
+        return {
+            title: "Blog not found - Kristian Kähkönen"
+        };
+    }
+
+    const title = blog.title + " - Kristian Kähkönen";
+    const description = blog.description || "No description available.";
+
+    return {
+        title: title,
+        description: description,
+        openGraph: {
+            title: title,
+            description: description,
+            type: "article",
+            url: `https://kristiankahkonen.com/blog/${params.slug}`
+        }
+    };
+}
+
 export default async function Page({ params }: { params: { slug: string } }) {
     const blog = await fetchBlogById(params.slug);
     const user = await getBlogAuthor(blog?.user_created);
