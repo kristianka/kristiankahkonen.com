@@ -12,7 +12,7 @@
     "url": "https://github.com/kristianka/kristiankahkonen.com"
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
