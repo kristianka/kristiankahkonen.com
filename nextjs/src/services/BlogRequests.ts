@@ -3,7 +3,7 @@ import { Blog, User } from "@/types";
 
 // create a Directus client to connect to the Directus API
 const client = createDirectus(process.env.DIRECTUS_URL as string)
-    .with(rest({ onRequest: (options) => ({ ...options, cache: "default" }) }))
+    .with(rest({ onRequest: (options) => ({ ...options, cache: "no-cache" }) }))
     .with(authentication());
 
 export const fetchBlogs = async () => {

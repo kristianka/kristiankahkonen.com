@@ -14,10 +14,19 @@ export const DateToLocal = ({ date, type }: DateToLocalProps) => {
         setIsClient(true);
     }, []);
 
+    const dateTimeOptions: Intl.DateTimeFormatOptions = {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false
+    };
+
     return (
         <div>
             {type === "published" ? "Published" : "Updated"}{" "}
-            {isClient && new Date(date).toLocaleString()}
+            {isClient && new Date(date).toLocaleString(undefined, dateTimeOptions)}
         </div>
     );
 };
