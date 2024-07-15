@@ -1,13 +1,16 @@
 import { Blog } from "@/types";
 import Link from "next/link";
 import { FaAnglesRight } from "react-icons/fa6";
-import { DateToLocal } from "../ui/DateToLocal";
+import { DateToLocal } from "../DateToLocal";
 
 export const ListCard = ({ blog }: { blog: Blog }) => {
     return (
         <>
             <li className="divide-x p-5" key={blog.id}>
-                <Link className="hover:text-blue-700" href={`/blog/${blog.id}`}>
+                <Link
+                    className="hover:text-blue-700 dark:hover:text-blue-500"
+                    href={`/blog/${blog.id}`}
+                >
                     <div className="flex flex-col">
                         <div>
                             <h2 className="text-xl sm:text-2xl font-bold">{blog.title}</h2>
