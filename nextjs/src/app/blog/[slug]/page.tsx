@@ -5,6 +5,7 @@ import remarkGfm from "remark-gfm";
 import { MarkdownComponents } from "@/components/Markdown";
 import { DateToLocal } from "@/components/ui/DateToLocal";
 import { fetchBlogById, getBlogAuthor } from "@/services/BlogRequests";
+import { notFound } from "next/navigation";
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
     const blog = await fetchBlogById(params.slug);
@@ -35,13 +36,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
     const user = await getBlogAuthor(blog?.user_created);
 
     if (!blog) {
-        return (
-            <div>
-                <h2 className="text-lg text-center text-gray-600 dark:text-gray-300">
-                    Blog not found.
-                </h2>
-            </div>
-        );
+        notFound();
     }
 
     return (
