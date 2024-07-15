@@ -40,10 +40,10 @@ export default async function Page({ params }: { params: { slug: string } }) {
     }
 
     return (
-        <main className="flex justify-center m-5">
-            <div key={blog.id} className="sm:max-w-max w-full sm:mx-auto">
+        <main className="m-5 max-w-2xl mx-auto">
+            <div key={blog.id} className="">
                 <div>
-                    <h2 className="text-clip text-3xl sm:text-4xl mb-5">{blog.title}</h2>
+                    <h2 className="text-2xl sm:text-3xl mb-5">{blog.title}</h2>
                     {blog && user && (
                         <h4 className="text-xl prose dark:prose-invert">
                             Author: {user.first_name} {user.last_name}
