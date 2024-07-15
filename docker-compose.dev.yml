@@ -28,6 +28,11 @@ services:
       - ./directus/extensions:/directus/extensions
     env_file:
       - ./directus/.dev.env
+    # you can access Directus at http://localhost:8055 without Nginx
+    # and without dockerized Next.js for faster development
+    # remember to change env values then in .env, not .dev.env
+    ports:
+      - 8055:8055
     # environment:
     #     CACHE_ENABLED: "true"
     #     CACHE_AUTO_PURGE: "true"
