@@ -3,7 +3,7 @@ import { ModeToggle } from "./ModeToggle";
 
 export const NavBar = () => {
     return (
-        <header className="pl-5 p-3 rounded-md  sm:flex items-center bg-white dark:bg-[#121212] dark:text-white sticky top-0 z-10 mb-10">
+        <header className="pt-3 pb-3 rounded-md  sm:flex items-center bg-white dark:bg-[#121212] dark:text-white sticky top-0 z-10 mb-10">
             <div className="flex justify-between items-baseline">
                 <Link
                     data-testid="headerHomeLink"

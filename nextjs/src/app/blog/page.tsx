@@ -15,9 +15,9 @@ export default async function Home() {
     const blogs: Blog[] = await fetchBlogs();
 
     return (
-        <main className="m-5 mx-auto max-w-5xl">
+        <main className="mx-auto max-w-7xl">
             <div className="">
-                <div className="flex justify-between items-baseline p-5">
+                <div className="flex justify-between items-baseline">
                     <h1 className="text-3xl sm:text-4xl">Latest content</h1>
                     <p className="flex justify-end text-lg">{blogs.length} posts</p>
                 </div>

@@ -29,8 +29,10 @@ export default function RootLayout({
                     disableTransitionOnChange
                 >
                     <Suspense fallback={<Loading />}>
-                        <NavBar />
-                        {children}
+                        <div className="pl-5 pr-5 max-w-7xl mx-auto">
+                            <NavBar />
+                            {children}
+                        </div>
                     </Suspense>
                 </ThemeProvider>
             </body>

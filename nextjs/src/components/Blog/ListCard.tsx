@@ -6,7 +6,7 @@ import { DateToLocal } from "../DateToLocal";
 export const ListCard = ({ blog }: { blog: Blog }) => {
     return (
         <>
-            <li className="divide-x p-5" key={blog.id}>
+            <li className="divide-x pt-5 pb-5" key={blog.id}>
                 <Link
                     className="hover:text-blue-700 dark:hover:text-blue-500"
                     href={`/blog/${blog.id}`}

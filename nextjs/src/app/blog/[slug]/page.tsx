@@ -35,8 +35,11 @@ export default async function Page({ params }: { params: { slug: string } }) {
     }
 
     return (
-        <main className="m-5 max-w-2xl mx-auto">
-            <BlogPage blog={blog} user={user} />
+        <main className="m-5 max-w-7xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-4">
+                <BlogPage blog={blog} user={user} />
+                <div>TABLE OF CONTENTS</div>
+            </div>
         </main>
     );
 }
