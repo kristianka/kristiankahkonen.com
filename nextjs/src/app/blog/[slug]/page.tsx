@@ -11,7 +11,13 @@ export default async function Page({ params }: { params: { slug: string } }) {
     const user = await getBlogAuthor(blog?.user_created);
 
     if (!blog) {
-        return <h1>Blog not found</h1>;
+        return (
+            <div>
+                <h2 className="text-lg text-center text-gray-600 dark:text-gray-300">
+                    Blog not found.
+                </h2>
+            </div>
+        );
     }
 
     return (

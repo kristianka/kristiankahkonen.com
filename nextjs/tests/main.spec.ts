@@ -13,7 +13,7 @@ test.describe("kristiankahkonen.com", async () => {
     // Basic test that page loads
     test("Site loads", async ({ page }) => {
         const title = await page.title();
-        await expect(title).toBe("Portfolio - Kristian Kähkönen");
+        await expect(title).toBe("Kristian Kähkönen");
     });
 
     // Site has probably crashed if this fails
