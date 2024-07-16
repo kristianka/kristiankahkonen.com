@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 const TableOfContents = ({ toc }: { toc: Toc[] }) => {
     const [activeHeading, setActiveHeading] = useState<string | null>(null);
 
+    // Not really happy with this solution, but it works for now
+    // Highlight header on TOC when scrolling
     useEffect(() => {
         const handleScroll = () => {
             const scrollPosition = window.scrollY;
@@ -32,6 +34,8 @@ const TableOfContents = ({ toc }: { toc: Toc[] }) => {
         const element = document.getElementById(id);
         if (element) {
             element.scrollIntoView({ behavior: "smooth", block: "start" });
+            // Update the URL without reloading the page
+            window.history.pushState(null, "", `#${id}`);
         }
     };
 
@@ -42,16 +46,17 @@ const TableOfContents = ({ toc }: { toc: Toc[] }) => {
             <ul>
                 {toc.map((heading, index) => {
                     const marginLeft = (heading.level - 1) * 2;
+                    console.log(marginLeft);
                     const isActive = heading.id === activeHeading;
 
                     return (
                         <li key={index} className={`ml-${marginLeft}`}>
                             <a
                                 href={`#${heading.id}`}
-                                className={`block ${
+                                className={` ${
                                     isActive
                                         ? "text-blue-600 transition-all font-bold"
-                                        : "text-gray-600"
+                                        : "text-gray-600 font-semibold"
                                 }`}
                                 onClick={(e) => {
                                     e.preventDefault();

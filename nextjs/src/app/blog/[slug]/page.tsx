@@ -1,6 +1,12 @@
-import { BlogPage } from "@/components/Blog/BlogPage";
-import { fetchBlogById, getBlogAuthor } from "@/services/BlogRequests";
 import { notFound } from "next/navigation";
+import { unified } from "unified";
+import remarkParse from "remark-parse";
+import { visit } from "unist-util-visit";
+
+import { BlogPage } from "@/components/Blog/BlogPage";
+import TableOfContents from "@/components/Blog/TableOfContents";
+import { fetchBlogById, getBlogAuthor } from "@/services/BlogRequests";
+import { Toc } from "@/types";
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
     const blog = await fetchBlogById(params.slug);
@@ -34,11 +40,29 @@ export default async function Page({ params }: { params: { slug: string } }) {
         notFound();
     }
 
+    // Generate Table of Contents from the headings (TOC)
+    const toc: Toc[] = [];
+    const tree = unified().use(remarkParse).parse(blog.content);
+
+    visit(tree, "heading", (node) => {
+        const text = node.children.map((child: any) => child.value).join("");
+        const id = text.toLowerCase().replace(/\s+/g, "-");
+        toc.push({
+            id,
+            text,
+            level: node.depth
+        });
+    });
+
     return (
         <main className="m-5 max-w-7xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-4">
-                <BlogPage blog={blog} user={user} />
-                <div>TABLE OF CONTENTS</div>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+                <div className="md:col-span-3 top-96">
+                    <BlogPage blog={blog} user={user} />
+                </div>
+                <div className="hidden md:block col-span-1 sticky top-48 h-screen">
+                    <TableOfContents toc={toc} />
+                </div>
             </div>
         </main>
     );
