@@ -12,7 +12,7 @@ export const BlogPage = ({ blog, user }: { blog: Blog; user: User | null }) => {
     return (
         <div key={blog.id} className="">
             <div>
-                <h2 className="text-balance text-2xl sm:text-3xl mb-5 font-bold">{blog.title}</h2>
+                <h2 className="text-2xl sm:text-3xl mb-5 font-bold">{blog.title}</h2>
                 {blog && user && (
                     <h4 className="text-xl prose dark:prose-invert">
                         Author: {user.first_name} {user.last_name}

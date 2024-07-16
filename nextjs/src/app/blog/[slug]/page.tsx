@@ -60,7 +60,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                 <div className="md:col-span-3 top-96">
                     <BlogPage blog={blog} user={user} />
                 </div>
-                <div className="hidden md:block col-span-1 sticky top-48 h-screen">
+                <div className="hidden md:block col-span-1 sticky mt-56 top-36 h-screen">
                     <TableOfContents toc={toc} />
                 </div>
             </div>
