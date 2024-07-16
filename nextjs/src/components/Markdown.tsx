@@ -25,7 +25,7 @@ export const MarkdownComponents: object = {
                         src={image.properties.src}
                         width={width}
                         height={height}
-                        className="postImg rounded-md"
+                        className="postImg rounded-md w-full"
                         alt={alt}
                         priority={isPriority}
                     />

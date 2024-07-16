@@ -87,11 +87,11 @@ export const Skills = () => {
                 <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} />
 
                 <div className="bg-violet-600 dark:bg-violet-700 text-white rounded-lg p-3 mt-5">
-                    <div className="grid grid-row-3 sm:grid-cols-3 p-1">
+                    <div className="grid grid-row-3 sm:grid-cols-3 gap-1">
                         <h3 className="col-span-1 text-2xl sm:text-4xl tracking-wide font-bold p-4 sm:p-10 m-auto">
                             Frontend
                         </h3>
-                        <ul className="col-span-2 flex flex-wrap m-auto p-1">
+                        <ul className="col-span-2 flex flex-wrap m-auto gap-1">
                             {frontendSkills.map((skill, i) => (
                                 <li key={i} className="text-lg ml-3 mr-3">
                                     {skill}
@@ -102,7 +102,7 @@ export const Skills = () => {
                 </div>
                 {/* Backend, collapses to card on mobile */}
                 <div className="bg-violet-600 dark:bg-violet-700 text-white rounded-lg p-3 mt-5">
-                    <div className="grid grid-row-3 sm:grid-cols-3 p-1">
+                    <div className="grid grid-row-3 sm:grid-cols-3 gap-1">
                         <h3 className="col-span-1 text-2xl sm:text-4xl tracking-wide font-bold p-4 sm:p-10 m-auto">
                             Backend
                         </h3>
@@ -117,7 +117,7 @@ export const Skills = () => {
                 </div>
                 {/* DevOps, collapses to card on mobile */}
                 <div className="bg-violet-600 dark:bg-violet-700 text-white rounded-lg p-3 mt-5">
-                    <div className="grid grid-row-3 sm:grid-cols-3 p-1">
+                    <div className="grid grid-row-3 sm:grid-cols-3 gap-1">
                         <h3 className="col-span-1 text-2xl sm:text-4xl tracking-wide font-bold p-4 sm:p-10 m-auto">
                             DevOps
                         </h3>
