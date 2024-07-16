@@ -28,7 +28,7 @@ export function ModeToggle() {
         <DropdownMenu>
             <DropdownMenuTrigger
                 suppressHydrationWarning
-                className="p-1 rounded-lg hover:text-gray-400"
+                className="pl-1 pt-1 rounded-lg hover:text-gray-400"
             >
                 {theme === "light" ? (
                     <Sun className="h-6 w-6 transition-all" />

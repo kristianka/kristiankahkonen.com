@@ -6,7 +6,7 @@ import React from "react";
 export default function Home() {
     return (
         <main className="mb-10">
-            <div className="grid grid-cols-1 sm:grid-cols-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <TitleAnimation />
                 <div className="mt-5 sm:mt-0 m-auto sm:text-lg">
                     I am an ICT engineering student at Tampere University of Applied Sciences
