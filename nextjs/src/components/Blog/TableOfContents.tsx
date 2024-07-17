@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 const TableOfContents = ({ toc }: { toc: Toc[] }) => {
     const [activeHeading, setActiveHeading] = useState<string | null>(null);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     // Not really happy with this solution, but it works for now
     // Highlight header on TOC when scrolling
@@ -39,19 +40,37 @@ const TableOfContents = ({ toc }: { toc: Toc[] }) => {
         }
     };
 
+    useEffect(() => {
+        // Set isLoaded to true after a short delay to trigger the transition
+        const timeoutId = setTimeout(() => {
+            setIsLoaded(true);
+        }, 100);
+
+        // Clean up the timeout if the component unmounts before it fires
+        return () => clearTimeout(timeoutId);
+    }, []);
+
     return (
         <div>
             <h3 className="text-xl font-semibold uppercase">On this page</h3>
             <hr className="my-2 h-2" />
-            <ul className="">
+            <ul>
                 {toc.length === 0 && (
                     <li className="prose dark:prose-invert">No headings found.</li>
                 )}
                 {toc.map((heading, index) => {
                     const isActive = heading.id === activeHeading;
+                    const delay = `${index * 50}ms`;
 
                     return (
-                        <li key={index}>
+                        <li
+                            key={index}
+                            style={{
+                                transition: `opacity 0.5s ${delay}, transform 0.5s ${delay}`,
+                                opacity: isLoaded ? 1 : 0,
+                                transform: isLoaded ? "translateY(0)" : "translateY(-10px)"
+                            }}
+                        >
                             <a
                                 href={`#${heading.id}`}
                                 className={`ml-${heading.level} ${
