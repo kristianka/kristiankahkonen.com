@@ -25,7 +25,7 @@ export const NavBar = () => {
                             data-testid="headerProjectsLink"
                             href="/"
                         >
-                            Projects
+                            Home
                         </Link>
                     </li>
                     <li className="m-auto">
@@ -37,6 +37,16 @@ export const NavBar = () => {
                             Blog
                         </Link>
                     </li>
+                    <li className="mt-auto mb-auto mr-auto sm:m-auto text-left">
+                        <Link
+                            className="hover:text-blue-700 dark:hover:text-blue-500"
+                            data-testid="headerProjectsLink"
+                            href="/projects"
+                        >
+                            Projects
+                        </Link>
+                    </li>
+
                     <li className="m-auto">
                         <Link
                             className="hover:text-blue-700 dark:hover:text-blue-500"
