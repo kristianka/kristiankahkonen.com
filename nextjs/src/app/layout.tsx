@@ -5,6 +5,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { NavBar } from "@/components/NavBar";
 import Loading from "./loading";
+import { Footer } from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,9 +30,10 @@ export default function RootLayout({
                     disableTransitionOnChange
                 >
                     <Suspense fallback={<Loading />}>
-                        <div className="pl-5 pr-5 max-w-6xl mx-auto">
+                        <div className="px-5 max-w-6xl mx-auto">
                             <NavBar />
                             {children}
+                            <Footer />
                         </div>
                     </Suspense>
                 </ThemeProvider>

@@ -28,7 +28,7 @@ export const BlogPage = ({ blog, user }: { blog: Blog; user: User | null }) => {
                 )}
                 {/* Don't make the text gray on tailwind typography prose. It's hard to read. */}
                 <Markdown
-                    className="max-w-full w-full mt-10 mb-96 prose dark:prose-invert text-black dark:text-white"
+                    className="max-w-full w-full mt-10 prose dark:prose-invert text-black dark:text-white"
                     remarkPlugins={[remarkGfm]}
                     rehypePlugins={[
                         rehypeRaw,
