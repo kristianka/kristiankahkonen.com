@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Transition } from "@headlessui/react"; // import Transition from headlessui
 
 interface DateToLocalProps {
     date: string;
@@ -8,25 +9,29 @@ interface DateToLocalProps {
 }
 
 export const DateToLocal = ({ date, type }: DateToLocalProps) => {
-    const [isClient, setIsClient] = useState(false);
+    const [formattedDate, setFormattedDate] = useState<string | null>(null);
 
     useEffect(() => {
-        setIsClient(true);
-    }, []);
+        const dateTimeOptions: Intl.DateTimeFormatOptions = {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: false
+        };
 
-    const dateTimeOptions: Intl.DateTimeFormatOptions = {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: false
-    };
+        setFormattedDate(new Date(date).toLocaleString(undefined, dateTimeOptions));
+    }, [date]);
 
     return (
-        <div>
-            {type === "published" ? "Published" : "Updated"}{" "}
-            {isClient && new Date(date).toLocaleString(undefined, dateTimeOptions)}
+        <div className="">
+            <span>{type === "published" ? "Published" : "Updated"}: </span>
+            <Transition show={!!formattedDate}>
+                <span className="transition duration-300 ease-in data-[closed]:opacity-0">
+                    {formattedDate}
+                </span>
+            </Transition>
         </div>
     );
 };
