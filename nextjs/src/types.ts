@@ -8,6 +8,7 @@ export interface Blog {
     date_created: string;
     user_updated: string;
     date_updated: string;
+    tags?: string[];
     title: string;
     description: string;
     content: string;
