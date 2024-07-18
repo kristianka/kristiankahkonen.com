@@ -10,7 +10,13 @@ export const fetchBlogs = async () => {
     try {
         await client.setToken(process.env.DIRECTUS_KEY as string);
         const res = (await client.request(readItems("blog"))) as Blog[];
-        return res;
+        // sort by newest first
+        const sortedBlogs = res
+            .filter((blog) => blog.published)
+            .sort(
+                (a, b) => new Date(b.date_created).getTime() - new Date(a.date_created).getTime()
+            );
+        return sortedBlogs;
     } catch (error) {
         console.error("Error while fetching blogs", error);
         return [];
@@ -22,6 +28,7 @@ export const fetchBlogById = async (id: string) => {
         if (!id) return null;
         await client.setToken(process.env.DIRECTUS_KEY as string);
         const res = (await client.request(readItem("blog", id))) as Blog;
+        if (!res.published) return null;
         return res;
     } catch (error) {
         console.error("Error while fetching blog", error);
@@ -47,6 +54,7 @@ export const getFeaturedBlogs = async () => {
         const res = (await client.request(readItems("blog"))) as Blog[];
         // Filter and sort the blogs. Return only the first 3 featured blogs
         const featuredBlogs = res
+            .filter((blog) => blog.published)
             .filter((blog) => blog.tags?.includes("featured"))
             .sort((a, b) => new Date(b.date_created).getTime() - new Date(a.date_created).getTime())
             .slice(0, 3);

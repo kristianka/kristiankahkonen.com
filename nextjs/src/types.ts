@@ -4,11 +4,12 @@ export interface BlogApiResponse {
 
 export interface Blog {
     id: string;
+    tags?: string[];
+    published: boolean;
     user_created: string;
     date_created: string;
     user_updated: string;
     date_updated: string;
-    tags?: string[];
     title: string;
     description: string;
     content: string;
