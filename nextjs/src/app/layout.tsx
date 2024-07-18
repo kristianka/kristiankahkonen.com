@@ -1,3 +1,8 @@
+// Revalidate every hour so blogs in footer are updated
+// This disables SSR for most pages which is not ideal, but there are no
+// better ways to do this at the moment with app router
+export const revalidate = 3600;
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import React, { Suspense } from "react";
