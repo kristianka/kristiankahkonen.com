@@ -9,7 +9,7 @@ const FeaturedBlogs = dynamic(() => import("@/components/Footer/FeaturedBlogs"),
 
 export function Footer() {
     return (
-        <footer className="mt-32">
+        <footer className="mt-48">
             <hr className="border-gray-200 dark:border-gray-600" />
             <div className="mx-auto max-w-screen-xl px-4 2xl:px-0">
                 <div className="border-b border-gray-100 py-6 dark:border-gray-700 md:py-8 lg:py-16">
@@ -107,7 +107,7 @@ export function Footer() {
                 </div>
 
                 <div className="py-6 md:py-8">
-                    <div className="gap-4 space-y-5 xl:flex xl:items-center xl:justify-between xl:space-y-0">
+                    <div className="gap-4 space-y-5">
                         <a
                             href="https://kristiankahkonen.com"
                             className="flex items-center hover:text-blue-500"
