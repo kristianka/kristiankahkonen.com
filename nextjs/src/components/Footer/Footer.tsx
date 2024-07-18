@@ -1,11 +1,10 @@
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import { BsGithub } from "react-icons/bs";
 import { CiMail } from "react-icons/ci";
 import { IoCodeSharp } from "react-icons/io5";
 import { IoCodeSlashSharp } from "react-icons/io5";
 
-const FeaturedBlogs = dynamic(() => import("@/components/Footer/FeaturedBlogs"), { ssr: true });
+import FeaturedBlogs from "@/components/Footer/FeaturedBlogs";
 
 export function Footer() {
     return (
