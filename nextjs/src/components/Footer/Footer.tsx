@@ -1,7 +1,11 @@
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { BsGithub } from "react-icons/bs";
 import { CiMail } from "react-icons/ci";
-import { FeaturedBlogs } from "./FeaturedBlogs";
+import { IoCodeSharp } from "react-icons/io5";
+import { IoCodeSlashSharp } from "react-icons/io5";
+
+const FeaturedBlogs = dynamic(() => import("@/components/Footer/FeaturedBlogs"), { ssr: true });
 
 export function Footer() {
     return (
@@ -104,25 +108,20 @@ export function Footer() {
 
                 <div className="py-6 md:py-8">
                     <div className="gap-4 space-y-5 xl:flex xl:items-center xl:justify-between xl:space-y-0">
-                        {/* Possibly logo here */}
-                        {/* <a href="#" title="" className="block">
-                            <img
-                                className="block h-8 w-auto dark:hidden"
-                                src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/logo-full.svg"
-                                alt=""
-                            />
-                            <img
-                                className="hidden h-8 w-auto dark:block"
-                                src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/logo-full-dark.svg"
-                                alt=""
-                            />
-                        </a> */}
+                        <a
+                            href="https://kristiankahkonen.com"
+                            className="flex items-center hover:text-blue-500"
+                        >
+                            <IoCodeSharp className="h-8 w-auto mr-2" />
+                            <p className="text-lg font-bold">Kristian Kähkönen</p>
+                            <IoCodeSlashSharp className="ml-2 h-8 w-auto" />
+                        </a>
                         <div>
                             <p className="mb-3">Thanks for visiting!</p>
                             <a
                                 href="https://github.com/kristianka/kristiankahkonen.com"
                                 target="_blank"
-                                className="flex items-center gap-2 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                                className=" flex items-center gap-2 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
                             >
                                 <BsGithub className="h-6 w-6" />
                                 <span className="text-sm">Source code</span>
