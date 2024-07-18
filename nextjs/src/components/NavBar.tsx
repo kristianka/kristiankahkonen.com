@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { LuRss } from "react-icons/lu";
+
 import { ModeToggle } from "./ModeToggle";
 
 export const NavBar = () => {
@@ -18,8 +20,8 @@ export const NavBar = () => {
             </div>
             {/* <p className="">Work in progress! 🚧</p> */}
             <nav className="overflow-x-auto">
-                <ul className="flex sm:space-x-5 sm:text-right sm:text-lg">
-                    <li className="mt-auto mb-auto mr-auto sm:m-auto text-left">
+                <ul className="flex space-x-5 sm:text-lg">
+                    <li className="text-left">
                         <Link
                             className="hover:text-blue-700 dark:hover:text-blue-500"
                             data-testid="headerProjectsLink"
@@ -28,7 +30,7 @@ export const NavBar = () => {
                             Home
                         </Link>
                     </li>
-                    <li className="m-auto">
+                    <li className="">
                         <Link
                             className="hover:text-blue-700 dark:hover:text-blue-500"
                             data-testid="headerBlogLink"
@@ -37,7 +39,7 @@ export const NavBar = () => {
                             Blog
                         </Link>
                     </li>
-                    <li className="mt-auto mb-auto mr-auto sm:m-auto text-left">
+                    <li className="">
                         <Link
                             className="hover:text-blue-700 dark:hover:text-blue-500"
                             data-testid="headerProjectsLink"
@@ -47,7 +49,7 @@ export const NavBar = () => {
                         </Link>
                     </li>
 
-                    <li className="m-auto">
+                    <li className="">
                         <Link
                             className="hover:text-blue-700 dark:hover:text-blue-500"
                             data-testid="headerAboutLink"
@@ -56,7 +58,7 @@ export const NavBar = () => {
                             Résumé
                         </Link>
                     </li>
-                    <li className="m-auto">
+                    <li className="">
                         <Link
                             className="hover:text-blue-700 dark:hover:text-blue-500"
                             data-testid="headerContactLink"
@@ -67,9 +69,20 @@ export const NavBar = () => {
                     </li>
                     <li
                         data-testid="headerModeToggle"
-                        className="hidden sm:block m-auto transition-all"
+                        className="items-baseline hidden sm:block transition-all"
                     >
                         <ModeToggle />
+                    </li>
+
+                    <li className="items-baseline">
+                        <Link
+                            className="hover:text-gray-400 transition-all"
+                            data-testid="headerRssLink"
+                            href="/rss.xml"
+                            target="_blank"
+                        >
+                            <LuRss className="h-6 w-6" />
+                        </Link>
                     </li>
                 </ul>
             </nav>
