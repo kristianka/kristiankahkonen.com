@@ -15,7 +15,7 @@ export default async function Home() {
     const blogs: Blog[] = await fetchBlogs();
 
     return (
-        <main className="mx-auto max-w-7xl">
+        <main className="mx-auto max-w-7xl min-h-screen">
             <div className="">
                 <div className="flex justify-between items-baseline">
                     <h1 className="text-3xl sm:text-4xl">Latest content</h1>

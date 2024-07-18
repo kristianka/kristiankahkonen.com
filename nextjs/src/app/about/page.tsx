@@ -1,6 +1,6 @@
 export default function Home() {
     return (
-        <main className="flex">
+        <main className="flex min-h-screen">
             <div className="m-auto mt-5 text-center">
                 <p>Under construction ⚠️</p>
                 <p>Portfolio website, work in progress. Please come back later!</p>
