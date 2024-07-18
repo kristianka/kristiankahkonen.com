@@ -34,9 +34,9 @@ const TableOfContents = ({ toc }: { toc: Toc[] }) => {
     const scrollToHeading = (id: string) => {
         const element = document.getElementById(id);
         if (element) {
-            element.scrollIntoView({ behavior: "smooth", block: "start" });
             // Update the URL without reloading the page
             window.history.pushState(null, "", `#${id}`);
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
         }
     };
 
