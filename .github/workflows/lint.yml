@@ -18,16 +18,13 @@ jobs:
             - uses: actions/checkout@v4.1.7
             - uses: actions/setup-node@v4.0.2
               with:
-                  node-version: "22"
-                  #   cache: "npm"
+                  node-version: "20"
 
             - name: Install dependencies
-              run: npm ci
-              working-directory: ./nextjs
+              run: cd nextjs && npm ci
 
             - name: Run NextJS lint
-              run: npm run lint
-              working-directory: ./nextjs
+              run: cd nextjs && npm run lint
 
     # test:
     #     name: Vitest tests
