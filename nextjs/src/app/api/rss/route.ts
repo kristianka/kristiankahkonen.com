@@ -1,6 +1,8 @@
 export const dynamic = "force-dynamic";
-import { fetchBlogs } from "@/services/BlogRequests";
 import { Feed } from "feed";
+import { NextResponse } from "next/server";
+
+import { fetchBlogs } from "@/services/BlogRequests";
 import { Blog } from "@/types";
 
 const generateRSSFeed = (blogs: Blog[]) => {
@@ -42,13 +44,14 @@ const generateRSSFeed = (blogs: Blog[]) => {
     return feed;
 };
 
-export async function GET(req: Request) {
+export async function GET() {
     const blogs = await fetchBlogs();
     const feed = generateRSSFeed(blogs);
+    const rss = feed.rss2();
 
-    return new Response(feed.rss2(), {
+    return new NextResponse(rss, {
         headers: {
-            "Content-Type": "application/rss+xml; charset=utf-8"
+            "Content-Type": "application/xml"
         }
     });
 }
