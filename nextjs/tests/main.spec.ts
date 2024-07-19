@@ -22,7 +22,7 @@ test.describe("kristiankahkonen.com", async () => {
         const header = await page.locator("header");
         await expect(header).toBeVisible();
 
-        const headerLink = await page.getByTestId("headerHomeLink");
+        const headerLink = await page.getByTestId("headerNameHomeLink");
         await expect(headerLink).toBeVisible();
         await expect(headerLink).toHaveText(/Kristian\s*Kähkönen/);
 
@@ -32,10 +32,10 @@ test.describe("kristiankahkonen.com", async () => {
     });
 
     test("Navigation links work", async ({ page }) => {
-        // Projects
-        const projectsLink = await page.getByTestId("headerProjectsLink");
-        await expect(projectsLink).toBeVisible();
-        await projectsLink.click();
+        // Home
+        const homeLink2 = await page.getByTestId("headerHomeLink");
+        await expect(homeLink2).toBeVisible();
+        await homeLink2.click();
         await expect(page.url()).toBe(`${url}/`);
         await page.goto(url);
 
@@ -44,6 +44,13 @@ test.describe("kristiankahkonen.com", async () => {
         await expect(blogLink).toBeVisible();
         await blogLink.click();
         await expect(page).toHaveURL(/.*blog/);
+        await page.goto(url);
+
+        // Projects
+        const projectsLink = await page.getByTestId("headerProjectsLink");
+        await expect(projectsLink).toBeVisible();
+        await projectsLink.click();
+        await expect(page).toHaveURL(/.*projects/);
         await page.goto(url);
 
         // Resume

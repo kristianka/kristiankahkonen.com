@@ -8,7 +8,7 @@ export const NavBar = () => {
         <header className="mt-5 w-full pt-3 pb-3 justify-between sm:flex items-center bg-white dark:bg-[#121212] dark:text-white sticky top-0 z-10 mb-10">
             <div className="flex justify-between items-baseline">
                 <Link
-                    data-testid="headerHomeLink"
+                    data-testid="headerNameHomeLink"
                     href="/"
                     className="mr-5 sm:mr-10 text-xl sm:text-2xl font-bold tracking-wider hover:text-blue-700 dark:hover:text-blue-500"
                 >
@@ -24,7 +24,7 @@ export const NavBar = () => {
                     <li className="text-left">
                         <Link
                             className="hover:text-blue-700 dark:hover:text-blue-500"
-                            data-testid="headerProjectsLink"
+                            data-testid="headerHomeLink"
                             href="/"
                         >
                             Home
