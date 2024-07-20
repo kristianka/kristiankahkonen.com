@@ -1,3 +1,5 @@
+# perfect for local development, no need to dockerized anything else
+# remember to update the nextjs .env file with the correct directus backend values
 services:
 
   database:
