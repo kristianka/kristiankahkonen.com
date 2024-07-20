@@ -7,6 +7,7 @@ import { BlogPage } from "@/components/Blog/BlogPage";
 import TableOfContents from "@/components/Blog/TableOfContents";
 import { fetchBlogById, getBlogAuthor } from "@/services/BlogRequests";
 import { Toc } from "@/types";
+import { generateSlug } from "@/components/GenerateSlug";
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
     const blog = await fetchBlogById(params.slug);
@@ -46,7 +47,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
     visit(tree, "heading", (node) => {
         const text = node.children.map((child: any) => child.value).join("");
-        const id = text.toLowerCase().replace(/\s+/g, "-");
+        const id = generateSlug(text);
         toc.push({
             id,
             text,

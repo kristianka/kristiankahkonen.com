@@ -2,19 +2,22 @@ import Markdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
 import { MarkdownComponents } from "../Markdown";
 import { DateToLocal } from "../DateToLocal";
 import { Blog, User } from "@/types";
+
+// smooth scroll to anchor links
+import "../../styles.css";
 
 export const BlogPage = ({ blog, user }: { blog: Blog; user: User | null }) => {
     return (
         <div key={blog.id} className="">
             <div>
                 <h2 className="text-2xl sm:text-3xl mb-5 font-bold">{blog.title}</h2>
+                <h3 className="mb-3 prose dark:prose-invert italic text-xl">{blog.description}</h3>
                 {blog && user && (
-                    <h4 className="text-xl prose dark:prose-invert">
+                    <h4 className="text-lg prose dark:prose-invert">
                         Author: {user.first_name} {user.last_name}
                     </h4>
                 )}
@@ -30,11 +33,7 @@ export const BlogPage = ({ blog, user }: { blog: Blog; user: User | null }) => {
                 <Markdown
                     className="max-w-full w-full mt-10 prose dark:prose-invert text-black dark:text-white"
                     remarkPlugins={[remarkGfm]}
-                    rehypePlugins={[
-                        rehypeRaw,
-                        rehypeSlug,
-                        [rehypeAutolinkHeadings, { behavior: "prepend" }]
-                    ]}
+                    rehypePlugins={[rehypeRaw, rehypeSlug]}
                     components={MarkdownComponents}
                 >
                     {blog.content}
