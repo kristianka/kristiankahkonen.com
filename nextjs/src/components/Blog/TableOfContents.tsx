@@ -61,7 +61,7 @@ const TableOfContents = ({ toc }: { toc: Toc[] }) => {
                 {toc.map((heading, index) => {
                     const isActive = heading.id === activeHeading;
                     const delay = `${index * 50}ms`;
-
+                    const ml = heading.level - 1;
                     return (
                         <li
                             key={index}
@@ -73,7 +73,7 @@ const TableOfContents = ({ toc }: { toc: Toc[] }) => {
                         >
                             <a
                                 href={`#${heading.id}`}
-                                className={`ml-${heading.level} ${
+                                className={`ml-${ml} ${
                                     isActive
                                         ? "prose dark:prose-invert text-blue-600 transition-all font-bold"
                                         : "prose dark:prose-invert font-semibold transition-all hover:text-black dark:hover:text-white"
