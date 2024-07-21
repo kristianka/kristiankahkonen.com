@@ -11,6 +11,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { NavBar } from "@/components/NavBar";
 import Loading from "./loading";
 import { Footer } from "@/components/Footer/Footer";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,6 +35,8 @@ export default function RootLayout({
                     enableSystem
                     disableTransitionOnChange
                 >
+                    {/* Basic anonymous site view analytics, no cookies or tracking */}
+                    <Script src={process.env.ANALYTICS_URL as string} strategy="afterInteractive" />
                     <Suspense fallback={<Loading />}>
                         <div className="px-5 max-w-6xl mx-auto">
                             <NavBar />
