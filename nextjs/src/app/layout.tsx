@@ -36,7 +36,11 @@ export default function RootLayout({
                     disableTransitionOnChange
                 >
                     {/* Basic anonymous site view analytics, no cookies or tracking */}
-                    <Script src={process.env.ANALYTICS_URL as string} strategy="afterInteractive" />
+                    <Script
+                        src={process.env.ANALYTICS_URL as string}
+                        data-website-id={process.env.ANALYTICS_ID as string}
+                        strategy="afterInteractive"
+                    />
                     <Suspense fallback={<Loading />}>
                         <div className="px-5 max-w-6xl mx-auto">
                             <NavBar />
