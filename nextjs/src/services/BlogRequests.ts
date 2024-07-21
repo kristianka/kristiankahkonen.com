@@ -6,9 +6,10 @@ const client = createDirectus(process.env.DIRECTUS_URL as string)
     .with(rest({ onRequest: (options) => ({ ...options, cache: "no-cache" }) }))
     .with(authentication());
 
+client.setToken(process.env.DIRECTUS_KEY as string);
+
 export const fetchBlogs = async () => {
     try {
-        await client.setToken(process.env.DIRECTUS_KEY as string);
         const res = (await client.request(readItems("blog"))) as Blog[];
         // sort by newest first
         const sortedBlogs = res
@@ -26,7 +27,6 @@ export const fetchBlogs = async () => {
 export const fetchBlogById = async (id: string) => {
     try {
         if (!id) return null;
-        await client.setToken(process.env.DIRECTUS_KEY as string);
         const res = (await client.request(readItem("blog", id))) as Blog;
         if (!res.published) return null;
         return res;
@@ -39,7 +39,6 @@ export const fetchBlogById = async (id: string) => {
 export const getBlogAuthor = async (id?: string) => {
     try {
         if (!id) return null;
-        await client.setToken(process.env.DIRECTUS_KEY as string);
         const res = (await client.request(readUser(id))) as User;
         return res;
     } catch (error) {
@@ -50,7 +49,6 @@ export const getBlogAuthor = async (id?: string) => {
 
 export const getFeaturedBlogs = async () => {
     try {
-        await client.setToken(process.env.DIRECTUS_KEY as string);
         const res = (await client.request(readItems("blog"))) as Blog[];
         // Filter and sort the blogs. Return only the first 3 featured blogs
         const featuredBlogs = res

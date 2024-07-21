@@ -107,14 +107,11 @@ export function Footer() {
 
                 <div className="py-6 md:py-8">
                     <div className="gap-4 space-y-5">
-                        <a
-                            href="https://kristiankahkonen.com"
-                            className="flex items-center hover:text-blue-500"
-                        >
+                        <Link href="/" className="flex items-center hover:text-blue-500">
                             <IoCodeSharp className="h-8 w-auto mr-2" />
                             <p className="text-lg font-bold">Kristian Kähkönen</p>
                             <IoCodeSlashSharp className="ml-2 h-8 w-auto" />
-                        </a>
+                        </Link>
                         <div>
                             <p className="mb-3">Thanks for visiting!</p>
                             <a
@@ -136,13 +133,9 @@ export function Footer() {
                         </div>
                         <p className="text-sm text-gray-500 dark:text-gray-400">
                             © 2024{" "}
-                            <a
-                                target="_blank"
-                                href="https://kristiankahkonen.com"
-                                className="hover:underline"
-                            >
+                            <Link target="_blank" href="/" className="hover:underline">
                                 Kristian Kähkönen
-                            </a>
+                            </Link>
                             . All rights reserved.
                         </p>
                     </div>
