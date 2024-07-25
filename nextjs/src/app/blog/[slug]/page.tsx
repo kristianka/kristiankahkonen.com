@@ -5,12 +5,23 @@ import { visit } from "unist-util-visit";
 
 import { BlogPage } from "@/components/Blog/BlogPage";
 import TableOfContents from "@/components/Blog/TableOfContents";
-import { fetchBlogById, getBlogAuthor } from "@/services/BlogRequests";
+import { fetchBlogById, fetchBlogs, getBlogAuthor } from "@/services/BlogRequests";
 import { Toc } from "@/types";
 import { generateSlug } from "@/components/GenerateSlug";
 
+export async function generateStaticParams() {
+    const blogs = await fetchBlogs();
+
+    return blogs.map((blog) => ({
+        params: {
+            slug: blog.id
+        }
+    }));
+}
+
 export async function generateMetadata({ params }: { params: { slug: string } }) {
-    const blog = await fetchBlogById(params.slug);
+    const { slug } = params;
+    const blog = await fetchBlogById(slug);
 
     if (!blog) {
         return {

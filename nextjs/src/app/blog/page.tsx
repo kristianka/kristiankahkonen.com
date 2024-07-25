@@ -1,5 +1,3 @@
-// force site to be dynamic, otherwise blogs will not be fetched on production
-export const dynamic = "force-dynamic";
 import type { Metadata } from "next";
 import { Blog } from "@/types";
 import { fetchBlogs } from "@/services/BlogRequests";

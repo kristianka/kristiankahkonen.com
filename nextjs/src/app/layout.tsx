@@ -1,7 +1,7 @@
-// Revalidate every hour so blogs in footer are updated
-// This disables SSR for most pages which is not ideal, but there are no
-// better ways to do this at the moment with app router
-export const revalidate = 3600;
+// every site is pre-rendered (SSG)
+// when blogs are created/updated etc Directus triggers a webhook to regenerate the site
+// with the new data (ISR)
+export const dynamic = "force-static";
 
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
