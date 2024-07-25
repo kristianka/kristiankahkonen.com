@@ -1,4 +1,4 @@
-export const dynamic = "force-dynamic";
+"use server";
 import { Feed } from "feed";
 import { NextResponse } from "next/server";
 
