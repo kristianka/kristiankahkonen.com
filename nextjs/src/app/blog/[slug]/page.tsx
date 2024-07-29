@@ -22,8 +22,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: { slug: string } }) {
     const { slug } = params;
     const blog = await fetchBlogById(slug);
+    const user = await getBlogAuthor(blog?.user_created);
 
-    if (!blog) {
+    if (!blog || !user) {
         return {
             title: "Blog not found - Kristian Kähkönen"
         };
@@ -31,6 +32,24 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
     const title = blog.title + " - Kristian Kähkönen";
     const description = blog.description || "No description available.";
+    const author = `${user.first_name} ${user.last_name}` || "Unknown author";
+
+    // to do automatically generate og image
+
+    // const objectWithData = {
+    //     title: title,
+    //     description: description,
+    //     author: author
+    // };
+
+    // const token = process.env.OG_IMAGE_TOKEN;
+
+    // const img = await axios.post("http://localhost:3000/api/og", objectWithData, {
+    //     headers: {
+    //         Authorization: `Bearer ${token}`,
+    //         "Content-Type": "application/json"
+    //     }
+    // });
 
     return {
         title: title,
@@ -39,7 +58,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
             title: title,
             description: description,
             type: "article",
-            url: `https://kristiankahkonen.com/blog/${params.slug}`
+            url: `https://kristiankahkonen.com/blog/${params.slug}`,
+            images: "../opengraph-image.jpg"
         }
     };
 }

@@ -3,7 +3,6 @@
 // with the new data (ISR)
 export const dynamic = "force-static";
 
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import React, { Suspense } from "react";
 import "./globals.css";
@@ -15,11 +14,25 @@ import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-    title: "Kristian Kähkönen",
-    description: "Kristian Kähkönen's blog & portfolio. A software developer from Finland.",
-    keywords: ["Kristian Kähkönen", "blog", "portfolio", "finland", "finnish", "software developer"]
-};
+export async function generateMetadata() {
+    return {
+        metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL as string),
+        title: "Kristian Kähkönen",
+        description: "Kristian Kähkönen's blog & portfolio. Blogs about software development.",
+        keywords: [
+            "Kristian Kähkönen",
+            "blog",
+            "portfolio",
+            "finland",
+            "finnish",
+            "software developer"
+        ],
+        openGraph: {
+            url: "https://kristiankahkonen.com",
+            images: "/opengraph-image.jpg"
+        }
+    };
+}
 
 export default function RootLayout({
     children
