@@ -37,7 +37,11 @@ export const ShareButton = ({ title, text, url }: ShareButtonProps) => {
             className="mx-3 hover:text-blue-600 dark:hover:text-blue-500 rounded-md flex ml-auto "
         >
             <VscShare className="w-5 h-5" />
-            <span className="ml-3">{isCopied ? "Copied to clipboard!" : "Share this blog"}</span>
+            <span className="hidden sm:block ml-3">
+                {isCopied ? "Copied to clipboard!" : "Share this blog"}
+            </span>
+            {/* small screens */}
+            <span className="block sm:hidden ml-3">{isCopied ? "Copied!" : "Share"}</span>
         </button>
     );
 };
