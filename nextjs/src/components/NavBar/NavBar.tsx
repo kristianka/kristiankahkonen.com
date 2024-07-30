@@ -1,12 +1,18 @@
+"use client";
 import Link from "next/link";
 import { LuRss } from "react-icons/lu";
+import { Squash as Hamburger } from "hamburger-react";
+import { useState } from "react";
 
-import { ModeToggle } from "./ModeToggle";
+import { ModeToggle } from "../ModeToggle";
+import { MobileMenu } from "./MobileMenu";
 
 export const NavBar = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
     return (
         <header className="mt-5 w-full pt-3 pb-3 justify-between sm:flex items-center bg-white dark:bg-[#121212] dark:text-white sticky top-0 z-10 mb-10">
-            <div className="flex justify-between items-baseline">
+            <div className="flex justify-between">
                 <Link
                     data-testid="headerNameHomeLink"
                     href="/"
@@ -14,12 +20,15 @@ export const NavBar = () => {
                 >
                     Kristian Kähkönen
                 </Link>
-                <div className="sm:hidden">
+                <div className="flex space-x-5 sm:hidden items-center">
                     <ModeToggle />
+                    <Hamburger toggled={isOpen} size={20} toggle={setIsOpen} />
                 </div>
             </div>
-            {/* <p className="">Work in progress! 🚧</p> */}
-            <nav className="overflow-x-auto">
+            {/* mobile nav */}
+            <div className="block sm:hidden">{isOpen && <MobileMenu />}</div>
+            {/* desktop nav */}
+            <nav className="hidden sm:block">
                 <ul className="flex space-x-5 sm:text-lg">
                     <li className="text-left">
                         <Link

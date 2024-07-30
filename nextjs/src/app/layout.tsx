@@ -7,7 +7,7 @@ import { Inter } from "next/font/google";
 import React, { Suspense } from "react";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import { NavBar } from "@/components/NavBar";
+import { NavBar } from "@/components/NavBar/NavBar";
 import Loading from "./loading";
 import { Footer } from "@/components/Footer/Footer";
 import Script from "next/script";
