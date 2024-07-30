@@ -1,3 +1,4 @@
+"use client";
 import { useClickOutside } from "@/hooks/useClickOutside";
 import { Rss, HomeIcon, Book, Mail, Code2, Code } from "lucide-react";
 import Link from "next/link";

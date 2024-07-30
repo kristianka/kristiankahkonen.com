@@ -12,7 +12,7 @@ export const NavBar = () => {
 
     return (
         <header className="mt-5 w-full pt-3 pb-3 justify-between sm:flex items-center bg-white dark:bg-[#121212] dark:text-white sticky top-0 z-10 mb-10">
-            <div className="flex justify-between">
+            <div className="flex justify-between items-center">
                 <Link
                     data-testid="headerNameHomeLink"
                     href="/"
