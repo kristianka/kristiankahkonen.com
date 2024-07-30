@@ -62,3 +62,18 @@ export const getFeaturedBlogs = async () => {
         return [];
     }
 };
+
+export const getLatestBlog = async () => {
+    try {
+        const res = (await client.request(readItems("blog"))) as Blog[];
+        // Filter and sort the blogs. Return only the first blog
+        const latestBlog = res
+            .filter((blog) => blog.published)
+            .sort((a, b) => new Date(b.date_created).getTime() - new Date(a.date_created).getTime())
+            .slice(0, 1);
+        return latestBlog;
+    } catch (error) {
+        console.error("Error while fetching latest blog", error);
+        return [];
+    }
+};

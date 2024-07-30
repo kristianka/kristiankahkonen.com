@@ -16,7 +16,7 @@ export function Footer() {
                         <div className="grid min-w-0 flex-1 grid-cols-1 gap-6 md:gap-8 sm:grid-cols-2">
                             <div>
                                 <h6 className="mb-4 text-sm font-semibold uppercase text-gray-900 dark:text-white">
-                                    About
+                                    Navigation
                                 </h6>
                                 <ul className="space-y-3">
                                     <li>
@@ -46,10 +46,10 @@ export function Footer() {
                                     </li>
                                     <li>
                                         <Link
-                                            href="/resume"
+                                            href="/about"
                                             className="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
                                         >
-                                            Resume
+                                            About
                                         </Link>
                                     </li>
                                     <li>
