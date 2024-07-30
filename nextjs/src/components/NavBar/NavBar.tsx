@@ -11,7 +11,7 @@ export const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <header className="mt-5 w-full pt-3 pb-3 justify-between sm:flex items-center bg-white dark:bg-[#121212] dark:text-white sticky top-0 z-10 mb-10">
+        <header className="w-full pt-3 pb-3 justify-between sm:flex items-center bg-slate-50 dark:bg-zinc-900 dark:text-white sticky top-0 z-10 mb-10">
             <div className="flex justify-between items-center">
                 <Link
                     data-testid="headerNameHomeLink"
@@ -64,7 +64,7 @@ export const NavBar = () => {
                             data-testid="headerAboutLink"
                             href="/about"
                         >
-                            Résumé
+                            About
                         </Link>
                     </li>
                     <li className="">

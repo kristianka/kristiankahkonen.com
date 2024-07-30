@@ -55,10 +55,12 @@ export default function RootLayout({
                         strategy="afterInteractive"
                     />
                     <Suspense fallback={<Loading />}>
-                        <div className="px-5 max-w-6xl mx-auto">
-                            <NavBar />
-                            {children}
-                            <Footer />
+                        <div className="min-h-screen bg-slate-50 dark:bg-zinc-900">
+                            <div className="px-5 max-w-6xl mx-auto">
+                                <NavBar />
+                                {children}
+                                <Footer />
+                            </div>
                         </div>
                     </Suspense>
                 </ThemeProvider>
