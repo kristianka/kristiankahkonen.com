@@ -1,27 +1,48 @@
-import { Skills } from "@/components/Skills";
 import { TitleAnimation } from "@/components/TitleAnimation";
-import { Contact } from "@/components/Contact";
 import React from "react";
+import Link from "next/link";
+import { getFeaturedBlogs } from "@/services/BlogRequests";
+import { FrontpageListCard } from "@/components/Blog/FrontpageListCard";
+import { Blog } from "@/types";
 
-export default function Home() {
+export default async function Home() {
+    const blogs = await getFeaturedBlogs();
+    const featuredBlog = blogs[0] as Blog;
     return (
-        <main className="mb-10">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <TitleAnimation />
-                <div className="mt-5 sm:mt-0 m-auto sm:text-lg">
-                    I am an ICT engineering student at Tampere University of Applied Sciences
-                    (TAMK), specializing in Software Engineering and graduating May 2025. I have a
-                    strong passion for Full Stack development, focusing on creating exceptional user
-                    experiences (UX) and user interfaces (UI) with robust and safe backends.
-                    <br /> <br />
-                    My attention to detail and collaborative nature enable me to build high quality
-                    applications and work effectively within a team. I am always eager to learn new
-                    technologies and improve my skills. I am currently looking for a job as a
-                    software developer.
-                </div>
+        <main className="">
+            <TitleAnimation />
+            <div className="mt-10 space-x-3">
+                <Link
+                    href="/blog"
+                    className="hover:bg-blue-500 border border-black px-10 py-2 uppercase rounded-full bg-white"
+                >
+                    Blog
+                </Link>
+                <Link
+                    href="/about"
+                    className="hover:text-blue-500 border border-white px-10 py-2 uppercase rounded-full bg-black text-white"
+                >
+                    About
+                </Link>
+                <Link
+                    href="/projects"
+                    className="hover:bg-blue-500 border border-black px-10 py-2 uppercase rounded-full bg-white"
+                >
+                    Projects
+                </Link>
+                <Link
+                    href="/contact"
+                    className="hover:text-blue-500 border border-white px-10 py-2 uppercase rounded-full bg-black text-white"
+                >
+                    Contact
+                </Link>
             </div>
-            <Skills />
-            <Contact />
+            <h2 className="mt-20 text-xl sm:text-2xl tracking-wide font-bold m-auto mb-5">
+                Featured blog post
+            </h2>
+            <div className="mt-5">
+                <FrontpageListCard blog={featuredBlog} />
+            </div>
         </main>
     );
 }
