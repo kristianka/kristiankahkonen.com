@@ -26,7 +26,7 @@ export const NavBar = () => {
                 </div>
             </div>
             {/* mobile nav */}
-            <div className="block sm:hidden">{isOpen && <MobileMenu />}</div>
+            <div className="block sm:hidden">{isOpen && <MobileMenu setIsOpen={setIsOpen} />}</div>
             {/* desktop nav */}
             <nav className="hidden sm:block">
                 <ul className="flex space-x-5 sm:text-lg">
