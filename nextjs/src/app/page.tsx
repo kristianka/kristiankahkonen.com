@@ -37,11 +37,17 @@ export default async function Home() {
                     Contact
                 </Link>
             </div>
-            <h2 className="mt-20 text-xl sm:text-2xl tracking-wide font-bold m-auto mb-5">
-                Featured blog post
-            </h2>
-            <div className="mt-5">
-                <FrontpageListCard blog={featuredBlog} />
+            <div>
+                <h2 className="mt-20 text-xl sm:text-2xl tracking-wide font-bold m-auto mb-5">
+                    Featured blog post
+                </h2>
+                <div className="mt-5">
+                    {featuredBlog ? (
+                        <FrontpageListCard blog={featuredBlog} />
+                    ) : (
+                        <p>No blogs featured</p>
+                    )}
+                </div>
             </div>
         </main>
     );
