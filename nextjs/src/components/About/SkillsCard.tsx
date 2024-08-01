@@ -11,7 +11,7 @@ export default function SkillsCard({ title, skills }: SkillCardProps) {
                     {title}
                 </h3>
                 <div className="col-span-2 flex flex-wrap p-1">
-                    <ul className="grid grid-cols-2 sm:grid-cols-2 sm:mx-auto md:gap-x-10 md:grid-cols-4">
+                    <ul className="grid grid-cols-2 min-w-full sm:grid-cols-2 sm:mx-auto  gap-y-1 md:gap-y-2 md:gap-x-10 md:grid-cols-4">
                         {skills.map((skill, i) => (
                             <li key={i} className="text-lg">
                                 {skill}

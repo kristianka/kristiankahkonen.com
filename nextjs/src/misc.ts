@@ -49,31 +49,30 @@ export const devOpsSkills = [
     "PowerShell",
     "Python",
     "Security",
-    "Server Management",
-    "Domain Management",
-    "SSL Certificates",
     "AWS",
     "Google Cloud",
     "Firebase",
-    "Oracle Cloud"
+    "Oracle Cloud",
+    "Server management",
+    "Domain & SSL management"
 ];
 
 export const otherSkills = [
     "Agile",
     "Scrum",
+    "Figma",
+    "Leadership",
+    "Communication",
+    "Building PCs",
     "C++",
     "C#",
     "Rust",
     "Java",
-    "Jetpack Compose",
-    "React Native",
     "Flutter",
     "Dart",
-    "Figma",
+    "Troubleshooting",
     "Team Management",
-    "Leadership",
-    "Communication",
-    "Building PCs",
-    "Networking",
-    "Troubleshooting"
+
+    "Jetpack Compose",
+    "React Native"
 ];
