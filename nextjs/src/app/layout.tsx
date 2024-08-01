@@ -41,7 +41,8 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body className={inter.className}>
+            {/* background colour is here because overscroll (scrolling past the end of the page) */}
+            <body className={`bg-slate-50 dark:bg-zinc-900 ${inter.className}`}>
                 <ThemeProvider
                     attribute="class"
                     defaultTheme="system"
@@ -55,7 +56,7 @@ export default function RootLayout({
                         strategy="afterInteractive"
                     />
                     <Suspense fallback={<Loading />}>
-                        <div className="min-h-screen bg-slate-50 dark:bg-zinc-900">
+                        <div className="min-h-screen">
                             <div className="px-5 max-w-6xl mx-auto">
                                 <NavBar />
                                 {children}
