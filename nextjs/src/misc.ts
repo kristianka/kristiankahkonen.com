@@ -5,10 +5,10 @@ export const frontendSkills = [
     "TailwindCSS",
     "React Query",
     "Redux (RTK)",
-    "Firebase Auth",
-    "Next.js",
     "SEO",
+    "Next.js",
     "Framer Motion",
+    "Firebase Auth",
     "UI/UX Design",
     "Playwright",
     "Cypress",
@@ -40,7 +40,7 @@ export const backendSkills = [
 export const devOpsSkills = [
     "Docker",
     "Linux",
-    "CI/CD Pipelines",
+    "CI/CD",
     "GitHub",
     "GitLab",
     // "Kubernetes",
@@ -50,8 +50,8 @@ export const devOpsSkills = [
     "Python",
     "Security",
     "AWS",
-    "Google Cloud",
     "Firebase",
+    "Google Cloud",
     "Oracle Cloud",
     "Server management",
     "Domain & SSL management"
@@ -72,7 +72,6 @@ export const otherSkills = [
     "Dart",
     "Troubleshooting",
     "Team Management",
-
     "Jetpack Compose",
     "React Native"
 ];
