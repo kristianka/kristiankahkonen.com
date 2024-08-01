@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 export const TitleAnimation = () => {
-    const text = "Kristian Kähkönen".split("");
+    const text = "Hi, I'm Kristian Kähkönen.".split("");
     const titles = [
         "Software Engineer",
         "Frontend Developer",
@@ -27,7 +27,7 @@ export const TitleAnimation = () => {
     return (
         <main className="flex">
             <div className="m3-5">
-                <h1 className="text-3xl sm:text-4xl tracking-wider dark:text-white">
+                <h1 className="text-3xl md:text-4xl tracking-wider dark:text-white">
                     {text.map((el, i) => (
                         <motion.span
                             data-testid="nameAnimation"
@@ -43,16 +43,22 @@ export const TitleAnimation = () => {
                         </motion.span>
                     ))}
                 </h1>
-                <motion.h2
-                    data-testid="jobTitleAnimation"
-                    key={currentTitle}
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="text-3xl sm:text-4xl font-extrabold tracking-wide"
-                >
-                    {currentTitle}
-                </motion.h2>
+                <div className="sm:flex">
+                    <span className="text-3xl md:text-4xl font-extrabold tracking-wide">
+                        You can hire me as a
+                    </span>
+                    <motion.h2
+                        data-testid="jobTitleAnimation"
+                        key={currentTitle}
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                        className="text-3xl md:text-4xl font-extrabold tracking-wide"
+                    >
+                        <span className="hidden sm:inline">&nbsp;</span>
+                        {currentTitle}
+                    </motion.h2>
+                </div>
             </div>
         </main>
     );

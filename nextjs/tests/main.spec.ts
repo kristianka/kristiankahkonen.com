@@ -53,7 +53,7 @@ test.describe("kristiankahkonen.com", async () => {
         await expect(page).toHaveURL(/.*projects/);
         await page.goto(url);
 
-        // Resume
+        // About
         const aboutLink = await page.getByTestId("headerAboutLink");
         await expect(aboutLink).toBeVisible();
         await aboutLink.click();
@@ -69,7 +69,8 @@ test.describe("kristiankahkonen.com", async () => {
 
     test("Job title animations work", async ({ page }) => {
         const initialTitle = await page.getByTestId("jobTitleAnimation").allInnerTexts();
-        await expect(initialTitle).toContain("Software Engineer");
+        // Remove leading whitespace
+        await expect(initialTitle[0].trim()).toBe("Software Engineer");
 
         // Wait for the title to change
         await page.waitForTimeout(3500);

@@ -1,6 +1,6 @@
 "use client";
 import { useClickOutside } from "@/hooks/useClickOutside";
-import { Rss, HomeIcon, Book, Mail, Code2, Code } from "lucide-react";
+import { Rss, HomeIcon, Book, Mail, Code, User } from "lucide-react";
 import Link from "next/link";
 
 interface MobileMenuProps {
@@ -44,8 +44,8 @@ export function MobileMenu({ setIsOpen }: MobileMenuProps) {
                     className="mr-3 flex items-center"
                     href="/about"
                 >
-                    <Code2 className="mr-2 h-4 w-4" />
-                    <span>Resume</span>
+                    <User className="mr-2 h-4 w-4" />
+                    <span>About</span>
                 </Link>
                 <Link
                     onClick={() => setIsOpen(false)}
