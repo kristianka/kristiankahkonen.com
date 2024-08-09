@@ -4,7 +4,6 @@ import { getProjects } from "@/services/BlogRequests";
 
 export default async function Home() {
     const projects = await getProjects();
-    console.log(projects);
 
     return (
         <div className="">

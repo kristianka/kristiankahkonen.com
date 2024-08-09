@@ -1,5 +1,5 @@
 import { createDirectus, rest, readItem, authentication, readUser, readItems } from "@directus/sdk";
-import { Blog, User } from "@/types";
+import { Blog, Project, User } from "@/types";
 
 // create a Directus client to connect to the Directus API
 const client = createDirectus(process.env.DIRECTUS_URL as string)
@@ -72,33 +72,6 @@ export const getLatestBlog = async () => {
         return [];
     }
 };
-
-interface Project {
-    status: "published" | "draft";
-    id: string;
-    order: number;
-    date_created: string;
-    published: boolean;
-    image: Image;
-    content: Content;
-}
-
-interface Image {
-    id: string;
-    title: string;
-    subtitle: string;
-    imgUrlPc: string;
-    imgUrlMobile: string;
-}
-
-interface Content {
-    id: string;
-    title: string;
-    description: string;
-    techStack: string[];
-    sourceCodeUrl: string;
-    liveUrl: string;
-}
 
 export const getProjects = async () => {
     try {
