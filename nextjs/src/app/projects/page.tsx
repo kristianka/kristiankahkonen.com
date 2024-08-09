@@ -25,6 +25,7 @@ export default async function Home() {
                             techStack={project.content.techStack}
                             sourceCodeUrl={project.content.sourceCodeUrl}
                             liveUrl={project.content.liveUrl}
+                            liveUrlShort={project.content.liveUrlShort}
                         />
                     </TextParallaxContent>
                 ))}
