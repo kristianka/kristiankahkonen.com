@@ -43,3 +43,31 @@ export interface HeadingNode {
     children: TextChild[];
     depth: 1 | 2 | 3 | 4 | 5 | 6;
 }
+
+export interface Project {
+    status: "published" | "draft";
+    id: string;
+    order: number;
+    date_created: string;
+    published: boolean;
+    image: Image;
+    content: Content;
+}
+
+interface Image {
+    id: string;
+    title: string;
+    subtitle: string;
+    imgUrlPc: string;
+    imgUrlMobile: string;
+}
+
+interface Content {
+    id: string;
+    title: string;
+    description: string;
+    techStack: string[];
+    sourceCodeUrl: string;
+    liveUrl?: string;
+    liveUrlShort?: string;
+}
