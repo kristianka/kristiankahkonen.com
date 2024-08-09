@@ -3,7 +3,7 @@ import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 
-const IMG_PADDING = 2;
+const IMG_PADDING = 18;
 
 interface StickyImageProps {
     imgUrlPc: string;

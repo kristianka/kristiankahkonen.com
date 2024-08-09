@@ -1,6 +1,7 @@
 import { FiArrowUpRight } from "react-icons/fi";
 import { FaGithub } from "react-icons/fa";
 import { CiGlobe } from "react-icons/ci";
+import { iconMapping } from "@/misc";
 
 import Link from "next/link";
 
@@ -22,6 +23,7 @@ export default function Content({
     liveUrlShort
 }: ContentProps) {
     const hasLiveUrl = liveUrl !== null && liveUrlShort !== null;
+
     return (
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 px-4 pb-24 pt-12 md:grid-cols-12">
             <h2 className="col-span-1 text-3xl font-bold md:col-span-4">{title}</h2>
@@ -29,9 +31,14 @@ export default function Content({
                 <p className="mb-4 text-xl text-neutral-600 dark:text-neutral-300 md:text-2xl">
                     {description}
                 </p>
-                <p className="mb-8 text-xl text-neutral-600 dark:text-neutral-300 md:text-2xl">
-                    {techStack}
-                </p>
+                <div className="flex flex-wrap mb-8 text-neutral-600 dark:text-neutral-300 sm:text-xl">
+                    {techStack.map((tech) => (
+                        <div key={tech} className="flex items-center mr-8 mb-2">
+                            {iconMapping[tech] || tech}
+                            <span className="ml-2">{tech}</span>
+                        </div>
+                    ))}
+                </div>
                 <div className="flex sm:flex-row flex-col">
                     {sourceCodeUrl && (
                         <Link

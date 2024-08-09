@@ -1,3 +1,47 @@
+import { FaReact, FaNodeJs, FaCss3Alt } from "react-icons/fa";
+import {
+    SiCloudflare,
+    SiDirectus,
+    SiDocker,
+    SiExpress,
+    SiFastify,
+    SiFirebase,
+    SiFramer,
+    SiJavascript,
+    SiMicrosoftsqlserver,
+    SiMongodb,
+    SiNextdotjs,
+    SiNginx,
+    SiOracle,
+    SiPostgresql,
+    SiPrisma,
+    SiTailwindcss,
+    SiTypescript
+} from "react-icons/si";
+
+export const iconMapping: Record<string, JSX.Element> = {
+    React: <FaReact />,
+    "Node.js": <FaNodeJs />,
+    CSS3: <FaCss3Alt />,
+    "Next.js": <SiNextdotjs />,
+    TailwindCSS: <SiTailwindcss />,
+    JavaScript: <SiJavascript />,
+    TypeScript: <SiTypescript />,
+    "Firebase Auth": <SiFirebase />,
+    Prisma: <SiPrisma />,
+    Docker: <SiDocker />,
+    Fastify: <SiFastify />,
+    "Microsoft SQL Server": <SiMicrosoftsqlserver />,
+    "Postgres SQL": <SiPostgresql />,
+    "Express.js": <SiExpress />,
+    MongoDB: <SiMongodb />,
+    "Framer Motion": <SiFramer />,
+    Directus: <SiDirectus />,
+    "Oracle Cloud": <SiOracle />,
+    Cloudflare: <SiCloudflare />,
+    NGINX: <SiNginx />
+};
+
 export const frontendSkills = [
     "React",
     "TypeScript",
