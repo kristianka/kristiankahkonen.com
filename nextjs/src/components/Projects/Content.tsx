@@ -31,11 +31,13 @@ export default function Content({
                 <p className="mb-4 text-xl text-neutral-600 dark:text-neutral-300 md:text-2xl">
                     {description}
                 </p>
-                <div className="flex flex-wrap mb-8 text-neutral-600 dark:text-neutral-300 sm:text-xl">
+                <div className="grid grid-cols-2 gap-1 sm:gap-3 sm:grid-cols-3 mb-8 text-neutral-600 dark:text-neutral-300 sm:text-xl">
                     {techStack.map((tech) => (
-                        <div key={tech} className="flex items-center mr-8 mb-2">
-                            {iconMapping[tech] || tech}
-                            <span className="ml-2">{tech}</span>
+                        <div key={tech} className="flex">
+                            <div className="flex items-center scale-100 transition-all duration-300 hover:scale-110 hover:text-black dark:hover:text-white">
+                                {iconMapping[tech] || tech}
+                                <span className="ml-2">{tech}</span>
+                            </div>
                         </div>
                     ))}
                 </div>
