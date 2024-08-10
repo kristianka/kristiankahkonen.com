@@ -1,7 +1,7 @@
 import { Suspense } from "react";
-import Loading from "./Loading";
+import Loading from "../loading";
 
-export default function ProjectsLayout({
+export default function AboutLayout({
     children
 }: Readonly<{
     children: React.ReactNode;
@@ -9,7 +9,7 @@ export default function ProjectsLayout({
     return (
         <div className="min-h-screen">
             <Suspense fallback={<Loading />}>
-                <div className="max-w-full min-w-full">{children}</div>
+                <div className="max-w-6xl mx-auto">{children}</div>
             </Suspense>
         </div>
     );
