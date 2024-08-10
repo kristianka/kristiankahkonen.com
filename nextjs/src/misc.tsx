@@ -1,6 +1,7 @@
 import { FaReact, FaNodeJs, FaCss3Alt } from "react-icons/fa";
 import {
     SiCloudflare,
+    SiCypress,
     SiDirectus,
     SiDocker,
     SiExpress,
@@ -8,13 +9,16 @@ import {
     SiFirebase,
     SiFramer,
     SiJavascript,
+    SiMapbox,
     SiMicrosoftsqlserver,
     SiMongodb,
     SiNextdotjs,
     SiNginx,
     SiOracle,
+    SiPlaywright,
     SiPostgresql,
     SiPrisma,
+    SiReactquery,
     SiTailwindcss,
     SiTypescript
 } from "react-icons/si";
@@ -31,7 +35,7 @@ export const iconMapping: Record<string, JSX.Element> = {
     Prisma: <SiPrisma />,
     Docker: <SiDocker />,
     Fastify: <SiFastify />,
-    "Microsoft SQL Server": <SiMicrosoftsqlserver />,
+    "SQL Server": <SiMicrosoftsqlserver />,
     "Postgres SQL": <SiPostgresql />,
     "Express.js": <SiExpress />,
     MongoDB: <SiMongodb />,
@@ -39,7 +43,11 @@ export const iconMapping: Record<string, JSX.Element> = {
     Directus: <SiDirectus />,
     "Oracle Cloud": <SiOracle />,
     Cloudflare: <SiCloudflare />,
-    NGINX: <SiNginx />
+    NGINX: <SiNginx />,
+    "React Query": <SiReactquery />,
+    Mapbox: <SiMapbox />,
+    Playwright: <SiPlaywright />,
+    Cypress: <SiCypress />
 };
 
 export const frontendSkills = [
