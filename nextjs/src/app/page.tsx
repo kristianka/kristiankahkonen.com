@@ -5,7 +5,7 @@ import FrontpageBlogs from "@/components/Frontpage/FrontpageBlogs";
 
 export default async function Home() {
     return (
-        <main>
+        <main className="max-w-6xl mx-auto">
             <TitleAnimation />
             <FrontpageButtons />
             <FrontpageBlogs />
