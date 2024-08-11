@@ -46,7 +46,7 @@ export default function Content({
                         <Link
                             href={sourceCodeUrl}
                             target="_blank"
-                            className="flex items-center rounded bg-neutral-900 dark:bg-neutral-950 px-8 py-4 text-xl text-white transition-colors hover:bg-neutral-700 dark:hover:bg-neutral-800 "
+                            className="flex items-center rounded bg-neutral-900 dark:bg-neutral-950 px-8 py-4 text-lg sm:text-xl text-white transition-colors hover:bg-neutral-700 dark:hover:bg-neutral-800 "
                         >
                             <FaGithub className="mr-3 w-6 h-6" />
                             Source code
@@ -57,7 +57,7 @@ export default function Content({
                         <Link
                             href={liveUrl as string}
                             target="_blank"
-                            className="sm:ml-5 mt-5 sm:mt-0 flex items-center rounded bg-neutral-900 dark:bg-neutral-950 px-8 py-4 text-xl text-white transition-colors hover:bg-neutral-700 dark:hover:bg-neutral-800"
+                            className="sm:ml-5 mt-5 sm:mt-0 flex items-center rounded bg-neutral-900 dark:bg-neutral-950 px-8 py-4 text-lg sm:text-xl text-white transition-colors hover:bg-neutral-700 dark:hover:bg-neutral-800"
                         >
                             <CiGlobe className="mr-3 w-6 h-6" />
                             Live at {liveUrlShort}
