@@ -1,5 +1,5 @@
 import { createDirectus, rest, readItem, authentication, readUser, readItems } from "@directus/sdk";
-import { Blog, User } from "@/types";
+import { Blog, Project, User } from "@/types";
 
 // create a Directus client to connect to the Directus API
 const client = createDirectus(process.env.DIRECTUS_URL as string)
@@ -19,7 +19,6 @@ export const fetchBlogs = async () => {
             );
         return sortedBlogs;
     } catch (error) {
-        console.error("Error while fetching blogs", error);
         return [];
     }
 };
@@ -31,7 +30,6 @@ export const fetchBlogById = async (id: string) => {
         if (!res.published) return null;
         return res;
     } catch (error) {
-        console.error("Error while fetching blog", error);
         return null;
     }
 };
@@ -42,7 +40,6 @@ export const getBlogAuthor = async (id?: string) => {
         const res = (await client.request(readUser(id))) as User;
         return res;
     } catch (error) {
-        console.error("Error while fetching blog author", error);
         return null;
     }
 };
@@ -58,7 +55,6 @@ export const getFeaturedBlogs = async () => {
             .slice(0, 3);
         return featuredBlogs;
     } catch (error) {
-        console.error("Error while fetching featured blogs", error);
         return [];
     }
 };
@@ -73,7 +69,20 @@ export const getLatestBlog = async () => {
             .slice(0, 1);
         return latestBlog;
     } catch (error) {
-        console.error("Error while fetching latest blog", error);
+        return [];
+    }
+};
+
+export const getProjects = async () => {
+    try {
+        const res = (await client.request(
+            readItems("project", {
+                fields: ["*", { image: ["*"], content: ["*"] }]
+            })
+        )) as Project[];
+        const sortedProjects = res.filter((project) => project.status === "published");
+        return sortedProjects;
+    } catch (error) {
         return [];
     }
 };

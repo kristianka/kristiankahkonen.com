@@ -1,24 +1,39 @@
-import Link from "next/link";
+import TextParallaxContent from "@/components/Projects/TextParallaxContext";
+import Content from "@/components/Projects/Content";
+import { getProjects } from "@/services/BlogRequests";
+import MoreProjects from "@/components/Projects/MoreProjects";
+import Disclaimer from "@/components/Projects/Disclaimer";
 
-export default function Home() {
+export default async function Home() {
+    const projects = await getProjects();
+
     return (
-        <main className="min-h-screen">
-            <div>
-                <h2 className="text-2xl sm:text-4xl tracking-wide font-bold m-auto mb-5">
-                    Projects
-                </h2>
-                <p>
-                    This page will be updated soon. At this moment, you can see my projects in{" "}
-                    <Link
-                        className="text-blue-500"
-                        href="https://github.com/kristianka"
-                        target="_blank"
+        <div className="">
+            {projects.length === 0 && (
+                <h1 className="mx-auto text-2xl text-center">No projects found 😞</h1>
+            )}
+            {projects &&
+                projects.map((project) => (
+                    <TextParallaxContent
+                        key={project.id}
+                        imgUrlPc={project.image.imgUrlPc}
+                        imgUrlMedium={project.image.imgUrlMedium}
+                        imgUrlMobile={project.image.imgUrlMobile}
+                        subheading={project.image.title}
+                        heading={project.image.subtitle}
                     >
-                        my GitHub profile
-                    </Link>
-                    .
-                </p>
-            </div>
-        </main>
+                        <Content
+                            title={project.content.title}
+                            description={project.content.description}
+                            techStack={project.content.techStack}
+                            sourceCodeUrl={project.content.sourceCodeUrl}
+                            liveUrl={project.content.liveUrl}
+                            liveUrlShort={project.content.liveUrlShort}
+                        />
+                    </TextParallaxContent>
+                ))}
+            <MoreProjects />
+            <Disclaimer />
+        </div>
     );
 }
