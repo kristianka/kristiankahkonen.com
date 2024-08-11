@@ -73,6 +73,7 @@ export const getLatestBlog = async () => {
     }
 };
 
+// Get all projects for the projects page
 export const getProjects = async () => {
     try {
         const res = (await client.request(
