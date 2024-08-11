@@ -10,14 +10,13 @@ import { Blog, Toc, User } from "@/types";
 // smooth scroll to anchor links
 import "../../styles.css";
 import { TableOfContentsMobile } from "./TableOfContentsMobile";
-import { ShareButton } from "./ShareButton";
-import Buttons from "./Buttons";
+import { ShareButton } from "../ShareButton";
 
 export const BlogPage = ({ blog, user, toc }: { blog: Blog; user: User | null; toc: Toc[] }) => {
     const blogUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${blog.id}`;
 
     return (
-        <div key={blog.id}>
+        <div key={blog.id} className="">
             <div>
                 <h2 className="text-2xl sm:text-4xl mb-5 font-bold">{blog.title}</h2>
                 <h3 className="sm:text-xl mb-3 prose dark:prose-invert italic ">
@@ -46,14 +45,13 @@ export const BlogPage = ({ blog, user, toc }: { blog: Blog; user: User | null; t
                 </div>
                 {/* Don't make the text gray on tailwind typography prose. It's hard to read. */}
                 <Markdown
-                    className="max-w-full w-full my-10 prose dark:prose-invert text-black dark:text-white"
+                    className="max-w-full w-full mt-10 prose dark:prose-invert text-black dark:text-white"
                     remarkPlugins={[remarkGfm]}
                     rehypePlugins={[rehypeRaw, rehypeSlug]}
                     components={MarkdownComponents}
                 >
                     {blog.content}
                 </Markdown>
-                <Buttons title={blog.title} text={blog.description} url={blogUrl} />
             </div>
         </div>
     );

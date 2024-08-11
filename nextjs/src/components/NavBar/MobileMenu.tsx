@@ -14,7 +14,7 @@ export function MobileMenu({ setIsOpen }: MobileMenuProps) {
     return (
         <nav
             ref={menuRef}
-            className="w-full border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+            className="w-full absolute border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
         >
             <div className="p-3 grid grid-cols-3">
                 <Link onClick={() => setIsOpen(false)} className="mr-3 flex items-center" href="/">

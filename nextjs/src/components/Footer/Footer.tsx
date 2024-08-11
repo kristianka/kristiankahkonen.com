@@ -78,8 +78,7 @@ export function Footer() {
                                                 htmlFor="email"
                                                 className="mb-2 block text-sm font-medium text-gray-900 dark:text-gray-300"
                                             >
-                                                Get the latest blogs to your inbox. No spam,
-                                                unsubscribe any time. (Coming soon!)
+                                                Get the latest blogs to your inbox. (Coming soon!)
                                             </label>
                                             <input
                                                 disabled={true}

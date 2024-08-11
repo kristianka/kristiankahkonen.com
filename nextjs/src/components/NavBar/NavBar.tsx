@@ -6,22 +6,12 @@ import { useState } from "react";
 
 import { ModeToggle } from "../ModeToggle";
 import { MobileMenu } from "./MobileMenu";
-import { usePathname } from "next/navigation";
 
 export const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
-    // don't show sticky header on these pages
-    const pathname = usePathname();
-    const notSticky = ["/projects"];
-    const isSticky = !notSticky.includes(pathname);
-
     return (
-        <header
-            className={`w-full pt-3 pb-3 justify-between sm:flex items-center bg-slate-50 dark:bg-zinc-900 dark:text-white ${
-                isSticky ? "sticky top-0" : ""
-            } z-10 mb-10`}
-        >
+        <header className="w-full pt-3 pb-3 justify-between sm:flex items-center bg-slate-50 dark:bg-zinc-900 dark:text-white sticky top-0 z-10 mb-10">
             <div className="flex justify-between items-center">
                 <Link
                     data-testid="headerNameHomeLink"
