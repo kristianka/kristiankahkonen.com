@@ -59,6 +59,7 @@ interface Image {
     title: string;
     subtitle: string;
     imgUrlPc: string;
+    imgUrlMedium: string;
     imgUrlMobile: string;
 }
 

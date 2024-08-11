@@ -9,7 +9,7 @@ export default function ProjectsLayout({
     return (
         <div className="min-h-screen">
             <Suspense fallback={<Loading />}>
-                <div className="max-w-full min-w-full">{children}</div>
+                <div>{children}</div>
             </Suspense>
         </div>
     );

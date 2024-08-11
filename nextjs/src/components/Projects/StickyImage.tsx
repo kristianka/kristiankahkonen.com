@@ -7,10 +7,11 @@ const IMG_PADDING = 18;
 
 interface StickyImageProps {
     imgUrlPc: string;
+    imgUrlMedium: string;
     imgUrlMobile: string;
 }
 
-export default function StickyImage({ imgUrlPc, imgUrlMobile }: StickyImageProps) {
+export default function StickyImage({ imgUrlPc, imgUrlMedium, imgUrlMobile }: StickyImageProps) {
     const targetRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: targetRef,
@@ -30,14 +31,27 @@ export default function StickyImage({ imgUrlPc, imgUrlMobile }: StickyImageProps
             ref={targetRef}
             className="sticky z-0 overflow-hidden rounded-3xl"
         >
+            {/* image for pc, full width */}
             <Image
                 src={imgUrlPc}
                 alt="Background Image"
                 fill={true}
                 style={{ objectFit: "cover" }}
-                className="hidden sm:block absolute inset-0 z-[-1]"
+                className="hidden lg:block absolute inset-0 z-[-1]"
                 priority={true}
             />
+
+            {/* image for tablet or windowed size on pc, full width */}
+            <Image
+                src={imgUrlMedium}
+                alt="Background Image"
+                fill={true}
+                style={{ objectFit: "cover" }}
+                className="hidden sm:block lg:hidden absolute inset-0 z-[-1]"
+                priority={true}
+            />
+
+            {/* image for mobile, full width */}
             <Image
                 src={imgUrlMobile}
                 alt="Background Image"
