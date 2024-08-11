@@ -4,6 +4,7 @@ import OverlayCopy from "./OverlayCopy";
 
 interface TextParallaxContentProps {
     imgUrlPc: string;
+    imgUrlMedium: string;
     imgUrlMobile: string;
     subheading: string;
     heading: string;
@@ -14,6 +15,7 @@ const IMG_PADDING = 2;
 
 export default function TextParallaxContent({
     imgUrlPc,
+    imgUrlMedium,
     imgUrlMobile,
     subheading,
     heading,
@@ -27,7 +29,11 @@ export default function TextParallaxContent({
             }}
         >
             <div className="relative h-[150vh]">
-                <StickyImage imgUrlPc={imgUrlPc} imgUrlMobile={imgUrlMobile} />
+                <StickyImage
+                    imgUrlPc={imgUrlPc}
+                    imgUrlMedium={imgUrlMedium}
+                    imgUrlMobile={imgUrlMobile}
+                />
                 <OverlayCopy heading={heading} subheading={subheading} />
             </div>
             {children}
