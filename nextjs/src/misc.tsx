@@ -8,6 +8,7 @@ import {
     SiFastify,
     SiFirebase,
     SiFramer,
+    SiI18Next,
     SiJavascript,
     SiMapbox,
     SiMicrosoftsqlserver,
@@ -47,7 +48,8 @@ export const iconMapping: Record<string, JSX.Element> = {
     "React Query": <SiReactquery />,
     Mapbox: <SiMapbox />,
     Playwright: <SiPlaywright />,
-    Cypress: <SiCypress />
+    Cypress: <SiCypress />,
+    i18next: <SiI18Next />
 };
 
 export const frontendSkills = [
