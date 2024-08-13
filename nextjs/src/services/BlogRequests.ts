@@ -81,7 +81,10 @@ export const getProjects = async () => {
                 fields: ["*", { image: ["*"], content: ["*"] }]
             })
         )) as Project[];
-        const sortedProjects = res.filter((project) => project.status === "published");
+        // show only published projects and sort by order field
+        const sortedProjects = res
+            .filter((project) => project.status === "published")
+            .sort((a, b) => a.order - b.order);
         return sortedProjects;
     } catch (error) {
         return [];
