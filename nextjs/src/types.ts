@@ -56,8 +56,8 @@ export interface Project {
 
 interface Image {
     id: string;
-    title: string;
-    subtitle: string;
+    catchline: string;
+    appName: string;
     imgUrlPc: string;
     imgUrlMedium: string;
     imgUrlMobile: string;
@@ -67,7 +67,7 @@ interface Content {
     id: string;
     title: string;
     description: string;
-    techStack: string[];
+    technologies: string[];
     sourceCodeUrl: string;
     liveUrl?: string;
     liveUrlShort?: string;

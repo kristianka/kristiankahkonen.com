@@ -3,11 +3,11 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
 interface OverlayCopyProps {
-    subheading: string;
-    heading: string;
+    appName: string;
+    catchline: string;
 }
 
-export default function OverlayCopy({ subheading, heading }: OverlayCopyProps) {
+export default function OverlayCopy({ appName, catchline }: OverlayCopyProps) {
     const targetRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: targetRef,
@@ -26,8 +26,8 @@ export default function OverlayCopy({ subheading, heading }: OverlayCopyProps) {
             ref={targetRef}
             className="absolute left-0 top-0 flex h-screen w-full flex-col items-center justify-center text-white"
         >
-            <p className="mb-2 text-center text-xl md:mb-4 md:text-3xl">{subheading}</p>
-            <p className="text-center text-4xl font-bold md:text-7xl">{heading}</p>
+            <p className="mb-2 text-center text-xl md:mb-4 md:text-3xl">{appName}</p>
+            <p className="text-center text-4xl font-bold md:text-7xl">{catchline}</p>
         </motion.div>
     );
 }

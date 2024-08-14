@@ -12,25 +12,27 @@ export default async function Home() {
             {projects.length === 0 && (
                 <h1 className="mx-auto text-2xl text-center">No projects found 😞</h1>
             )}
+
             {projects &&
                 projects.map((project) => (
-                    <TextParallaxContent
-                        key={project.id}
-                        imgUrlPc={project.image.imgUrlPc}
-                        imgUrlMedium={project.image.imgUrlMedium}
-                        imgUrlMobile={project.image.imgUrlMobile}
-                        subheading={project.image.title}
-                        heading={project.image.subtitle}
-                    >
-                        <Content
-                            title={project.content.title}
-                            description={project.content.description}
-                            techStack={project.content.techStack}
-                            sourceCodeUrl={project.content.sourceCodeUrl}
-                            liveUrl={project.content.liveUrl}
-                            liveUrlShort={project.content.liveUrlShort}
-                        />
-                    </TextParallaxContent>
+                    <div key={project.id}>
+                        <TextParallaxContent
+                            imgUrlPc={project.image.imgUrlPc}
+                            imgUrlMedium={project.image.imgUrlMedium}
+                            imgUrlMobile={project.image.imgUrlMobile}
+                            appName={project.image.appName}
+                            catchline={project.image.catchline}
+                        >
+                            <Content
+                                title={project.content.title}
+                                description={project.content.description}
+                                technologies={project.content.technologies}
+                                sourceCodeUrl={project.content.sourceCodeUrl}
+                                liveUrl={project.content.liveUrl}
+                                liveUrlShort={project.content.liveUrlShort}
+                            />
+                        </TextParallaxContent>
+                    </div>
                 ))}
             <MoreProjects />
             <Disclaimer />
