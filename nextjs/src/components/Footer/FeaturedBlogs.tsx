@@ -8,28 +8,29 @@ export default async function FeaturedBlogs() {
 
     return (
         <div>
-            <h6 className="mb-4 text-sm font-semibold uppercase text-gray-900 dark:text-white">
+            <p className="mb-4 text-sm font-semibold uppercase text-gray-900 dark:text-white">
                 Latest blogs
-            </h6>
-            <ul className="space-y-3">
+            </p>
+            <ul aria-label="Footer latest blogs" className="space-y-3">
                 {blogs.length === 0 && (
                     <li className="text-gray-500 dark:text-gray-400">No blogs</li>
                 )}
-                {blogs.map((blog) => (
-                    <li key={blog.id}>
-                        <Link
-                            href={`/blog/${blog.id}`}
-                            className="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
-                        >
-                            {blog.title}
-                        </Link>
-                    </li>
-                ))}
+                {blogs &&
+                    blogs.map((blog) => (
+                        <li key={blog.id}>
+                            <Link
+                                href={`/blog/${blog.id}`}
+                                className="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                            >
+                                {blog.title}
+                            </Link>
+                        </li>
+                    ))}
             </ul>
-            <h6 className="mt-10 mb-4 text-sm font-semibold uppercase text-gray-900 dark:text-white">
+            <p className="mt-10 mb-4 text-sm font-semibold uppercase text-gray-900 dark:text-white">
                 Featured blogs
-            </h6>
-            <ul className="space-y-3">
+            </p>
+            <ul aria-label="Footer featured blogs" className="space-y-3">
                 {featuredBlogs.length === 0 && (
                     <li className="text-gray-500 dark:text-gray-400">No blogs</li>
                 )}

@@ -32,7 +32,12 @@ export const NavBar = () => {
                 </Link>
                 <div className="flex space-x-5 sm:hidden items-center">
                     <ModeToggle />
-                    <Hamburger toggled={isOpen} size={20} toggle={setIsOpen} />
+                    <Hamburger
+                        label="Open main navigation menu"
+                        toggled={isOpen}
+                        size={20}
+                        toggle={setIsOpen}
+                    />
                 </div>
             </div>
             {/* mobile nav */}
@@ -99,6 +104,7 @@ export const NavBar = () => {
                             data-testid="headerRssLink"
                             href="/rss.xml"
                             target="_blank"
+                            aria-label="RSS Feed"
                         >
                             <LuRss className="h-6 w-6" />
                         </Link>
