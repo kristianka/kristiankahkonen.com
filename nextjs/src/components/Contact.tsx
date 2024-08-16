@@ -4,7 +4,7 @@ export const Contact = () => {
     return (
         <div className="flex flex-col items-center">
             <h3 className="text-center mt-8">
-                You can contact me via email at the address below. I'll be in touch ASAP!{" "}
+                You can contact me via email at the address below. I&apos;ll be in touch ASAP!{" "}
             </h3>
             <p className="text-center italic text-slate-700 dark:text-slate-400 text-sm">
                 Please note that due to technical reasons, the reply will come from a different
