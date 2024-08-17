@@ -1,71 +1,73 @@
-"use client";
-import { useClickOutside } from "@/hooks/useClickOutside";
-import { Rss, HomeIcon, Book, Mail, Code, User } from "lucide-react";
+import React, { useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
+import { Book, Code, HomeIcon, Mail, Rss, User } from "lucide-react";
 
 interface MobileMenuProps {
+    isOpen: boolean;
     setIsOpen: (isOpen: boolean) => void;
 }
 
-export function MobileMenu({ setIsOpen }: MobileMenuProps) {
-    // Close the menu when the user clicks outside of it
-    const menuRef = useClickOutside<HTMLDivElement>(() => setIsOpen(false));
+export default function MobileMenu({ isOpen, setIsOpen }: MobileMenuProps) {
+    const menuVariants = {
+        open: { opacity: 1, y: 1 },
+        closed: { opacity: 0, y: 1 }
+    };
+
+    const linkVariants = {
+        closed: { opacity: 0, y: -5 },
+        open: { opacity: 1, y: 0 }
+    };
+
+    // Lock and unlock body scroll when menu opens or closes
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "auto";
+        }
+
+        // Cleanup function to ensure scroll is re-enabled on unmount
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, [isOpen]);
 
     return (
-        <nav
-            aria-label="Main navigation"
-            ref={menuRef}
-            className="w-full border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
-        >
-            <div className="p-3 grid grid-cols-3">
-                <Link onClick={() => setIsOpen(false)} className="mr-3 flex items-center" href="/">
-                    <HomeIcon className="mr-2 h-4 w-4" />
-                    <span>Home</span>
-                </Link>
-                <Link
-                    onClick={() => setIsOpen(false)}
-                    className="mr-3 flex items-center"
-                    href="/blog"
+        <AnimatePresence>
+            {isOpen && (
+                <motion.nav
+                    aria-label="Main navigation"
+                    className="fixed left-0 w-screen h-screen z-10 bg-slate-50 dark:bg-zinc-900"
+                    initial="closed"
+                    animate={isOpen ? "open" : "closed"}
+                    variants={menuVariants}
+                    transition={{ duration: 0.4 }} // Faster fade-in and fade-out
                 >
-                    <Book className="mr-2 h-4 w-4" />
-                    <span>Blog</span>
-                </Link>
-                <Link
-                    onClick={() => setIsOpen(false)}
-                    className="mr-3 flex items-center"
-                    href="/projects"
-                >
-                    <Code className="mr-2 h-4 w-4" />
-                    <span>Projects</span>
-                </Link>
-            </div>
-            <div className="p-3 grid grid-cols-3">
-                <Link
-                    onClick={() => setIsOpen(false)}
-                    className="mr-3 flex items-center"
-                    href="/about"
-                >
-                    <User className="mr-2 h-4 w-4" />
-                    <span>About</span>
-                </Link>
-                <Link
-                    onClick={() => setIsOpen(false)}
-                    className="mr-3 flex items-center"
-                    href="/contact"
-                >
-                    <Mail className="mr-2 h-4 w-4" />
-                    <span>Contact</span>
-                </Link>
-                <Link
-                    onClick={() => setIsOpen(false)}
-                    className="mr-3 flex items-center"
-                    href="/rss.xml"
-                    target="_blank"
-                >
-                    <Rss className="mr-2 h-4 w-4" />
-                    <span>RSS</span>
-                </Link>
-            </div>
-        </nav>
+                    <ul className="m-5 space-y-4 font-bold text-2xl">
+                        {[
+                            { href: "/", label: "Home", icon: HomeIcon },
+                            { href: "/blog", label: "Blog", icon: Book },
+                            { href: "/projects", label: "Projects", icon: Code },
+                            { href: "/about", label: "About", icon: User },
+                            { href: "/contact", label: "Contact", icon: Mail },
+                            { href: "/rss.xml", label: "RSS", icon: Rss }
+                        ].map((item, index) => (
+                            <motion.li
+                                key={item.href}
+                                // variants={linkVariants}
+                                // transition={{ duration: 0.2, delay: index * 0.1 }}
+                                onClick={() => setIsOpen(false)}
+                            >
+                                <Link href={item.href} className="flex items-center">
+                                    <item.icon className="mr-4 h-6 w-6" />
+                                    <span>{item.label}</span>
+                                </Link>
+                            </motion.li>
+                        ))}
+                    </ul>
+                </motion.nav>
+            )}
+        </AnimatePresence>
     );
 }

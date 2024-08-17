@@ -5,7 +5,7 @@ import { Squash as Hamburger } from "hamburger-react";
 import { useState } from "react";
 
 import { ModeToggle } from "../ModeToggle";
-import { MobileMenu } from "./MobileMenu";
+import MobileMenu from "./MobileMenu";
 import { usePathname } from "next/navigation";
 
 export const NavBar = () => {
@@ -41,7 +41,7 @@ export const NavBar = () => {
                 </div>
             </div>
             {/* mobile nav */}
-            <div className="block sm:hidden">{isOpen && <MobileMenu setIsOpen={setIsOpen} />}</div>
+            <MobileMenu isOpen={isOpen} setIsOpen={setIsOpen} />
             {/* desktop nav */}
             <nav className="hidden sm:block">
                 <ul className="flex space-x-5 sm:text-lg">
