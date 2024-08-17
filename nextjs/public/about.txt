@@ -1,6 +1,0 @@
-This favicon was generated using the following font:
-
-- Font Title: Markazi Text
-- Font Author: Copyright 2017 The Markazi Text Project Authors (https://github.com/BornaIz/markazitext)
-- Font Source: https://fonts.gstatic.com/s/markazitext/v23/sykh-ydym6AtQaiEtX7yhqb_rV1k_81ZVYYZtcaQT4MlBekmJLo.ttf
-- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))
