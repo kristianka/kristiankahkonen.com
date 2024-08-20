@@ -3,7 +3,7 @@ import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 
-import { MarkdownComponents } from "../Markdown";
+import { MarkdownComponents } from "./Markdown/Markdown";
 import { DateToLocal } from "../DateToLocal";
 import { Blog, Toc, User } from "@/types";
 
