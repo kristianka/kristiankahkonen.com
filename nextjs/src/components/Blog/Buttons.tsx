@@ -2,6 +2,8 @@
 import { ArrowUp } from "lucide-react";
 import { VscShare } from "react-icons/vsc";
 import { share } from "./Share";
+import { useReward } from "react-rewards";
+import { useState } from "react";
 
 interface ButtonsProps {
     title: string;
@@ -10,12 +12,29 @@ interface ButtonsProps {
 }
 
 export default function Buttons({ title, text, url }: ButtonsProps) {
-    const shareTo = () =>
+    const [shareHeart, setShareHeart] = useState(false);
+
+    const { reward, isAnimating } = useReward("shareRewardBottom", "emoji", {
+        emoji: ["❤️"],
+        position: "absolute",
+        zIndex: 100,
+        angle: 90,
+        spread: 15,
+        startVelocity: 15,
+        lifetime: 50
+    });
+
+    const shareTo = () => {
+        if (!isAnimating) {
+            reward();
+        }
+        setShareHeart(true);
         share({
             title,
             text,
             url
         });
+    };
 
     const backToTop = () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -23,11 +42,12 @@ export default function Buttons({ title, text, url }: ButtonsProps) {
 
     return (
         <div className="mx-auto my-5 flex justify-end gap-5">
+            <span id="shareRewardBottom" />
             <button
                 onClick={shareTo}
                 className="flex hover:bg-blue-500 border border-black px-4 py-2 sm:px-10 sm:py-2 text-sm rounded-full bg-white dark:bg-black dark:text-white dark:border-white dark:hover:text-blue-500"
             >
-                <VscShare className="w-5 h-5" />
+                {shareHeart ? "❤️" : <VscShare className="w-5 h-5" />}
                 <span className="ml-3">Share</span>
             </button>
             <button

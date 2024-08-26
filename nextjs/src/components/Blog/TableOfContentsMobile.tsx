@@ -2,8 +2,16 @@
 import { Toc } from "@/types";
 import { useEffect, useState } from "react";
 import { FaAngleUp, FaAngleDown } from "react-icons/fa6";
+import { ShareButton } from "./ShareButton";
 
-export const TableOfContentsMobile = ({ toc }: { toc: Toc[] }) => {
+interface TableOfContentsMobileProps {
+    toc: Toc[];
+    title: string;
+    text: string;
+    url: string;
+}
+
+export const TableOfContentsMobile = ({ toc, title, text, url }: TableOfContentsMobileProps) => {
     const [activeHeading, setActiveHeading] = useState<string | null>(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [showTOC, setShowTOC] = useState(false);
@@ -58,13 +66,16 @@ export const TableOfContentsMobile = ({ toc }: { toc: Toc[] }) => {
 
     return (
         <div className="mt-5">
-            <button
-                className="flex items-center font-semibold hover:text-gray-500"
-                onClick={() => setShowTOC(!showTOC)}
-            >
-                On this page
-                {showTOC ? <FaAngleUp className="ml-3" /> : <FaAngleDown className="ml-3" />}
-            </button>
+            <div className="flex items-center">
+                <button
+                    className="flex items-center font-semibold"
+                    onClick={() => setShowTOC(!showTOC)}
+                >
+                    On this page
+                    {showTOC ? <FaAngleUp className="ml-3" /> : <FaAngleDown className="ml-3" />}
+                </button>
+                <ShareButton title={title} text={text} url={url} />
+            </div>
             {showTOC && (
                 <ul className="">
                     <hr className="my-2 h-2" />
