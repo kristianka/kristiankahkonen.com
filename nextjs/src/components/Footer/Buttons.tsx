@@ -10,7 +10,9 @@ export default function Buttons() {
         position: "absolute",
         zIndex: 100,
         angle: 90,
-        lifetime: 100
+        spread: 30,
+        startVelocity: 20,
+        lifetime: 50
     });
 
     const backToTop = () => {
