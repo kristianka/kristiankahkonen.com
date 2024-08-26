@@ -7,6 +7,15 @@ import { useState } from "react";
 import { ModeToggle } from "../ModeToggle";
 import MobileMenu from "./MobileMenu";
 import { usePathname } from "next/navigation";
+import HoverLink from "./HoverLink";
+
+const links = [
+    { href: "/", label: "Home" },
+    { href: "/blog", label: "Blog" },
+    { href: "/projects", label: "Projects" },
+    { href: "/about", label: "About" },
+    { href: "/contact", label: "Contact" }
+];
 
 export const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -45,52 +54,13 @@ export const NavBar = () => {
             {/* desktop nav */}
             <nav className="hidden sm:block">
                 <ul className="flex space-x-5 sm:text-lg">
-                    <li className="text-left">
-                        <Link
-                            className="hover:text-blue-700 dark:hover:text-blue-500"
-                            data-testid="headerHomeLink"
-                            href="/"
-                        >
-                            Home
-                        </Link>
-                    </li>
-                    <li className="">
-                        <Link
-                            className="hover:text-blue-700 dark:hover:text-blue-500"
-                            data-testid="headerBlogLink"
-                            href="/blog"
-                        >
-                            Blog
-                        </Link>
-                    </li>
-                    <li className="">
-                        <Link
-                            className="hover:text-blue-700 dark:hover:text-blue-500"
-                            data-testid="headerProjectsLink"
-                            href="/projects"
-                        >
-                            Projects
-                        </Link>
-                    </li>
-
-                    <li className="">
-                        <Link
-                            className="hover:text-blue-700 dark:hover:text-blue-500"
-                            data-testid="headerAboutLink"
-                            href="/about"
-                        >
-                            About
-                        </Link>
-                    </li>
-                    <li className="">
-                        <Link
-                            className="hover:text-blue-700 dark:hover:text-blue-500"
-                            data-testid="headerContactLink"
-                            href="/contact"
-                        >
-                            Contact
-                        </Link>
-                    </li>
+                    {links.map((link) => (
+                        <li key={link.href}>
+                            <HoverLink href={link.href} testId={`header${link.label}Link`}>
+                                {link.label}
+                            </HoverLink>
+                        </li>
+                    ))}
                     <li
                         data-testid="headerModeToggle"
                         className="items-baseline hidden sm:block transition-all"
