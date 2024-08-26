@@ -30,7 +30,7 @@ export const BlogPage = ({ blog, user, toc }: { blog: Blog; user: User | null; t
                                 Author: {user.first_name} {user.last_name}
                             </h4>
                         )}
-                        <div className="hidden sm:block">
+                        <div className="hidden ml-auto sm:inline">
                             <ShareButton title={blog.title} text={blog.description} url={blogUrl} />
                         </div>
                     </div>
