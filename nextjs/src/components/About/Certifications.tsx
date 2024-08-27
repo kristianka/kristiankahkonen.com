@@ -2,7 +2,7 @@
 import { Certification } from "@/types";
 import { CloseButton, Description, Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { AnimatePresence, motion } from "framer-motion";
-import { X } from "lucide-react";
+import { ArrowUpRight, X } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { FaAngleUp, FaAngleDown } from "react-icons/fa6";
@@ -29,10 +29,6 @@ export default function Certifications({ certs }: CertificationProps) {
 
     return (
         <div>
-            <p className="text-gray-600">
-                I have fully completed the University of Helsinki&apos;s Full Stack Open course. I
-                also did the 10 credit project and received great feedback. See here for it.
-            </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {/* show only 3 certifications by default */}
                 {certs.slice(0, showMore ? certs.length : 3).map((certification, index) => (
@@ -110,6 +106,18 @@ export default function Certifications({ certs }: CertificationProps) {
                     {showMore ? <FaAngleUp className="mr-1" /> : <FaAngleDown className="mr-1" />}
                     {showMore ? "View less" : "View more"}
                 </button>
+            </div>
+            <div className="flex">
+                <span>Verify my certifications in {"  "}</span>
+                <a
+                    className="text-blue-500 flex flex-wrap"
+                    href="https://www.linkedin.com/in/kristian-kahkonen/details/certifications/"
+                >
+                    {" "}
+                    LinkedIn
+                    <ArrowUpRight size={24} />
+                </a>
+                <span>(account needed)</span>
             </div>
         </div>
     );

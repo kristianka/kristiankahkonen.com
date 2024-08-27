@@ -3,6 +3,9 @@ import EducationCard from "./EducationCard";
 export default function Education() {
     return (
         <div>
+            <h2 className="text-2xl sm:text-4xl tracking-wide font-bold m-auto mb-5">
+                Education and Certifications
+            </h2>
             <EducationCard
                 title="Tampere University of Applied Sciences (TAMK)"
                 date="August 2021 - May 2025"
@@ -17,6 +20,12 @@ export default function Education() {
                 description="GPA: 4,83"
                 gpa="GPA: 4,83 / 5"
             />
+            <p className="text-gray-500 mb-3">
+                I have completed several university courses, including the University of
+                Helsinki&apos;s Full Stack Open course and project, for which I received great
+                feedback. You can read the feedback here. I also completed their DevOps with Docker
+                course. Additionally, I have taken Japanese 1 and 2 courses at Aalto University.
+            </p>
         </div>
     );
 }
