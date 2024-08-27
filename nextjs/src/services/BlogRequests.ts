@@ -1,5 +1,5 @@
 import { createDirectus, rest, readItem, authentication, readUser, readItems } from "@directus/sdk";
-import { Blog, Project, User } from "@/types";
+import { Blog, Certification, Project, User } from "@/types";
 
 // create a Directus client to connect to the Directus API
 const client = createDirectus(process.env.DIRECTUS_URL as string)
@@ -86,6 +86,16 @@ export const getProjects = async () => {
             .filter((project) => project.status === "published")
             .sort((a, b) => a.order - b.order);
         return sortedProjects;
+    } catch (error) {
+        return [];
+    }
+};
+
+export const getCertifications = async () => {
+    try {
+        const res = (await client.request(readItems("certification"))) as Certification[];
+        const certs = res.sort((a, b) => a.order - b.order);
+        return certs;
     } catch (error) {
         return [];
     }

@@ -72,3 +72,11 @@ interface Content {
     liveUrl?: string;
     liveUrlShort?: string;
 }
+
+export interface Certification {
+    id: string;
+    order: number;
+    title: string;
+    alt: string;
+    url: string;
+}
