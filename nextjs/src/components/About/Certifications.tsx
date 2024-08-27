@@ -1,15 +1,8 @@
 "use client";
 import { Certification } from "@/types";
-import {
-    CloseButton,
-    Description,
-    Dialog,
-    DialogBackdrop,
-    DialogPanel,
-    DialogTitle
-} from "@headlessui/react";
+import { CloseButton, Description, Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { AnimatePresence, motion } from "framer-motion";
-import { X, XCircle, XCircleIcon } from "lucide-react";
+import { X } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { FaAngleUp, FaAngleDown } from "react-icons/fa6";
@@ -20,8 +13,6 @@ interface CertificationProps {
 
 export default function Certifications({ certs }: CertificationProps) {
     const [showMore, setShowMore] = useState(false);
-
-    let [isOpen, setIsOpen] = useState(false);
 
     const [open, setOpen] = useState(false);
     const [certification, setCertification] = useState<Certification | null>(null);
