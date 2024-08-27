@@ -2,6 +2,8 @@ import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { CiMail } from "react-icons/ci";
 
 export default function Links() {
+    const email = process.env.NEXT_PUBLIC_EMAIL as string | "";
+
     return (
         <div>
             <div>
@@ -26,7 +28,7 @@ export default function Links() {
             </div>
             <div>
                 <a
-                    href="mailto:kristian@kristiankahkonen.com"
+                    href={`mailto: ${email}`}
                     target="_blank"
                     className="inline-flex items-center gap-2 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
                 >
