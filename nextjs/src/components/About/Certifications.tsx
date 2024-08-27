@@ -101,7 +101,7 @@ export default function Certifications({ certs }: CertificationProps) {
                 <button
                     type="button"
                     onClick={() => setShowMore(!showMore)}
-                    className="flex items-center rounded-full border border-gray-300 bg-secondary-50 px-3 py-2 text-center text-sm font-medium text-gray-900 hover:bg-gray-100"
+                    className="flex items-center rounded-full border bg-white dark:bg-black text-black dark:text-white border-gray-300 bg-secondary-50 px-3 py-2 text-center text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-800"
                 >
                     {showMore ? <FaAngleUp className="mr-1" /> : <FaAngleDown className="mr-1" />}
                     {showMore ? "View less" : "View more"}
