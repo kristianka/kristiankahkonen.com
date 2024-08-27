@@ -20,6 +20,7 @@ import {
     SiPostgresql,
     SiPrisma,
     SiReactquery,
+    SiRedis,
     SiTailwindcss,
     SiTypescript
 } from "react-icons/si";
@@ -49,7 +50,8 @@ export const iconMapping: Record<string, JSX.Element> = {
     Mapbox: <SiMapbox />,
     Playwright: <SiPlaywright />,
     Cypress: <SiCypress />,
-    i18next: <SiI18Next />
+    i18next: <SiI18Next />,
+    Redis: <SiRedis />
 };
 
 export const frontendSkills = [
