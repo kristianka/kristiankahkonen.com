@@ -80,3 +80,13 @@ export interface Certification {
     alt: string;
     url: string;
 }
+
+export interface Education {
+    id: string;
+    title: string;
+    school: string;
+    date: string;
+    location: string;
+    description: string;
+    gpa: string;
+}
