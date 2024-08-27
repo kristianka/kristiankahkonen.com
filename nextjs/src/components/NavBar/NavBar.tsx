@@ -35,7 +35,7 @@ export const NavBar = () => {
                 <Link
                     data-testid="headerNameHomeLink"
                     href="/"
-                    className="mr-5 sm:mr-10 text-xl sm:text-2xl font-bold tracking-wide hover:text-blue-700 dark:hover:text-blue-500"
+                    className="mr-5 sm:mr-10 text-xl sm:text-2xl font-bold tracking-wide relative inline-block after:absolute after:left-1/2 after:-bottom-1 after:h-[2px] after:w-0 after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full hover:after:left-0"
                 >
                     Kristian Kähkönen
                 </Link>
