@@ -1,0 +1,9 @@
+/* highlighted code is full width */
+code {
+    transform: translateZ(0);
+    min-width: 100%;
+    float: left;
+    & > span {
+        display: block;
+    }
+}

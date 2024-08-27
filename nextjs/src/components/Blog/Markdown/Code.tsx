@@ -1,3 +1,7 @@
+"use client";
+import { CodeProps } from "./types";
+import "./styles.css";
+
 import rangeParser from "parse-numeric-range";
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
@@ -8,7 +12,6 @@ import typescript from "react-syntax-highlighter/dist/cjs/languages/prism/typesc
 import tsx from "react-syntax-highlighter/dist/cjs/languages/prism/tsx";
 import markdown from "react-syntax-highlighter/dist/cjs/languages/prism/markdown";
 import json from "react-syntax-highlighter/dist/cjs/languages/prism/json";
-import { CodeProps } from "./types";
 
 SyntaxHighlighter.registerLanguage("javascript", javascript);
 SyntaxHighlighter.registerLanguage("jsx", jsx);
@@ -30,8 +33,9 @@ export const Code = ({ node, inline, className, ...props }: CodeProps) => {
     const applyHighlights = (lineNumber: number) => {
         if (hasMeta) {
             const highlightLines = rangeParser(match[1]);
-            const data = highlightLines.includes(lineNumber) ? { className: "highlight-line" } : {};
-            console.log(data);
+            const data = highlightLines.includes(lineNumber)
+                ? { style: { background: "#333" } }
+                : {};
             return data;
         } else {
             return {};
