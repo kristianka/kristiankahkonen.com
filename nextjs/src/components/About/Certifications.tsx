@@ -55,7 +55,15 @@ export default function Certifications({ certs }: CertificationProps) {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {/* render initially only one on mobile etc. */}
                 {certs.slice(0, showMore ? certs.length : sliceSize).map((certification, index) => (
-                    <div key={certification.id}>
+                    // hover animation and animation when images load
+                    <motion.div
+                        key={certification.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
+                        whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+                        whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
+                    >
                         <Image
                             onClick={() => openModal(certification)}
                             key={index}
@@ -65,7 +73,7 @@ export default function Certifications({ certs }: CertificationProps) {
                             height={1500}
                             className="h-auto max-w-full rounded-lg"
                         />
-                    </div>
+                    </motion.div>
                 ))}
                 <AnimatePresence>
                     {certification && (
