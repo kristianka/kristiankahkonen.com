@@ -1,4 +1,3 @@
-"use client";
 import { CodeProps } from "./types";
 import "./styles.css";
 

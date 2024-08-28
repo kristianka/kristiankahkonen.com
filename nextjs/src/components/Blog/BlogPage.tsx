@@ -2,6 +2,7 @@ import Markdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
+import rehypeExternalLinks from "rehype-external-links";
 
 import { MarkdownComponents } from "./Markdown/Markdown";
 import { DateToLocal } from "../DateToLocal";
@@ -55,7 +56,11 @@ export const BlogPage = ({ blog, user, toc }: { blog: Blog; user: User | null; t
                 <Markdown
                     className="max-w-full w-full my-10 prose dark:prose-invert text-black dark:text-white"
                     remarkPlugins={[remarkGfm]}
-                    rehypePlugins={[rehypeRaw, rehypeSlug]}
+                    rehypePlugins={[
+                        [rehypeRaw],
+                        [rehypeSlug],
+                        [rehypeExternalLinks, { target: "_blank" }]
+                    ]}
                     components={MarkdownComponents}
                 >
                     {blog.content}
