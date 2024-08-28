@@ -1,3 +1,8 @@
+import Markdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
+import remarkGfm from "remark-gfm";
+import rehypeExternalLinks from "rehype-external-links";
+
 interface EducationCardProps {
     title: string;
     date: string;
@@ -16,13 +21,19 @@ export default function EducationCard({
     gpa
 }: EducationCardProps) {
     return (
-        <div className="mb-5">
+        <div className="">
             <h3 className="text-xl font-bold">{title}</h3>
             <h4 className="prose dark:prose-invert">{school}</h4>
             <p className="prose dark:prose-invert">{location}</p>
             <p className="prose dark:prose-invert">{date}</p>
             <p className="prose dark:prose-invert font-bold">{gpa}</p>
-            <p className="prose dark:prose-invert">{description}</p>
+            <Markdown
+                className="mt-1 prose dark:prose-invert text-black dark:text-white "
+                remarkPlugins={[remarkGfm]}
+                rehypePlugins={[[rehypeRaw], [rehypeExternalLinks, { target: "_blank" }]]}
+            >
+                {description}
+            </Markdown>
         </div>
     );
 }
