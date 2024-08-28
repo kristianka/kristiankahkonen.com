@@ -83,10 +83,10 @@ export default function Certifications({ certs }: CertificationProps) {
                                         initial={{ opacity: 0, scale: 0.95 }}
                                         animate={{ opacity: 1, scale: 1 }}
                                         exit={{ opacity: 0, scale: 0.95 }}
-                                        className="w-full sm:max-w-6xl space-y-4 bg-white p-0 sm:p-12 rounded-lg"
+                                        className="w-full sm:max-w-4xl space-y-4 bg-white p-4 rounded-lg"
                                     >
                                         <div className="flex justify-between items-baseline">
-                                            <DialogTitle className="font-bold text-black text-xl sm:text-2xl text-center p-1">
+                                            <DialogTitle className="font-bold mx-auto text-black text-xl sm:text-2xl p-1">
                                                 {certification.title}
                                             </DialogTitle>
                                             <CloseButton
