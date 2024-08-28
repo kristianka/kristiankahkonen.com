@@ -4,7 +4,7 @@ import { CloseButton, Description, Dialog, DialogPanel, DialogTitle } from "@hea
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, X } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaAngleUp, FaAngleDown } from "react-icons/fa6";
 
 interface CertificationProps {
@@ -13,6 +13,7 @@ interface CertificationProps {
 
 export default function Certifications({ certs }: CertificationProps) {
     const [showMore, setShowMore] = useState(false);
+    const [sliceSize, setSliceSize] = useState(3);
 
     const [open, setOpen] = useState(false);
     const [certification, setCertification] = useState<Certification | null>(null);
@@ -27,11 +28,33 @@ export default function Certifications({ certs }: CertificationProps) {
         setOpen(false);
     };
 
+    useEffect(() => {
+        // update slice size based on screen size
+        const updateSliceSize = () => {
+            if (window.innerWidth >= 768) {
+                setSliceSize(3);
+            } else if (window.innerWidth >= 640) {
+                setSliceSize(2);
+            } else {
+                setSliceSize(1);
+            }
+        };
+
+        // run on initial load and when resizing
+        updateSliceSize();
+        window.addEventListener("resize", updateSliceSize);
+
+        return () => window.removeEventListener("resize", updateSliceSize);
+    }, []);
+
     return (
         <div>
+            <p className="text-sm mx-auto prose dark:prose-invert text-center my-5">
+                Tip: Click on a certification to fullscreen it
+            </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                {/* show only 3 certifications by default */}
-                {certs.slice(0, showMore ? certs.length : 3).map((certification, index) => (
+                {/* render initially only one on mobile etc. */}
+                {certs.slice(0, showMore ? certs.length : sliceSize).map((certification, index) => (
                     <div key={certification.id}>
                         <Image
                             onClick={() => openModal(certification)}
@@ -63,7 +86,7 @@ export default function Certifications({ certs }: CertificationProps) {
                                         className="w-full sm:max-w-6xl space-y-4 bg-white p-0 sm:p-12 rounded-lg"
                                     >
                                         <div className="flex justify-between items-baseline">
-                                            <DialogTitle className="font-bold text-xl sm:text-2xl text-center p-1">
+                                            <DialogTitle className="font-bold text-black text-xl sm:text-2xl text-center p-1">
                                                 {certification.title}
                                             </DialogTitle>
                                             <CloseButton
