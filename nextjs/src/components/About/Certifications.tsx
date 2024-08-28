@@ -107,18 +107,18 @@ export default function Certifications({ certs }: CertificationProps) {
                     {showMore ? "View less" : "View more"}
                 </button>
             </div>
-            <div className="flex">
-                <span>Verify my certifications in {"  "}</span>
+            <span className="flex flex-wrap items-center">
+                Verify my certifications in
                 <a
-                    className="text-blue-500 flex flex-wrap"
+                    className="ml-1 text-blue-500 flex"
+                    target="_blank"
                     href="https://www.linkedin.com/in/kristian-kahkonen/details/certifications/"
                 >
-                    {" "}
                     LinkedIn
                     <ArrowUpRight size={24} />
                 </a>
-                <span>(account needed)</span>
-            </div>
+                (account needed)
+            </span>
         </div>
     );
 }
