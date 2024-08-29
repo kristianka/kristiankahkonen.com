@@ -13,9 +13,20 @@ import "../../styles.css";
 import { TableOfContentsMobile } from "./TableOfContentsMobile";
 import { ShareButton } from "./ShareButton";
 import Buttons from "./Buttons";
+import Image from "next/image";
+import { generatePlaceholder } from "@/misc";
 
-export const BlogPage = ({ blog, user, toc }: { blog: Blog; user: User | null; toc: Toc[] }) => {
+export const BlogPage = async ({
+    blog,
+    user,
+    toc
+}: {
+    blog: Blog;
+    user: User | null;
+    toc: Toc[];
+}) => {
     const blogUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${blog.id}`;
+    const placeholder = await generatePlaceholder(blog?.imgUrl || "");
 
     return (
         <div key={blog.id}>
@@ -42,6 +53,18 @@ export const BlogPage = ({ blog, user, toc }: { blog: Blog; user: User | null; t
                         <h4 className="prose dark:prose-invert">
                             <DateToLocal date={blog.date_updated} type="updated" />
                         </h4>
+                    )}
+                    {blog.imgUrl && blog.imgUrlAlt && (
+                        <Image
+                            src={blog.imgUrl}
+                            alt={blog.imgUrlAlt}
+                            width={960}
+                            height={540}
+                            className="my-10 rounded-lg w-full"
+                            priority={true}
+                            placeholder="blur"
+                            blurDataURL={placeholder}
+                        />
                     )}
                 </div>
                 <div className="block sm:hidden">

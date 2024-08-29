@@ -11,6 +11,8 @@ export interface Blog {
     user_updated: string;
     date_updated: string;
     title: string;
+    imgUrl?: string;
+    imgUrlAlt?: string;
     description: string;
     content: string;
 }
