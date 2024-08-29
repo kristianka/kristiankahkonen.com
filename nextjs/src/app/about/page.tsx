@@ -4,9 +4,15 @@ import { getCertifications } from "@/services/BlogRequests";
 import Introduction from "@/components/About/Introduction";
 import Education from "@/components/About/Education";
 import ProjectsButton from "@/components/About/ProjectsButton";
+import { generatePlaceholder } from "@/misc";
 
 export default async function Home() {
     const certs = await getCertifications();
+    const placeholders: string[] = [];
+    for (const cert of certs) {
+        const placeholder = await generatePlaceholder(cert.url);
+        placeholders.push(placeholder);
+    }
 
     return (
         <main className="min-h-screen space-y-10 sm:space-y-20">
@@ -14,7 +20,9 @@ export default async function Home() {
             <Skills />
             <div>
                 <Education />
-                {certs && certs.length > 0 && <Certifications certs={certs} />}
+                {certs && certs.length > 0 && (
+                    <Certifications certs={certs} placeholders={placeholders} />
+                )}
             </div>
             <ProjectsButton />
         </main>

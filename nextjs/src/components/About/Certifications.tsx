@@ -9,9 +9,10 @@ import FullscreenPopup from "./FullscreenPopup";
 
 interface CertificationProps {
     certs: Certification[];
+    placeholders: string[];
 }
 
-export default function Certifications({ certs }: CertificationProps) {
+export default function Certifications({ certs, placeholders }: CertificationProps) {
     const [showMore, setShowMore] = useState(false);
     const [sliceSize, setSliceSize] = useState(3);
 
@@ -28,8 +29,8 @@ export default function Certifications({ certs }: CertificationProps) {
         setOpen(false);
     };
 
+    // update slice size based on screen size
     useEffect(() => {
-        // update slice size based on screen size
         const updateSliceSize = () => {
             if (window.innerWidth >= 768) {
                 setSliceSize(3);
@@ -76,6 +77,8 @@ export default function Certifications({ certs }: CertificationProps) {
                             alt={certification.alt}
                             width={2000}
                             height={1500}
+                            blurDataURL={placeholders[index]}
+                            placeholder="blur"
                             className="h-auto max-w-full rounded-lg cursor-pointer"
                         />
                     </motion.div>

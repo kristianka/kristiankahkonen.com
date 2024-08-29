@@ -131,3 +131,22 @@ export const otherSkills = [
     "Jetpack Compose",
     "React Native"
 ];
+
+// return null if no image url is provided
+export async function generatePlaceholder(imageUrl: string) {
+    if (!imageUrl) "data:image/jpeg;base64,null";
+    try {
+        const response = await fetch(imageUrl);
+        if (!response.ok) {
+            console.error(`Failed to fetch image: ${response.statusText}`);
+            return "data:image/jpeg;base64,null";
+        }
+        const arrayBuffer = await response.arrayBuffer();
+        const base64 = Buffer.from(arrayBuffer).toString("base64");
+        const placeholder = `data:image/jpeg;base64,${base64}`;
+        return placeholder;
+    } catch (error) {
+        console.error(`Error generating placeholder: ${error}`);
+        return "data:image/jpeg;base64,null";
+    }
+}
