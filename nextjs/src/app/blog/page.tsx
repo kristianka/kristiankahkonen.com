@@ -13,18 +13,15 @@ export default async function Home() {
     const blogs: Blog[] = await fetchBlogs();
 
     return (
-        <main className="mx-auto max-w-7xl min-h-screen">
-            <div className="">
-                <div className="flex justify-between items-baseline">
-                    <h1 className="text-3xl sm:text-4xl">Latest content</h1>
-                    <p className="flex justify-end text-lg">{blogs.length} posts</p>
-                </div>
-                {blogs.length === 0 && <NoBlogsFound />}
-                <ul className="divide-y divide-gray-200 dark:divide-gray-700">
-                    {blogs.length > 0 &&
-                        blogs.map((blog) => <ListCard key={blog.id} blog={blog} />)}
-                </ul>
+        <main>
+            <div className="flex justify-between items-baseline">
+                <h2 className="text-2xl sm:text-4xl tracking-wide font-bold">Latest content</h2>
+                <p className="flex justify-end text-lg">{blogs.length} posts</p>
             </div>
+            {blogs.length === 0 && <NoBlogsFound />}
+            <ul className="divide-y divide-gray-200 dark:divide-gray-700">
+                {blogs.length > 0 && blogs.map((blog) => <ListCard key={blog.id} blog={blog} />)}
+            </ul>
         </main>
     );
 }

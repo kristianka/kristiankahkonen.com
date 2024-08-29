@@ -7,7 +7,7 @@ export default function BlogLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <div className="min-h-screen">
+        <div className="min-h-96">
             <Suspense fallback={<Loading />}>
                 <div className="max-w-6xl mx-auto">{children}</div>
             </Suspense>

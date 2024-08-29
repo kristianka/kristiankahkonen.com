@@ -15,7 +15,7 @@ export default async function Home() {
     }
 
     return (
-        <main className="min-h-screen space-y-10 sm:space-y-20">
+        <main className="space-y-10 sm:space-y-20">
             <Introduction />
             <Skills />
             <div>
