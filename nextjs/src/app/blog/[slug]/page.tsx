@@ -34,32 +34,26 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     const description = blog.description || "No description available.";
     const author = `${user.first_name} ${user.last_name}` || "Unknown author";
 
-    // to do automatically generate og image
-
-    // const objectWithData = {
-    //     title: title,
-    //     description: description,
-    //     author: author
-    // };
-
-    // const token = process.env.OG_IMAGE_TOKEN;
-
-    // const img = await axios.post("http://localhost:3000/api/og", objectWithData, {
-    //     headers: {
-    //         Authorization: `Bearer ${token}`,
-    //         "Content-Type": "application/json"
-    //     }
-    // });
+    const image = blog.imgUrl || "../opengraph-image.jpg";
 
     return {
         title: title,
         description: description,
+        author: author,
         openGraph: {
+            author: author,
             title: title,
             description: description,
             type: "article",
             url: `https://kristiankahkonen.com/blog/${params.slug}`,
-            images: "../opengraph-image.jpg"
+            images: [
+                {
+                    url: image,
+                    width: 960,
+                    height: 540,
+                    alt: blog.imgUrlAlt || "Blog image"
+                }
+            ]
         }
     };
 }
