@@ -1,4 +1,15 @@
 @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
-  
+@tailwind components;
+@tailwind utilities;
+
+/* disable tailwind typography in codeblocks to allow code theme to work */
+.prose pre {
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+}
+
+.prose code {
+    background-color: transparent;
+    padding: 0;
+}
