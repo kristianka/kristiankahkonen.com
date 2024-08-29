@@ -109,3 +109,18 @@ export const getEducations = async () => {
         return [];
     }
 };
+
+interface AboutMe {
+    id: number;
+    description: string;
+    imageUrl: string;
+}
+
+export const getAboutMe = async () => {
+    try {
+        const res = (await client.request(readItem("aboutMe", 1))) as AboutMe;
+        return res;
+    } catch (error) {
+        return null;
+    }
+};
