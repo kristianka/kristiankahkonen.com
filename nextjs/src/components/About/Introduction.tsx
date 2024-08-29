@@ -5,8 +5,17 @@ import rehypeExternalLinks from "rehype-external-links";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 
+// generate a blurDataURL placeholder
+async function generatePlaceholder(imageUrl: string) {
+    const response = await fetch(imageUrl);
+    const arrayBuffer = await response.arrayBuffer();
+    const base64 = Buffer.from(arrayBuffer).toString("base64");
+    return `data:image/jpeg;base64,${base64}`;
+}
+
 export default async function Introduction() {
     const aboutMe = await getAboutMe();
+    const placeholder = await generatePlaceholder(aboutMe?.imageUrl as string);
 
     return (
         <div>
@@ -20,6 +29,8 @@ export default async function Introduction() {
                             alt="Picture of Kristian Kähkönen"
                             style={{ width: "75%", height: "auto" }}
                             src={aboutMe.imageUrl}
+                            blurDataURL={placeholder}
+                            placeholder="blur"
                             priority
                             className="sm:order-last col-span-1 mb-10 sm:mb-auto m-auto rounded-full"
                         />
