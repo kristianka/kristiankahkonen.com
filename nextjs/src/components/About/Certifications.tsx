@@ -61,17 +61,22 @@ export default function Certifications({ certs }: CertificationProps) {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
-                        whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
-                        whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
+                        whileHover={{ scale: 1.02, transition: { duration: 0.1 } }}
+                        whileTap={{ scale: 0.98, transition: { duration: 0.2 } }}
+                        tabIndex={0}
+                        onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                                openModal(certification);
+                            }
+                        }}
                     >
                         <Image
                             onClick={() => openModal(certification)}
-                            key={index}
                             src={certification.url}
                             alt={certification.alt}
                             width={2000}
                             height={1500}
-                            className="h-auto max-w-full rounded-lg"
+                            className="h-auto max-w-full rounded-lg cursor-pointer"
                         />
                     </motion.div>
                 ))}
@@ -132,7 +137,7 @@ export default function Certifications({ certs }: CertificationProps) {
                 <button
                     type="button"
                     onClick={() => setShowMore(!showMore)}
-                    className="flex items-center rounded-full border bg-white dark:bg-black text-black dark:text-white border-gray-300 bg-secondary-50 px-3 py-2 text-center text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-800"
+                    className="flex items-center rounded-full border bg-white dark:bg-black text-black dark:text-white border-gray-300 bg-secondary-50 px-3 py-2 text-center text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-800 z-20"
                 >
                     {showMore ? <FaAngleUp className="mr-1" /> : <FaAngleDown className="mr-1" />}
                     {showMore ? "View less" : "View more"}
