@@ -6,12 +6,24 @@ import Image from "next/image";
 const IMG_PADDING = 18;
 
 interface StickyImageProps {
+    appName: string;
     imgUrlPc: string;
+    imgUrlPcPlaceholder: string;
     imgUrlMedium: string;
+    imgUrlMediumPlaceholder: string;
     imgUrlMobile: string;
+    imgUrlMobilePlaceholder: string;
 }
 
-export default function StickyImage({ imgUrlPc, imgUrlMedium, imgUrlMobile }: StickyImageProps) {
+export default function StickyImage({
+    appName,
+    imgUrlPc,
+    imgUrlPcPlaceholder,
+    imgUrlMedium,
+    imgUrlMediumPlaceholder,
+    imgUrlMobile,
+    imgUrlMobilePlaceholder
+}: StickyImageProps) {
     const targetRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: targetRef,
@@ -34,31 +46,37 @@ export default function StickyImage({ imgUrlPc, imgUrlMedium, imgUrlMobile }: St
             {/* image for pc, full width */}
             <Image
                 src={imgUrlPc}
-                alt="Background Image"
+                alt={`Screenshot of ${appName}`}
                 fill={true}
                 style={{ objectFit: "cover" }}
                 className="hidden lg:block absolute inset-0 z-[-1]"
                 priority={true}
+                placeholder="blur"
+                blurDataURL={imgUrlPcPlaceholder}
             />
 
             {/* image for tablet or windowed size on pc, full width */}
             <Image
                 src={imgUrlMedium}
-                alt="Background Image"
+                alt={`Screenshot of ${appName}`}
                 fill={true}
                 style={{ objectFit: "cover" }}
                 className="hidden sm:block lg:hidden absolute inset-0 z-[-1]"
                 priority={true}
+                placeholder="blur"
+                blurDataURL={imgUrlMediumPlaceholder}
             />
 
             {/* image for mobile, full width */}
             <Image
                 src={imgUrlMobile}
-                alt="Background Image"
+                alt={`Screenshot of ${appName}`}
                 fill={true}
                 style={{ objectFit: "cover" }}
                 className="block sm:hidden absolute inset-0 z-[-1]"
                 priority={true}
+                placeholder="blur"
+                blurDataURL={imgUrlMobilePlaceholder}
             />
 
             <motion.div

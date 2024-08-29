@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import StickyImage from "./StickyImage";
 import OverlayCopy from "./OverlayCopy";
+import { generatePlaceholder } from "@/misc";
 
 interface TextParallaxContentProps {
     appName: string;
@@ -13,7 +14,7 @@ interface TextParallaxContentProps {
 
 const IMG_PADDING = 2;
 
-export default function TextParallaxContent({
+export default async function TextParallaxContent({
     appName,
     catchline,
     imgUrlPc,
@@ -21,6 +22,10 @@ export default function TextParallaxContent({
     imgUrlMobile,
     children
 }: TextParallaxContentProps) {
+    const pcPlaceholder = await generatePlaceholder(imgUrlPc);
+    const mobilePlaceholder = await generatePlaceholder(imgUrlMobile);
+    const mediumPlaceholder = await generatePlaceholder(imgUrlMedium);
+
     return (
         <div
             style={{
@@ -30,9 +35,13 @@ export default function TextParallaxContent({
         >
             <div className="relative h-[150vh]">
                 <StickyImage
+                    appName={appName}
                     imgUrlPc={imgUrlPc}
+                    imgUrlPcPlaceholder={pcPlaceholder}
                     imgUrlMedium={imgUrlMedium}
+                    imgUrlMediumPlaceholder={mediumPlaceholder}
                     imgUrlMobile={imgUrlMobile}
+                    imgUrlMobilePlaceholder={mobilePlaceholder}
                 />
                 <OverlayCopy catchline={catchline} appName={appName} />
             </div>
