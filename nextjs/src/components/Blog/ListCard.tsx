@@ -14,7 +14,7 @@ export const ListCard = ({ blog }: { blog: Blog }) => {
                     <div className="flex flex-col">
                         <div>
                             <h2 className="text-xl sm:text-2xl font-bold">{blog.title}</h2>
-                            <h3 className="prose dark:prose-invert text-md">{blog.description}</h3>
+                            <h3 className="prose dark:prose-invert mt-3">{blog.description}</h3>
                         </div>
                         <div className="">
                             <div className="flex justify-between items-center">
