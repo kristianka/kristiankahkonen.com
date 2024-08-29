@@ -7,6 +7,7 @@ import remarkGfm from "remark-gfm";
 
 // generate a blurDataURL placeholder
 async function generatePlaceholder(imageUrl: string) {
+    if (!imageUrl) return;
     const response = await fetch(imageUrl);
     const arrayBuffer = await response.arrayBuffer();
     const base64 = Buffer.from(arrayBuffer).toString("base64");
