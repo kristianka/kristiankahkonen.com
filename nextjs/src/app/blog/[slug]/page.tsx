@@ -8,6 +8,7 @@ import TableOfContents from "@/components/Blog/TableOfContents";
 import { fetchBlogById, fetchBlogs, getBlogAuthor } from "@/services/BlogRequests";
 import { Toc } from "@/types";
 import { generateSlug } from "@/components/GenerateSlug";
+import FadeIn from "@/components/FadeIn";
 
 export async function generateStaticParams() {
     const blogs = await fetchBlogs();
@@ -82,14 +83,16 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
     return (
         <main className="m-5 max-w-7xl mx-auto min-h-screen">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-                <div className="md:col-span-3 top-96">
-                    <BlogPage blog={blog} user={user} toc={toc} />
+            <FadeIn>
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+                    <div className="md:col-span-3 top-96">
+                        <BlogPage blog={blog} user={user} toc={toc} />
+                    </div>
+                    <div className="hidden md:block col-span-1 sticky mt-56 top-36 h-max">
+                        <TableOfContents toc={toc} />
+                    </div>
                 </div>
-                <div className="hidden md:block col-span-1 sticky mt-56 top-36 h-max">
-                    <TableOfContents toc={toc} />
-                </div>
-            </div>
+            </FadeIn>
         </main>
     );
 }
