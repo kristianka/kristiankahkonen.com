@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import StickyImage from "./StickyImage";
 import OverlayCopy from "./OverlayCopy";
 import { generatePlaceholder } from "@/misc";
+import FadeIn from "../FadeIn";
 
 interface TextParallaxContentProps {
     appName: string;
@@ -27,25 +28,27 @@ export default async function TextParallaxContent({
     const mediumPlaceholder = await generatePlaceholder(imgUrlMedium);
 
     return (
-        <div
-            style={{
-                paddingLeft: IMG_PADDING,
-                paddingRight: IMG_PADDING
-            }}
-        >
-            <div className="relative h-[150vh]">
-                <StickyImage
-                    appName={appName}
-                    imgUrlPc={imgUrlPc}
-                    imgUrlPcPlaceholder={pcPlaceholder}
-                    imgUrlMedium={imgUrlMedium}
-                    imgUrlMediumPlaceholder={mediumPlaceholder}
-                    imgUrlMobile={imgUrlMobile}
-                    imgUrlMobilePlaceholder={mobilePlaceholder}
-                />
-                <OverlayCopy catchline={catchline} appName={appName} />
+        <FadeIn>
+            <div
+                style={{
+                    paddingLeft: IMG_PADDING,
+                    paddingRight: IMG_PADDING
+                }}
+            >
+                <div className="relative h-[150vh]">
+                    <StickyImage
+                        appName={appName}
+                        imgUrlPc={imgUrlPc}
+                        imgUrlPcPlaceholder={pcPlaceholder}
+                        imgUrlMedium={imgUrlMedium}
+                        imgUrlMediumPlaceholder={mediumPlaceholder}
+                        imgUrlMobile={imgUrlMobile}
+                        imgUrlMobilePlaceholder={mobilePlaceholder}
+                    />
+                    <OverlayCopy catchline={catchline} appName={appName} />
+                </div>
+                {children}
             </div>
-            {children}
-        </div>
+        </FadeIn>
     );
 }
