@@ -1,8 +1,9 @@
+import FadeIn from "../FadeIn";
 import Link from "next/link";
 
 export default function ProjectsButton() {
     return (
-        <div>
+        <FadeIn>
             <h2 className="text-2xl sm:text-4xl tracking-wide font-bold m-auto mb-5">Projects</h2>
             <p className="">
                 Want to see these technologies and skills in action? Click the button below!
@@ -15,6 +16,6 @@ export default function ProjectsButton() {
                     Projects
                 </Link>
             </div>
-        </div>
+        </FadeIn>
     );
 }

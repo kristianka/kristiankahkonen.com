@@ -1,10 +1,11 @@
 import { getEducations } from "@/services/BlogRequests";
 import EducationCard from "./EducationCard";
+import FadeIn from "../FadeIn";
 
 export default async function Education() {
     const educations = await getEducations();
     return (
-        <div>
+        <FadeIn>
             <h2 className="text-2xl sm:text-4xl tracking-wide font-bold m-auto mb-10">
                 Education and Certifications
             </h2>
@@ -22,6 +23,6 @@ export default async function Education() {
                         />
                     ))}
             </div>
-        </div>
+        </FadeIn>
     );
 }

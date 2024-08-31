@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { FaAngleUp, FaAngleDown } from "react-icons/fa6";
 import FullscreenPopup from "./FullscreenPopup";
+import FadeIn from "../FadeIn";
 
 interface CertificationProps {
     certs: Certification[];
@@ -49,7 +50,7 @@ export default function Certifications({ certs, placeholders }: CertificationPro
     }, []);
 
     return (
-        <div>
+        <FadeIn>
             <p className="text-sm mx-auto prose dark:prose-invert text-center my-5">
                 Tip: Click on a certification to fullscreen it
             </p>
@@ -113,6 +114,6 @@ export default function Certifications({ certs, placeholders }: CertificationPro
                 </a>
                 (account needed)
             </span>
-        </div>
+        </FadeIn>
     );
 }
