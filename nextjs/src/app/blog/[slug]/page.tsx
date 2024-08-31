@@ -9,6 +9,7 @@ import { fetchBlogById, fetchBlogs, getBlogAuthor } from "@/services/BlogRequest
 import { Toc } from "@/types";
 import { generateSlug } from "@/components/GenerateSlug";
 import FadeIn from "@/components/FadeIn";
+import LikeBlog from "@/components/Blog/LikeBlog";
 
 export async function generateStaticParams() {
     const blogs = await fetchBlogs();
@@ -90,6 +91,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                     </div>
                     <div className="hidden md:block col-span-1 sticky mt-56 top-36 h-max">
                         <TableOfContents toc={toc} />
+                        <LikeBlog blog={blog} />
                     </div>
                 </div>
             </FadeIn>
