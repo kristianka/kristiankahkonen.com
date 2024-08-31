@@ -13,6 +13,8 @@ export const TitleAnimation = () => {
         "Full Stack Developer"
     ];
     const [currentTitle, setCurrentTitle] = useState(titles[0]);
+    // prevent animation on first render, because the whole page has a fade in animation
+    const [hasAnimatedOnce, setHasAnimatedOnce] = useState(false);
 
     // change title every 5 seconds
     useEffect(() => {
@@ -20,6 +22,7 @@ export const TitleAnimation = () => {
         const intervalId = setInterval(() => {
             currentTitleIndex = (currentTitleIndex + 1) % titles.length;
             setCurrentTitle(titles[currentTitleIndex]);
+            setHasAnimatedOnce(true);
         }, 3000);
         return () => clearInterval(intervalId);
     }, []);
@@ -50,8 +53,8 @@ export const TitleAnimation = () => {
                     <motion.h2
                         data-testid="jobTitleAnimation"
                         key={currentTitle}
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        initial={hasAnimatedOnce ? { opacity: 0, y: -20 } : {}}
+                        animate={hasAnimatedOnce ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.5 }}
                         className="text-3xl md:text-4xl font-extrabold tracking-wide"
                     >
