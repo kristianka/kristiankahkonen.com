@@ -12,15 +12,18 @@ export default async function Education() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
                 {educations &&
                     educations.map((education) => (
-                        <EducationCard
-                            key={education.id}
-                            title={education.title}
-                            school={education.school}
-                            date={education.date}
-                            location={education.location}
-                            description={education.description}
-                            gpa={education.gpa}
-                        />
+                        <div key={education.id}>
+                            <EducationCard
+                                key={education.id}
+                                title={education.title}
+                                school={education.school}
+                                date={education.date}
+                                location={education.location}
+                                description={education.description}
+                                gpa={education.gpa}
+                            />
+                            <hr className="block sm:hidden border-gray-200 dark:border-gray-600" />
+                        </div>
                     ))}
             </div>
         </FadeIn>

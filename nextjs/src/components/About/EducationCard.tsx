@@ -28,7 +28,7 @@ export default function EducationCard({
             <p className="prose dark:prose-invert">{date}</p>
             <p className="prose dark:prose-invert font-bold">{gpa}</p>
             <Markdown
-                className="mt-1 prose dark:prose-invert text-black dark:text-white "
+                className="mt-8 prose dark:prose-invert text-black dark:text-white "
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[[rehypeRaw], [rehypeExternalLinks, { target: "_blank" }]]}
             >
