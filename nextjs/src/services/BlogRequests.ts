@@ -1,14 +1,9 @@
-import { createDirectus, rest, readItem, authentication, readUser, readItems } from "@directus/sdk";
-import { Blog, Certification, Education, Project, User } from "@/types";
+import { readItem, readUser, readItems, createItem } from "@directus/sdk";
+import { Blog, Project, User } from "@/types";
 
-// create a Directus client to connect to the Directus API
-const client = createDirectus(process.env.DIRECTUS_URL as string)
-    .with(rest({ onRequest: (options) => ({ ...options, cache: "no-cache" }) }))
-    .with(authentication());
+import client from "./DirectusClient";
 
-client.setToken(process.env.DIRECTUS_KEY as string);
-
-export const fetchBlogs = async () => {
+export const getBlogs = async () => {
     try {
         const res = (await client.request(readItems("blog"))) as Blog[];
         // sort by newest first
@@ -23,7 +18,7 @@ export const fetchBlogs = async () => {
     }
 };
 
-export const fetchBlogById = async (id: string) => {
+export const getBlogById = async (id: string) => {
     try {
         if (!id) return null;
         const res = (await client.request(readItem("blog", id))) as Blog;
@@ -91,36 +86,24 @@ export const getProjects = async () => {
     }
 };
 
-export const getCertifications = async () => {
+export const likeBlog = async (id: string) => {
     try {
-        const res = (await client.request(readItems("certification"))) as Certification[];
-        const certs = res.sort((a, b) => a.order - b.order);
-        return certs;
-    } catch (error) {
-        return [];
-    }
-};
-
-export const getEducations = async () => {
-    try {
-        const res = (await client.request(readItems("education"))) as Education[];
+        const res = await client.request(createItem("blogLikes", { blog_id: id }));
+        console.log(res);
         return res;
     } catch (error) {
-        return [];
-    }
-};
-
-interface AboutMe {
-    id: number;
-    description: string;
-    imageUrl: string;
-}
-
-export const getAboutMe = async () => {
-    try {
-        const res = (await client.request(readItem("aboutMe", 1))) as AboutMe;
-        return res;
-    } catch (error) {
+        console.error("Error fetching blog likes:", error);
         return null;
+    }
+};
+
+export const getBlogLikes = async (id: string) => {
+    try {
+        const res = await client.request(readItems("blogLikes", { filter: { blog_id: id } }));
+        console.log("Response from Directus:", res);
+        return res;
+    } catch (error) {
+        console.error("Error fetching blog likes:", error);
+        return [];
     }
 };

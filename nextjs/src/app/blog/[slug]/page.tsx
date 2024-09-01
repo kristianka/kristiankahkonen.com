@@ -5,14 +5,20 @@ import { visit } from "unist-util-visit";
 
 import { BlogPage } from "@/components/Blog/BlogPage";
 import TableOfContents from "@/components/Blog/TableOfContents";
-import { fetchBlogById, fetchBlogs, getBlogAuthor } from "@/services/BlogRequests";
+import {
+    getBlogAuthor,
+    getBlogById,
+    getBlogLikes,
+    getBlogs,
+    likeBlog
+} from "@/services/BlogRequests";
 import { Toc } from "@/types";
 import { generateSlug } from "@/components/GenerateSlug";
 import FadeIn from "@/components/FadeIn";
 import LikeBlog from "@/components/Blog/LikeBlog";
 
 export async function generateStaticParams() {
-    const blogs = await fetchBlogs();
+    const blogs = await getBlogs();
 
     return blogs.map((blog) => ({
         params: {
@@ -23,7 +29,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
     const { slug } = params;
-    const blog = await fetchBlogById(slug);
+    const blog = await getBlogById(slug);
     const user = await getBlogAuthor(blog?.user_created);
 
     if (!blog || !user) {
@@ -61,8 +67,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {
-    const blog = await fetchBlogById(params.slug);
+    const blog = await getBlogById(params.slug);
     const user = await getBlogAuthor(blog?.user_created);
+    const likes = await getBlogLikes(params.slug);
 
     if (!blog) {
         notFound();
@@ -82,6 +89,12 @@ export default async function Page({ params }: { params: { slug: string } }) {
         });
     });
 
+    async function updateLikes() {
+        "use server";
+        const res = await likeBlog(params.slug);
+        console.log(res);
+    }
+
     return (
         <main className="m-5 max-w-7xl mx-auto min-h-screen">
             <FadeIn>
@@ -91,7 +104,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
                     </div>
                     <div className="hidden md:block col-span-1 sticky mt-56 top-36 h-max">
                         <TableOfContents toc={toc} />
-                        <LikeBlog blog={blog} />
+                        <LikeBlog blog={blog} updateLikes={updateLikes} />
+                        LIKES :D
+                        {likes.length}
                     </div>
                 </div>
             </FadeIn>

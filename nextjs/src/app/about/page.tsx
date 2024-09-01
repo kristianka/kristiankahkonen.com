@@ -1,10 +1,10 @@
 import { Skills } from "@/components/About/Skills";
 import Certifications from "@/components/About/Certifications";
-import { getCertifications } from "@/services/BlogRequests";
 import Introduction from "@/components/About/Introduction";
 import Education from "@/components/About/Education";
 import ProjectsButton from "@/components/About/ProjectsButton";
 import { generatePlaceholder } from "@/misc";
+import { getCertifications } from "@/services/AboutRequests";
 
 export default async function Home() {
     const certs = await getCertifications();
