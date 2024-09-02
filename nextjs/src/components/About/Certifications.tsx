@@ -92,7 +92,7 @@ export default function Certifications({ certs, placeholders }: CertificationPro
                     />
                 )}
             </div>
-            <div className="mt-1 flex items-center before:h-px before:flex-1 before:bg-gray-300 before:content-[''] after:h-px after:flex-1 after:bg-gray-300  after:content-['']">
+            <div className="mt-3 flex items-center before:h-px before:flex-1 before:bg-gray-300 before:content-[''] after:h-px after:flex-1 after:bg-gray-300  after:content-['']">
                 <button
                     type="button"
                     onClick={() => setShowMore(!showMore)}

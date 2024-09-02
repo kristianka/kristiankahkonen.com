@@ -6,7 +6,7 @@ export default function ProjectsButton() {
         <FadeIn>
             <h2 className="text-2xl sm:text-4xl tracking-wide font-bold m-auto mb-5">Projects</h2>
             <p className="">
-                Want to see these technologies and skills in action? Click the button below!
+                Click the button below to see these technologies and skills in action!
             </p>
             <div className="mt-5">
                 <Link

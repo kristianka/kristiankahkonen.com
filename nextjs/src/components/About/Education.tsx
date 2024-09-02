@@ -9,7 +9,7 @@ export default async function Education() {
             <h2 className="text-2xl sm:text-4xl tracking-wide font-bold m-auto mb-10">
                 Education and Certifications
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-y-20 gap-10 md:gap-20 mb-20">
                 {educations &&
                     educations.map((education) => (
                         <div key={education.id}>
@@ -22,7 +22,6 @@ export default async function Education() {
                                 description={education.description}
                                 gpa={education.gpa}
                             />
-                            <hr className="block sm:hidden border-gray-200 dark:border-gray-600" />
                         </div>
                     ))}
             </div>
