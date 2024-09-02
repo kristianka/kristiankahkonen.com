@@ -1,14 +1,9 @@
-import { createDirectus, rest, readItem, authentication, readUser, readItems } from "@directus/sdk";
-import { Blog, Certification, Education, Project, User } from "@/types";
+import { readItem, readUser, readItems } from "@directus/sdk";
+import { Blog, User } from "@/types";
+import client from "./DirectusClient";
 
-// create a Directus client to connect to the Directus API
-const client = createDirectus(process.env.DIRECTUS_URL as string)
-    .with(rest({ onRequest: (options) => ({ ...options, cache: "no-cache" }) }))
-    .with(authentication());
-
-client.setToken(process.env.DIRECTUS_KEY as string);
-
-export const fetchBlogs = async () => {
+// Get all blogs for the blogs page
+export const getBlogs = async () => {
     try {
         const res = (await client.request(readItems("blog"))) as Blog[];
         // sort by newest first
@@ -23,7 +18,8 @@ export const fetchBlogs = async () => {
     }
 };
 
-export const fetchBlogById = async (id: string) => {
+// Get a single blog by id
+export const getBlogById = async (id: string) => {
     try {
         if (!id) return null;
         const res = (await client.request(readItem("blog", id))) as Blog;
@@ -34,6 +30,7 @@ export const fetchBlogById = async (id: string) => {
     }
 };
 
+// Get the author of a blog by id
 export const getBlogAuthor = async (id?: string) => {
     try {
         if (!id) return null;
@@ -44,6 +41,7 @@ export const getBlogAuthor = async (id?: string) => {
     }
 };
 
+// Get the featured blogs for the home page and footer
 export const getFeaturedBlogs = async () => {
     try {
         const res = (await client.request(readItems("blog"))) as Blog[];
@@ -59,6 +57,7 @@ export const getFeaturedBlogs = async () => {
     }
 };
 
+// Get the latest blog for the home page
 export const getLatestBlog = async () => {
     try {
         const res = (await client.request(readItems("blog"))) as Blog[];
@@ -70,57 +69,5 @@ export const getLatestBlog = async () => {
         return latestBlog;
     } catch (error) {
         return [];
-    }
-};
-
-// Get all projects for the projects page
-export const getProjects = async () => {
-    try {
-        const res = (await client.request(
-            readItems("project", {
-                fields: ["*", { image: ["*"], content: ["*"] }]
-            })
-        )) as Project[];
-        // show only published projects and sort by order field
-        const sortedProjects = res
-            .filter((project) => project.status === "published")
-            .sort((a, b) => a.order - b.order);
-        return sortedProjects;
-    } catch (error) {
-        return [];
-    }
-};
-
-export const getCertifications = async () => {
-    try {
-        const res = (await client.request(readItems("certification"))) as Certification[];
-        const certs = res.sort((a, b) => a.order - b.order);
-        return certs;
-    } catch (error) {
-        return [];
-    }
-};
-
-export const getEducations = async () => {
-    try {
-        const res = (await client.request(readItems("education"))) as Education[];
-        return res;
-    } catch (error) {
-        return [];
-    }
-};
-
-interface AboutMe {
-    id: number;
-    description: string;
-    imageUrl: string;
-}
-
-export const getAboutMe = async () => {
-    try {
-        const res = (await client.request(readItem("aboutMe", 1))) as AboutMe;
-        return res;
-    } catch (error) {
-        return null;
     }
 };

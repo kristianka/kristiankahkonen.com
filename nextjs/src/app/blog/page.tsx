@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Blog } from "@/types";
-import { fetchBlogs } from "@/services/BlogRequests";
+import { getBlogs } from "@/services/BlogRequests";
 import { ListCard } from "@/components/Blog/ListCard";
 import { NoBlogsFound } from "@/components/Blog/NoBlogsFound";
 import FadeIn from "@/components/FadeIn";
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-    const blogs: Blog[] = await fetchBlogs();
+    const blogs: Blog[] = await getBlogs();
 
     return (
         <main>

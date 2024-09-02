@@ -1,12 +1,12 @@
-import { getAboutMe } from "@/services/BlogRequests";
-import { generatePlaceholder } from "@/misc";
-import FadeIn from "../FadeIn";
-
 import Image from "next/image";
 import Markdown from "react-markdown";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
+
+import { getAboutMe } from "@/services/AboutRequests";
+import { generatePlaceholder } from "@/misc";
+import FadeIn from "../FadeIn";
 
 export default async function Introduction() {
     const aboutMe = await getAboutMe();

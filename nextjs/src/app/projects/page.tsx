@@ -1,6 +1,6 @@
+import { getProjects } from "@/services/ProjectRequests";
 import TextParallaxContent from "@/components/Projects/TextParallaxContext";
 import Content from "@/components/Projects/Content";
-import { getProjects } from "@/services/BlogRequests";
 import MoreProjects from "@/components/Projects/MoreProjects";
 import Disclaimer from "@/components/Projects/Disclaimer";
 

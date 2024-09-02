@@ -1,9 +1,9 @@
-import { fetchBlogs, getFeaturedBlogs } from "@/services/BlogRequests";
+import { getBlogs, getFeaturedBlogs } from "@/services/BlogRequests";
 import Link from "next/link";
 
 export default async function FeaturedBlogs() {
     // show the latest 3 blogs
-    const blogs = (await fetchBlogs()).slice(0, 3);
+    const blogs = (await getBlogs()).slice(0, 3);
     const featuredBlogs = await getFeaturedBlogs();
 
     return (

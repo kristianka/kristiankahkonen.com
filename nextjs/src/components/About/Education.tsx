@@ -1,4 +1,4 @@
-import { getEducations } from "@/services/BlogRequests";
+import { getEducations } from "@/services/AboutRequests";
 import EducationCard from "./EducationCard";
 import FadeIn from "../FadeIn";
 

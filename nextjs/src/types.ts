@@ -92,3 +92,9 @@ export interface Education {
     description: string;
     gpa: string;
 }
+
+export interface AboutMe {
+    id: number;
+    description: string;
+    imageUrl: string;
+}

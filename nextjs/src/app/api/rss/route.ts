@@ -2,8 +2,8 @@ export const dynamic = "force-dynamic";
 import { Feed } from "feed";
 import { NextResponse } from "next/server";
 
-import { fetchBlogs } from "@/services/BlogRequests";
 import { Blog } from "@/types";
+import { getBlogs } from "@/services/BlogRequests";
 
 const generateRSSFeed = (blogs: Blog[]) => {
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL as string;
@@ -45,7 +45,7 @@ const generateRSSFeed = (blogs: Blog[]) => {
 };
 
 export async function GET() {
-    const blogs = await fetchBlogs();
+    const blogs = await getBlogs();
     const feed = generateRSSFeed(blogs);
     const rss = feed.rss2();
 
