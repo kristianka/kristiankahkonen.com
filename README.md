@@ -4,9 +4,6 @@ Blog and portfolio website. Main technologies NextJS, Directus.
 
 Live at https://kristiankahkonen.com/!
 
-> [!IMPORTANT]
-> Work in progress. Major features finished as of writing on August 2024. ETA September 2024.
-
 
 <h2>Technologies used 🔧</h2>
 
