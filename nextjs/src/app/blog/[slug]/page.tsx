@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { unified } from "unified";
 import { visit } from "unist-util-visit";
+import { Node } from "unist";
 import remarkParse from "remark-parse";
 
 import { getBlogAuthor, getBlogById, getBlogs } from "@/services/BlogRequests";
@@ -9,6 +10,15 @@ import { Toc } from "@/types";
 import { generateSlug } from "@/components/GenerateSlug";
 import TableOfContents from "@/components/Blog/TableOfContents";
 import FadeIn from "@/components/FadeIn";
+
+interface HeadingNode extends Node {
+    type: "heading";
+    depth: 1 | 2 | 3 | 4 | 5 | 6;
+    children: Array<{
+        type: string;
+        value: string;
+    }>;
+}
 
 export async function generateStaticParams() {
     const blogs = await getBlogs();
@@ -71,14 +81,19 @@ export default async function Page({ params }: { params: { slug: string } }) {
     const toc: Toc[] = [];
     const tree = unified().use(remarkParse).parse(blog.content);
 
-    visit(tree, "heading", (node) => {
-        const text = node.children.map((child: any) => child.value).join("");
-        const id = generateSlug(text);
-        toc.push({
-            id,
-            text,
-            level: node.depth
-        });
+    visit(tree, "heading", (node: Node) => {
+        if (node.type === "heading") {
+            const headingNode = node as HeadingNode;
+
+            const text = headingNode.children.map((child) => child.value).join("");
+            const id = generateSlug(text);
+
+            toc.push({
+                id,
+                text,
+                level: headingNode.depth
+            });
+        }
     });
 
     return (
