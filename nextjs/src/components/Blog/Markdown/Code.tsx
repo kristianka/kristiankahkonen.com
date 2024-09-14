@@ -21,7 +21,7 @@ SyntaxHighlighter.registerLanguage("json", json);
 
 const syntaxTheme = vscDarkPlus;
 
-export const Code = ({ node, inline, className, ...props }: CodeProps) => {
+export const Code = ({ className, ...props }: CodeProps) => {
     const hasLang = /language-(\w+)/.exec(className || "");
     const text = className;
     const regex = /\{([^{}]*)\}/;

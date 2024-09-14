@@ -1,23 +1,28 @@
-// to do: strongly type many of these
+import { ReactNode } from "react";
 
 export interface CodeProps {
-    node: any;
-    inline: boolean;
     className: string;
-    props: any;
-    children: any;
+    node: ReactNode;
+    children: string;
 }
 
 export interface HeaderProps {
-    children: React.ReactNode;
+    children: ReactNode;
 }
 
 export interface HeaderProps {
-    children: React.ReactNode;
+    children: ReactNode;
 }
 
-// to do: strongly type node
 export interface ParagraphProps {
-    children: boolean;
-    node: any;
+    children?: ReactNode;
+    node?: {
+        children: {
+            tagName: string;
+            properties: {
+                alt: string;
+                src: string;
+            };
+        }[];
+    };
 }

@@ -10,8 +10,8 @@ export const Header = (props: HeaderProps, level: number) => {
             typeof element === "string"
                 ? element
                 : element?.type !== undefined && typeof element.props.children === "string"
-                ? element.props.children
-                : []
+                  ? element.props.children
+                  : []
         )
         .join("");
 

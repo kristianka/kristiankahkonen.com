@@ -1,9 +1,8 @@
 import Image from "next/image";
+import { ParagraphProps } from "./types";
 
-export const Paragraph = (paragraph: { children?: boolean; node?: any }) => {
-    const { node } = paragraph;
-
-    if (node.children[0].tagName === "img") {
+export const Paragraph = ({ children, node }: ParagraphProps): JSX.Element => {
+    if (node?.children[0].tagName === "img") {
         const image = node.children[0];
         const metastring = image.properties.alt;
         const alt = metastring?.replace(/ *\{[^)]*\} */g, "");
@@ -11,7 +10,7 @@ export const Paragraph = (paragraph: { children?: boolean; node?: any }) => {
         const metaHeight = metastring.match(/x([^}]+)}/);
         const width = metaWidth ? metaWidth[1] : "768";
         const height = metaHeight ? metaHeight[1] : "432";
-        const isPriority = metastring?.toLowerCase().match("{priority}");
+        const isPriority = metastring?.toLowerCase().match("{priority}") !== null;
         const hasCaption = metastring?.toLowerCase().includes("{caption:");
         const caption = metastring?.match(/{caption: (.*?)}/)?.pop();
 
@@ -19,8 +18,8 @@ export const Paragraph = (paragraph: { children?: boolean; node?: any }) => {
             <div className="postImgWrapper">
                 <Image
                     src={image.properties.src}
-                    width={width}
-                    height={height}
+                    width={Number(width)}
+                    height={Number(height)}
                     className="postImg rounded-md w-full"
                     alt={alt}
                     priority={isPriority}
@@ -33,5 +32,5 @@ export const Paragraph = (paragraph: { children?: boolean; node?: any }) => {
             </div>
         );
     }
-    return <p>{paragraph.children}</p>;
+    return <p>{children}</p>;
 };
