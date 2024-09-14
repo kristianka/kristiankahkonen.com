@@ -22,12 +22,12 @@ export const ShareButton = ({ title, text, url }: ShareButtonProps) => {
         lifetime: 50
     });
 
-    const shareTo = () => {
+    const shareTo = async () => {
         if (!isAnimating) {
             reward();
         }
         setShareHeart(true);
-        share({
+        await share({
             title,
             text,
             url

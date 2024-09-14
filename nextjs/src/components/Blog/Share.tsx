@@ -4,10 +4,10 @@ interface ShareProps {
     url: string;
 }
 
-export const share = ({ title, text, url }: ShareProps) => {
+export const share = async ({ title, text, url }: ShareProps) => {
     try {
         if (navigator.share) {
-            navigator.share({
+            await navigator.share({
                 title: title + " - Kristian Kähkönen",
                 text: text,
                 url: url
@@ -16,7 +16,7 @@ export const share = ({ title, text, url }: ShareProps) => {
         }
         // fallback to clipboard
         if (navigator.clipboard) {
-            navigator.clipboard.writeText(url);
+            await navigator.clipboard.writeText(url);
             return;
         }
     } catch (error) {

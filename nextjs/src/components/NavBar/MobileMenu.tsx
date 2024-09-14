@@ -14,11 +14,6 @@ export default function MobileMenu({ isOpen, setIsOpen }: MobileMenuProps) {
         closed: { opacity: 0, y: 1 }
     };
 
-    const linkVariants = {
-        closed: { opacity: 0, y: -5 },
-        open: { opacity: 1, y: 0 }
-    };
-
     // Lock and unlock body scroll when menu opens or closes
     useEffect(() => {
         if (isOpen) {
@@ -52,7 +47,7 @@ export default function MobileMenu({ isOpen, setIsOpen }: MobileMenuProps) {
                             { href: "/about", label: "About", icon: User },
                             { href: "/contact", label: "Contact", icon: Mail },
                             { href: "/rss.xml", label: "RSS", icon: Rss }
-                        ].map((item, index) => (
+                        ].map((item, _index) => (
                             <motion.li
                                 key={item.href}
                                 // variants={linkVariants}

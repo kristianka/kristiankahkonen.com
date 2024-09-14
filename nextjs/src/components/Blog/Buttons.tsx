@@ -24,12 +24,12 @@ export default function Buttons({ title, text, url }: ButtonsProps) {
         lifetime: 50
     });
 
-    const shareTo = () => {
+    const shareTo = async () => {
         if (!isAnimating) {
             reward();
         }
         setShareHeart(true);
-        share({
+        await share({
             title,
             text,
             url

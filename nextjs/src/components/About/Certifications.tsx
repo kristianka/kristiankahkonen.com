@@ -108,6 +108,7 @@ export default function Certifications({ certs, placeholders }: CertificationPro
                     className="ml-1 text-blue-500 flex"
                     target="_blank"
                     href="https://www.linkedin.com/in/kristian-kahkonen/details/certifications/"
+                    rel="noreferrer"
                 >
                     LinkedIn
                     <ArrowUpRight size={24} />
