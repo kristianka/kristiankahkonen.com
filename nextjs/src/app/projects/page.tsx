@@ -10,7 +10,7 @@ export default async function Home() {
     return (
         <div className="">
             {projects.length === 0 && (
-                <h1 className="mx-auto text-2xl text-center">No projects found 😞</h1>
+                <h1 className="mx-auto text-center text-2xl">No projects found 😞</h1>
             )}
 
             {projects &&

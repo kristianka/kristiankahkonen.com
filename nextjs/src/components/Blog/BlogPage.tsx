@@ -31,18 +31,18 @@ export const BlogPage = async ({
     return (
         <div key={blog.id}>
             <div>
-                <h2 className="text-2xl sm:text-4xl mb-5 font-bold">{blog.title}</h2>
-                <h3 className="sm:text-xl mb-3 prose dark:prose-invert italic ">
+                <h2 className="mb-5 text-2xl font-bold sm:text-4xl">{blog.title}</h2>
+                <h3 className="prose mb-3 italic dark:prose-invert sm:text-xl">
                     {blog.description}
                 </h3>
                 <div>
                     <div className="flex items-baseline">
                         {blog && user && (
-                            <h4 className="sm:text-lg prose dark:prose-invert">
+                            <h4 className="prose dark:prose-invert sm:text-lg">
                                 Author: {user.first_name} {user.last_name}
                             </h4>
                         )}
-                        <div className="hidden ml-auto sm:inline">
+                        <div className="ml-auto hidden sm:inline">
                             <ShareButton title={blog.title} text={blog.description} url={blogUrl} />
                         </div>
                     </div>
@@ -60,7 +60,7 @@ export const BlogPage = async ({
                             alt={blog.imgUrlAlt}
                             width={960}
                             height={540}
-                            className="my-10 rounded-lg w-full"
+                            className="my-10 w-full rounded-lg"
                             priority={true}
                             placeholder="blur"
                             blurDataURL={placeholder}
@@ -77,7 +77,7 @@ export const BlogPage = async ({
                 </div>
                 {/* Don't make the text gray on tailwind typography prose. It's hard to read. */}
                 <Markdown
-                    className="max-w-full w-full my-10 prose dark:prose-invert text-black dark:text-white"
+                    className="prose my-10 w-full max-w-full text-black dark:prose-invert dark:text-white"
                     remarkPlugins={[remarkGfm]}
                     rehypePlugins={[
                         [rehypeRaw],

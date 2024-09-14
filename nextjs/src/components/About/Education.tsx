@@ -6,10 +6,10 @@ export default async function Education() {
     const educations = await getEducations();
     return (
         <FadeIn>
-            <h2 className="text-2xl sm:text-4xl tracking-wide font-bold m-auto mb-10">
+            <h2 className="m-auto mb-10 text-2xl font-bold tracking-wide sm:text-4xl">
                 Education and Certifications
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-y-20 gap-10 md:gap-20 mb-20">
+            <div className="mb-20 grid grid-cols-1 gap-10 gap-y-20 md:grid-cols-2 md:gap-20">
                 {educations &&
                     educations.map((education) => (
                         <div key={education.id}>

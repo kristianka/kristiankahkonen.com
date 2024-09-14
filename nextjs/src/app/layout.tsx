@@ -58,11 +58,11 @@ export default function RootLayout({
                     <Suspense fallback={<Loading />}>
                         <div className="min-h-screen">
                             <div className="px-5">
-                                <div className="max-w-6xl mx-auto">
+                                <div className="mx-auto max-w-6xl">
                                     <NavBar />
                                 </div>
                                 {children}
-                                <div className="max-w-6xl mx-auto">
+                                <div className="mx-auto max-w-6xl">
                                     <Footer />
                                 </div>
                             </div>

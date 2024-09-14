@@ -4,8 +4,8 @@ import Link from "next/link";
 export default function Newsletter() {
     return (
         <div className="space-y-3">
-            <hr className="block sm:hidden py-2 border-gray-200 dark:border-gray-600" />
-            <p className="text-base font-medium text-primary-700 dark:text-primary-500">
+            <hr className="block border-gray-200 py-2 dark:border-gray-600 sm:hidden" />
+            <p className="text-primary-700 dark:text-primary-500 text-base font-medium">
                 Subscribe to the newsletter
             </p>
             <div className="space-y-4">
@@ -22,7 +22,7 @@ export default function Newsletter() {
                         href="https://kristiankahkonen.substack.com/"
                     >
                         Subscribe
-                        <SquareArrowOutUpRight className="inline-block w-4 h-4" />
+                        <SquareArrowOutUpRight className="inline-block h-4 w-4" />
                     </Link>
                 </div>
             </div>

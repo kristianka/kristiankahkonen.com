@@ -49,7 +49,7 @@ export default function StickyImage({
                 alt={`Screenshot of ${appName}`}
                 fill={true}
                 style={{ objectFit: "cover" }}
-                className="hidden lg:block absolute inset-0 z-[-1]"
+                className="absolute inset-0 z-[-1] hidden lg:block"
                 priority={true}
                 placeholder="blur"
                 blurDataURL={imgUrlPcPlaceholder}
@@ -61,7 +61,7 @@ export default function StickyImage({
                 alt={`Screenshot of ${appName}`}
                 fill={true}
                 style={{ objectFit: "cover" }}
-                className="hidden sm:block lg:hidden absolute inset-0 z-[-1]"
+                className="absolute inset-0 z-[-1] hidden sm:block lg:hidden"
                 priority={true}
                 placeholder="blur"
                 blurDataURL={imgUrlMediumPlaceholder}
@@ -73,7 +73,7 @@ export default function StickyImage({
                 alt={`Screenshot of ${appName}`}
                 fill={true}
                 style={{ objectFit: "cover" }}
-                className="block sm:hidden absolute inset-0 z-[-1]"
+                className="absolute inset-0 z-[-1] block sm:hidden"
                 priority={true}
                 placeholder="blur"
                 blurDataURL={imgUrlMobilePlaceholder}

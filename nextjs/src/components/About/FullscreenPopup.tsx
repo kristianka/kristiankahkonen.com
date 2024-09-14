@@ -20,17 +20,17 @@ export default function FullscreenPopup({ open, closeModal, certification }: Ful
                     exit={{ opacity: 0 }}
                     className="fixed inset-0 bg-black/30"
                 />
-                <div className="fixed inset-0 z-10 w-full h-full overflow-y-auto">
-                    <div className="flex min-h-full justify-center p-3 text-center items-center">
+                <div className="fixed inset-0 z-10 h-full w-full overflow-y-auto">
+                    <div className="flex min-h-full items-center justify-center p-3 text-center">
                         <DialogPanel
                             as={motion.div}
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.95 }}
-                            className="w-full sm:max-w-4xl space-y-4 bg-white p-4 rounded-lg"
+                            className="w-full space-y-4 rounded-lg bg-white p-4 sm:max-w-4xl"
                         >
-                            <div className="flex justify-between items-baseline">
-                                <DialogTitle className="font-bold mx-auto text-black text-xl sm:text-2xl p-1">
+                            <div className="flex items-baseline justify-between">
+                                <DialogTitle className="mx-auto p-1 text-xl font-bold text-black sm:text-2xl">
                                     {certification.title}
                                 </DialogTitle>
                                 <CloseButton
@@ -38,7 +38,7 @@ export default function FullscreenPopup({ open, closeModal, certification }: Ful
                                     onClick={closeModal}
                                     className=""
                                 >
-                                    <X className="text-black w-6 h-6 sm:w-8 sm:h-8" />
+                                    <X className="h-6 w-6 text-black sm:h-8 sm:w-8" />
                                 </CloseButton>
                             </div>
                             <Image
@@ -49,7 +49,7 @@ export default function FullscreenPopup({ open, closeModal, certification }: Ful
                                 className="h-auto max-w-full rounded-lg"
                                 priority
                             />
-                            <Description className="text-neutral-400 text-center text-sm">
+                            <Description className="text-center text-sm text-neutral-400">
                                 <span className="block sm:hidden">
                                     Zoom in by pinching or rotate your device
                                 </span>

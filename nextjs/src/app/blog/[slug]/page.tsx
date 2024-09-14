@@ -97,13 +97,13 @@ export default async function Page({ params }: { params: { slug: string } }) {
     });
 
     return (
-        <main className="m-5 max-w-7xl mx-auto min-h-screen">
+        <main className="m-5 mx-auto min-h-screen max-w-7xl">
             <FadeIn>
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-                    <div className="md:col-span-3 top-96">
+                <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
+                    <div className="top-96 md:col-span-3">
                         <BlogPage blog={blog} user={user} toc={toc} />
                     </div>
-                    <div className="hidden md:block col-span-1 sticky mt-56 top-36 h-max">
+                    <div className="sticky top-36 col-span-1 mt-56 hidden h-max md:block">
                         <TableOfContents toc={toc} />
                     </div>
                 </div>

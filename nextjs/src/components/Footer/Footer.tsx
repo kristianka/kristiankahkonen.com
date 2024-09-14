@@ -13,11 +13,11 @@ export function Footer() {
             <div className="mx-auto max-w-screen-xl 2xl:px-0">
                 <div className="border-b border-gray-100 py-6 dark:border-gray-700 md:py-8 lg:py-16">
                     <div className="items-start gap-6 md:gap-8 lg:flex 2xl:gap-8">
-                        <div className="px-4 grid min-w-0 flex-1 grid-cols-1 gap-6 md:gap-8 sm:grid-cols-2">
+                        <div className="grid min-w-0 flex-1 grid-cols-1 gap-6 px-4 sm:grid-cols-2 md:gap-8">
                             <Navigation />
                             <FeaturedBlogs />
                         </div>
-                        <div className="px-4 sm:mt-0 mt-6 w-full lg:max-w-lg">
+                        <div className="mt-6 w-full px-4 sm:mt-0 lg:max-w-lg">
                             <Newsletter />
                         </div>
                     </div>

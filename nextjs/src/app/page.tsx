@@ -6,7 +6,7 @@ import FadeIn from "@/components/FadeIn";
 
 export default async function Home() {
     return (
-        <main className="max-w-6xl mx-auto">
+        <main className="mx-auto max-w-6xl">
             <FadeIn>
                 <TitleAnimation />
                 <FrontpageButtons />

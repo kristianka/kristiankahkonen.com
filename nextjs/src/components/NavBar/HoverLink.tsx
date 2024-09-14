@@ -27,10 +27,10 @@ const HoverLink: React.FC<HoverLinkProps> = ({ href, children, testId }) => {
             data-testid={testId}
             href={href}
             onMouseEnter={handleMouseEnter}
-            className={`relative inline-block after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-full after:scale-x-0 after:bg-blue-500 after:transition-transform after:duration-300 ${
+            className={`relative inline-block after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:scale-x-0 after:bg-blue-500 after:transition-transform after:duration-300 ${
                 hoverOrigin === "left"
-                    ? "after:origin-bottom-left hover:after:scale-x-100 hover:after:origin-bottom-right"
-                    : "after:origin-bottom-right hover:after:scale-x-100 hover:after:origin-bottom-left"
+                    ? "after:origin-bottom-left hover:after:origin-bottom-right hover:after:scale-x-100"
+                    : "after:origin-bottom-right hover:after:origin-bottom-left hover:after:scale-x-100"
             }`}
         >
             {children}

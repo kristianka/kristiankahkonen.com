@@ -10,8 +10,8 @@ export const FrontpageListCard = ({ blog }: { blog: Blog }) => {
             >
                 <div className="flex flex-col">
                     <div>
-                        <h2 className="sm:text-lg font-bold mb-3">{blog.title}</h2>
-                        <h3 className="prose dark:prose-invert text-md">{blog.description}</h3>
+                        <h2 className="mb-3 font-bold sm:text-lg">{blog.title}</h2>
+                        <h3 className="text-md prose dark:prose-invert">{blog.description}</h3>
                     </div>
                 </div>
             </Link>

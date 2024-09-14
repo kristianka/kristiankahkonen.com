@@ -25,9 +25,9 @@ export default function Buttons() {
             <div className="flex items-center justify-between">
                 <div className="justify-start">
                     <button onClick={reward} className="flex items-center hover:text-blue-500">
-                        <IoCodeSharp className="h-6 sm:h-8 w-auto mr-2" />
+                        <IoCodeSharp className="mr-2 h-6 w-auto sm:h-8" />
                         <p className="text-lg font-bold">Kristian Kähkönen</p>
-                        <IoCodeSlashSharp className="ml-2 h-6 sm:h-8 w-auto" />
+                        <IoCodeSlashSharp className="ml-2 h-6 w-auto sm:h-8" />
                     </button>
                 </div>
                 <div className="justify-end">
@@ -36,7 +36,7 @@ export default function Buttons() {
                         className="flex items-center text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
                     >
                         <span className="mr-3 hidden sm:block">Back to top</span>
-                        <ArrowUp className="w-5 h-5" />
+                        <ArrowUp className="h-5 w-5" />
                     </button>
                 </div>
             </div>

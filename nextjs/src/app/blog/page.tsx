@@ -16,8 +16,8 @@ export default async function Home() {
     return (
         <main>
             <FadeIn>
-                <div className="flex justify-between items-baseline">
-                    <h2 className="text-2xl sm:text-4xl tracking-wide font-bold">Latest content</h2>
+                <div className="flex items-baseline justify-between">
+                    <h2 className="text-2xl font-bold tracking-wide sm:text-4xl">Latest content</h2>
                     <p className="flex justify-end text-lg">{blogs.length} posts</p>
                 </div>
                 {blogs.length === 0 && <NoBlogsFound />}

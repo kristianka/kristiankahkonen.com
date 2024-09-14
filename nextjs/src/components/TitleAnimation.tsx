@@ -29,8 +29,8 @@ export const TitleAnimation = () => {
 
     return (
         <main className="flex">
-            <div className="m3-5">
-                <h1 className="text-3xl md:text-4xl tracking-wider dark:text-white">
+            <div>
+                <h1 className="text-3xl tracking-wider dark:text-white md:text-4xl">
                     {text.map((el, i) => (
                         <motion.span
                             data-testid="nameAnimation"
@@ -47,7 +47,7 @@ export const TitleAnimation = () => {
                     ))}
                 </h1>
                 <div className="sm:flex">
-                    <span className="text-3xl md:text-4xl font-extrabold tracking-wide">
+                    <span className="text-3xl font-extrabold tracking-wide md:text-4xl">
                         You can hire me as a
                     </span>
                     <motion.h2
@@ -56,7 +56,7 @@ export const TitleAnimation = () => {
                         initial={hasAnimatedOnce ? { opacity: 0, y: -20 } : {}}
                         animate={hasAnimatedOnce ? { opacity: 1, y: 0 } : {}}
                         transition={{ duration: 0.5 }}
-                        className="text-3xl md:text-4xl font-extrabold tracking-wide"
+                        className="text-3xl font-extrabold tracking-wide md:text-4xl"
                     >
                         <span className="hidden sm:inline">&nbsp;</span>
                         {currentTitle}

@@ -45,16 +45,16 @@ export default function Buttons({ title, text, url }: ButtonsProps) {
             <span id="shareRewardBottom" />
             <button
                 onClick={shareTo}
-                className="flex hover:bg-blue-500 border border-black px-4 py-2 sm:px-10 sm:py-2 text-sm rounded-full bg-white dark:bg-black dark:text-white dark:border-white dark:hover:text-blue-500"
+                className="flex rounded-full border border-black bg-white px-4 py-2 text-sm hover:bg-blue-500 dark:border-white dark:bg-black dark:text-white dark:hover:text-blue-500 sm:px-10 sm:py-2"
             >
-                {shareHeart ? "❤️" : <VscShare className="w-5 h-5" />}
+                {shareHeart ? "❤️" : <VscShare className="h-5 w-5" />}
                 <span className="ml-3">Share</span>
             </button>
             <button
                 onClick={backToTop}
-                className="flex hover:bg-blue-500 border border-black px-4 py-2 sm:px-10 sm:py-2 text-sm rounded-full bg-white dark:bg-black dark:text-white dark:border-white dark:hover:text-blue-500"
+                className="flex rounded-full border border-black bg-white px-4 py-2 text-sm hover:bg-blue-500 dark:border-white dark:bg-black dark:text-white dark:hover:text-blue-500 sm:px-10 sm:py-2"
             >
-                <ArrowUp className="w-5 h-5" />
+                <ArrowUp className="h-5 w-5" />
                 <span className="ml-3">Back to top</span>
             </button>
         </div>

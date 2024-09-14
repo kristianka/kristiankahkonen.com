@@ -35,14 +35,14 @@ export const ShareButton = ({ title, text, url }: ShareButtonProps) => {
     };
 
     return (
-        <div className="ml-auto rounded-full bg-white border border-black dark:border-white dark:bg-black py-1.5 px-5">
+        <div className="ml-auto rounded-full border border-black bg-white px-5 py-1.5 dark:border-white dark:bg-black">
             <span id="shareRewardTop" />
 
             <button
                 onClick={shareTo}
-                className="text-sm hover:text-blue-600 dark:hover:text-blue-500 rounded-md flex items-center"
+                className="flex items-center rounded-md text-sm hover:text-blue-600 dark:hover:text-blue-500"
             >
-                {shareHeart ? "❤️" : <VscShare className="w-4 h-4 sm:w-4 sm:h-4" />}
+                {shareHeart ? "❤️" : <VscShare className="h-4 w-4 sm:h-4 sm:w-4" />}
                 <span className="ml-3">Share</span>
             </button>
         </div>

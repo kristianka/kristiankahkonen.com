@@ -6,7 +6,7 @@ export default function Home() {
     return (
         <main>
             <FadeIn>
-                <h2 className="text-center text-2xl sm:text-4xl tracking-wide font-bold m-auto mb-5">
+                <h2 className="m-auto mb-5 text-center text-2xl font-bold tracking-wide sm:text-4xl">
                     Contact
                 </h2>
                 <Contact />

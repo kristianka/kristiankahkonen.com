@@ -20,7 +20,7 @@ export const Paragraph = ({ children, node }: ParagraphProps): JSX.Element => {
                     src={image.properties.src}
                     width={Number(width)}
                     height={Number(height)}
-                    className="postImg rounded-md w-full"
+                    className="postImg w-full rounded-md"
                     alt={alt}
                     priority={isPriority}
                 />
