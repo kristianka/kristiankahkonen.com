@@ -5,7 +5,7 @@ import { IoCodeSlashSharp } from "react-icons/io5";
 import { useReward } from "react-rewards";
 
 export default function Buttons() {
-    const { reward, isAnimating } = useReward("rewardAnimation", "emoji", {
+    const { reward } = useReward("rewardAnimation", "emoji", {
         emoji: ["😍", "😮", "😎", "🧑‍💻"],
         position: "absolute",
         zIndex: 100,

@@ -11,6 +11,7 @@ export default function Links() {
                     href="https://github.com/kristianka/kristiankahkonen.com"
                     target="_blank"
                     className="inline-flex items-center gap-2 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                    rel="noreferrer"
                 >
                     <BsGithub className="h-6 w-6" />
                     <span className="text-sm">Source code</span>
@@ -21,6 +22,7 @@ export default function Links() {
                     href="https://www.linkedin.com/in/kristian-kahkonen"
                     target="_blank"
                     className="inline-flex items-center gap-2 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                    rel="noreferrer"
                 >
                     <BsLinkedin className="h-6 w-6" />
                     <span className="text-sm">LinkedIn</span>
@@ -31,6 +33,7 @@ export default function Links() {
                     href={`mailto: ${email}`}
                     target="_blank"
                     className="inline-flex items-center gap-2 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                    rel="noreferrer"
                 >
                     <CiMail className="h-6 w-6" />
                     <span className="text-sm">Contact</span>
