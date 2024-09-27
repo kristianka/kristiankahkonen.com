@@ -75,8 +75,8 @@ const TableOfContents = ({ toc }: { toc: Toc[] }) => {
                                 href={`#${heading.id}`}
                                 className={`ml-${ml} ${
                                     isActive
-                                        ? "prose dark:prose-invert text-blue-600 transition-all font-bold"
-                                        : "prose dark:prose-invert font-semibold transition-all hover:text-black dark:hover:text-white"
+                                        ? "prose font-bold text-blue-600 transition-all dark:prose-invert"
+                                        : "prose font-semibold transition-all dark:prose-invert hover:text-black dark:hover:text-white"
                                 }`}
                                 onClick={(e) => {
                                     e.preventDefault();

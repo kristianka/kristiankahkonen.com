@@ -51,10 +51,10 @@ export default function Certifications({ certs, placeholders }: CertificationPro
 
     return (
         <FadeIn>
-            <p className="text-sm mx-auto prose dark:prose-invert text-center my-5">
+            <p className="prose mx-auto my-5 text-center text-sm dark:prose-invert">
                 Tip: Click on a certification to fullscreen it
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
                 {/* render initially only one on mobile etc. */}
                 {certs.slice(0, showMore ? certs.length : sliceSize).map((certification, index) => (
                     // hover animation and animation when images load
@@ -80,7 +80,7 @@ export default function Certifications({ certs, placeholders }: CertificationPro
                             height={1500}
                             blurDataURL={placeholders[index]}
                             placeholder="blur"
-                            className="h-auto max-w-full rounded-lg cursor-pointer"
+                            className="h-auto max-w-full cursor-pointer rounded-lg"
                         />
                     </motion.div>
                 ))}
@@ -92,11 +92,11 @@ export default function Certifications({ certs, placeholders }: CertificationPro
                     />
                 )}
             </div>
-            <div className="mt-3 flex items-center before:h-px before:flex-1 before:bg-gray-300 before:content-[''] after:h-px after:flex-1 after:bg-gray-300  after:content-['']">
+            <div className="mt-3 flex items-center before:h-px before:flex-1 before:bg-gray-300 before:content-[''] after:h-px after:flex-1 after:bg-gray-300 after:content-['']">
                 <button
                     type="button"
                     onClick={() => setShowMore(!showMore)}
-                    className="flex items-center rounded-full border bg-white dark:bg-black text-black dark:text-white border-gray-300 bg-secondary-50 px-3 py-2 text-center text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-800 z-20"
+                    className="bg-secondary-50 z-20 flex items-center rounded-full border border-gray-300 bg-white px-3 py-2 text-center text-sm font-medium text-black hover:bg-gray-100 dark:bg-black dark:text-white dark:hover:bg-gray-800"
                 >
                     {showMore ? <FaAngleUp className="mr-1" /> : <FaAngleDown className="mr-1" />}
                     {showMore ? "View less" : "View more"}
@@ -105,9 +105,10 @@ export default function Certifications({ certs, placeholders }: CertificationPro
             <span className="flex flex-wrap items-center">
                 Verify my certifications in
                 <a
-                    className="ml-1 text-blue-500 flex"
+                    className="ml-1 flex text-blue-500"
                     target="_blank"
                     href="https://www.linkedin.com/in/kristian-kahkonen/details/certifications/"
+                    rel="noreferrer"
                 >
                     LinkedIn
                     <ArrowUpRight size={24} />

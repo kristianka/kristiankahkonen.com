@@ -8,7 +8,7 @@ import FadeIn from "../FadeIn";
 export const Skills = () => {
     return (
         <FadeIn>
-            <h2 className="text-2xl sm:text-4xl tracking-wide font-bold m-auto mb-5">
+            <h2 className="m-auto mb-5 text-2xl font-bold tracking-wide sm:text-4xl">
                 Technologies and Skills
             </h2>
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} />

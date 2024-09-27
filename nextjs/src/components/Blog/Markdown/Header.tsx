@@ -10,8 +10,8 @@ export const Header = (props: HeaderProps, level: number) => {
             typeof element === "string"
                 ? element
                 : element?.type !== undefined && typeof element.props.children === "string"
-                ? element.props.children
-                : []
+                  ? element.props.children
+                  : []
         )
         .join("");
 
@@ -26,8 +26,8 @@ export const Header = (props: HeaderProps, level: number) => {
                 HeadingTag,
                 { key: slug, className: "flex items-center", id: slug },
                 <>
-                    <a className="no-underline mr-3" href={`#${slug}`} {...props}></a>
-                    <GoLink className="p-0.5 text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <a className="mr-3 no-underline" href={`#${slug}`} {...props}></a>
+                    <GoLink className="p-0.5 text-gray-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 </>
             )}
         </div>

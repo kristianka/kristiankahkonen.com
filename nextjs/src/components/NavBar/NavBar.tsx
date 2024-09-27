@@ -27,19 +27,19 @@ export const NavBar = () => {
 
     return (
         <header
-            className={`w-full pt-3 pb-3 justify-between sm:flex items-center bg-slate-50 dark:bg-zinc-900 dark:text-white ${
+            className={`w-full items-center justify-between bg-slate-50 pb-3 pt-3 dark:bg-zinc-900 dark:text-white sm:flex ${
                 isSticky ? "sticky top-0" : ""
             } z-10 mb-10`}
         >
-            <div className="flex justify-between items-center">
+            <div className="flex items-center justify-between">
                 <Link
                     data-testid="headerNameHomeLink"
                     href="/"
-                    className="mr-5 sm:mr-10 text-xl sm:text-2xl font-bold tracking-wide relative inline-block after:absolute after:left-1/2 after:-bottom-1 after:h-[2px] after:w-0 after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full hover:after:left-0"
+                    className="relative mr-5 inline-block text-xl font-bold tracking-wide after:absolute after:-bottom-1 after:left-1/2 after:h-[2px] after:w-0 after:bg-blue-500 after:transition-all after:duration-300 hover:after:left-0 hover:after:w-full sm:mr-10 sm:text-2xl"
                 >
                     Kristian Kähkönen
                 </Link>
-                <div className="flex space-x-5 sm:hidden items-center">
+                <div className="flex items-center space-x-5 sm:hidden">
                     <ModeToggle />
                     <Hamburger
                         label="Open main navigation menu"
@@ -63,14 +63,14 @@ export const NavBar = () => {
                     ))}
                     <li
                         data-testid="headerModeToggle"
-                        className="items-baseline hidden sm:block transition-all"
+                        className="hidden items-baseline transition-all sm:block"
                     >
                         <ModeToggle />
                     </li>
 
                     <li className="items-baseline">
                         <Link
-                            className="hover:text-gray-400 transition-all"
+                            className="transition-all hover:text-gray-400"
                             data-testid="headerRssLink"
                             href="/rss.xml"
                             target="_blank"

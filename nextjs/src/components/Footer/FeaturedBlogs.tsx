@@ -8,13 +8,13 @@ export default async function FeaturedBlogs() {
 
     return (
         <div>
-            <hr className="block sm:hidden py-5 border-gray-200 dark:border-gray-600" />
+            <hr className="block border-gray-200 py-5 dark:border-gray-600 sm:hidden" />
             <p className="mb-4 text-sm font-semibold uppercase text-gray-900 dark:text-white">
                 Latest blogs
             </p>
             <ul aria-label="Footer latest blogs" className="space-y-3">
                 {blogs.length === 0 && (
-                    <li className="text-gray-500 dark:text-gray-400 my-5">No blogs</li>
+                    <li className="my-5 text-gray-500 dark:text-gray-400">No blogs</li>
                 )}
                 {blogs &&
                     blogs.map((blog) => (
@@ -28,12 +28,12 @@ export default async function FeaturedBlogs() {
                         </li>
                     ))}
             </ul>
-            <p className="mt-10 mb-4 text-sm font-semibold uppercase text-gray-900 dark:text-white">
+            <p className="mb-4 mt-10 text-sm font-semibold uppercase text-gray-900 dark:text-white">
                 Featured blogs
             </p>
             <ul aria-label="Footer featured blogs" className="space-y-3">
                 {featuredBlogs.length === 0 && (
-                    <li className="text-gray-500 dark:text-gray-400 my-5">No blogs</li>
+                    <li className="my-5 text-gray-500 dark:text-gray-400">No blogs</li>
                 )}
                 {featuredBlogs.map((blog) => (
                     <li key={blog.id}>

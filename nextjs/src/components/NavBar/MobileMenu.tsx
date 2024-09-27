@@ -14,11 +14,6 @@ export default function MobileMenu({ isOpen, setIsOpen }: MobileMenuProps) {
         closed: { opacity: 0, y: 1 }
     };
 
-    const linkVariants = {
-        closed: { opacity: 0, y: -5 },
-        open: { opacity: 1, y: 0 }
-    };
-
     // Lock and unlock body scroll when menu opens or closes
     useEffect(() => {
         if (isOpen) {
@@ -38,13 +33,13 @@ export default function MobileMenu({ isOpen, setIsOpen }: MobileMenuProps) {
             {isOpen && (
                 <motion.nav
                     aria-label="Main navigation"
-                    className="fixed left-0 w-screen h-screen z-10 bg-slate-50 dark:bg-zinc-900"
+                    className="fixed left-0 z-10 h-screen w-screen bg-slate-50 dark:bg-zinc-900"
                     initial="closed"
                     animate={isOpen ? "open" : "closed"}
                     variants={menuVariants}
                     transition={{ duration: 0.4 }} // Faster fade-in and fade-out
                 >
-                    <ul className="m-5 space-y-4 font-bold text-2xl">
+                    <ul className="m-5 space-y-4 text-2xl font-bold">
                         {[
                             { href: "/", label: "Home", icon: HomeIcon },
                             { href: "/blog", label: "Blog", icon: Book },
@@ -52,7 +47,7 @@ export default function MobileMenu({ isOpen, setIsOpen }: MobileMenuProps) {
                             { href: "/about", label: "About", icon: User },
                             { href: "/contact", label: "Contact", icon: Mail },
                             { href: "/rss.xml", label: "RSS", icon: Rss }
-                        ].map((item, index) => (
+                        ].map((item, _index) => (
                             <motion.li
                                 key={item.href}
                                 // variants={linkVariants}

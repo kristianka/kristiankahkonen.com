@@ -9,7 +9,7 @@ export default function AboutLayout({
     return (
         <div className="min-h-screen">
             <Suspense fallback={<Loading />}>
-                <div className="max-w-6xl mx-auto">{children}</div>
+                <div className="mx-auto max-w-6xl">{children}</div>
             </Suspense>
         </div>
     );

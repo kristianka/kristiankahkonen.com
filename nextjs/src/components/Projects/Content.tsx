@@ -34,25 +34,25 @@ export default function Content({
                         <p className="mb-4 text-xl text-neutral-600 dark:text-neutral-300 md:text-2xl">
                             {description}
                         </p>
-                        <div className="grid grid-cols-2 gap-1 sm:gap-3 sm:grid-cols-3 mb-8 text-neutral-600 dark:text-neutral-300 sm:text-xl">
+                        <div className="mb-8 grid grid-cols-2 gap-1 text-neutral-600 dark:text-neutral-300 sm:grid-cols-3 sm:gap-3 sm:text-xl">
                             {technologies &&
                                 technologies.map((tech) => (
                                     <div key={tech} className="flex">
-                                        <div className="flex items-center scale-100 transition-all duration-300 hover:scale-110 hover:text-black dark:hover:text-white">
+                                        <div className="flex scale-100 items-center transition-all duration-300 hover:scale-110 hover:text-black dark:hover:text-white">
                                             {iconMapping[tech] || tech}
                                             <span className="ml-2">{tech}</span>
                                         </div>
                                     </div>
                                 ))}
                         </div>
-                        <div className="flex sm:flex-row flex-col">
+                        <div className="flex flex-col sm:flex-row">
                             {sourceCodeUrl && (
                                 <Link
                                     href={sourceCodeUrl}
                                     target="_blank"
-                                    className="flex items-center rounded bg-neutral-900 dark:bg-neutral-950 px-8 py-4 text-lg sm:text-xl text-white transition-colors hover:bg-neutral-700 dark:hover:bg-neutral-800 "
+                                    className="flex items-center rounded bg-neutral-900 px-8 py-4 text-lg text-white transition-colors hover:bg-neutral-700 dark:bg-neutral-950 dark:hover:bg-neutral-800 sm:text-xl"
                                 >
-                                    <FaGithub className="mr-3 w-6 h-6" />
+                                    <FaGithub className="mr-3 h-6 w-6" />
                                     Source code
                                     <FiArrowUpRight className="inline" />
                                 </Link>
@@ -61,9 +61,9 @@ export default function Content({
                                 <Link
                                     href={liveUrl as string}
                                     target="_blank"
-                                    className="sm:ml-5 mt-5 sm:mt-0 flex items-center rounded bg-neutral-900 dark:bg-neutral-950 px-8 py-4 text-lg sm:text-xl text-white transition-colors hover:bg-neutral-700 dark:hover:bg-neutral-800"
+                                    className="mt-5 flex items-center rounded bg-neutral-900 px-8 py-4 text-lg text-white transition-colors hover:bg-neutral-700 dark:bg-neutral-950 dark:hover:bg-neutral-800 sm:ml-5 sm:mt-0 sm:text-xl"
                                 >
-                                    <CiGlobe className="mr-3 w-6 h-6" />
+                                    <CiGlobe className="mr-3 h-6 w-6" />
                                     Live at {liveUrlShort}
                                     <FiArrowUpRight className="inline" />
                                 </Link>
