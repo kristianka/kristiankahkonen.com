@@ -22,7 +22,7 @@ services:
 
   directus-dev:
     container_name: directus-dev
-    image: directus/directus:11.1.0
+    image: directus/directus:11.3.5
     volumes:
       - ./directus/uploads:/directus/uploads
       - ./directus/extensions:/directus/extensions
