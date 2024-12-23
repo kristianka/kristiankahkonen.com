@@ -1,6 +1,6 @@
 "use client";
 import { Certification } from "@/types";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ParagraphProps } from "./types";
+import type { JSX } from "react";
 
 export const Paragraph = ({ children, node }: ParagraphProps): JSX.Element => {
     if (node?.children[0].tagName === "img") {

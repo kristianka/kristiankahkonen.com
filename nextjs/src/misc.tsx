@@ -24,6 +24,7 @@ import {
     SiTailwindcss,
     SiTypescript
 } from "react-icons/si";
+import type { JSX } from "react";
 
 export const iconMapping: Record<string, JSX.Element> = {
     React: <FaReact />,
