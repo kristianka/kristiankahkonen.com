@@ -22,7 +22,9 @@ import {
     SiReactquery,
     SiRedis,
     SiTailwindcss,
-    SiTypescript
+    SiTypescript,
+    SiSupabase,
+    SiVercel
 } from "react-icons/si";
 import type { JSX } from "react";
 
@@ -52,7 +54,9 @@ export const iconMapping: Record<string, JSX.Element> = {
     Playwright: <SiPlaywright />,
     Cypress: <SiCypress />,
     i18next: <SiI18Next />,
-    Redis: <SiRedis />
+    Redis: <SiRedis />,
+    Supabase: <SiSupabase />,
+    Vercel: <SiVercel />
 };
 
 export const frontendSkills = [
