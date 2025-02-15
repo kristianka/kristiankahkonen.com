@@ -13,7 +13,7 @@ export const getBlogs = async () => {
                 (a, b) => new Date(b.date_created).getTime() - new Date(a.date_created).getTime()
             );
         return sortedBlogs;
-    } catch (error) {
+    } catch (_error) {
         return [];
     }
 };
@@ -25,7 +25,7 @@ export const getBlogById = async (id: string) => {
         const res = (await client.request(readItem("blog", id))) as Blog;
         if (!res.published) return null;
         return res;
-    } catch (error) {
+    } catch (_error) {
         return null;
     }
 };
@@ -36,7 +36,7 @@ export const getBlogAuthor = async (id?: string) => {
         if (!id) return null;
         const res = (await client.request(readUser(id))) as User;
         return res;
-    } catch (error) {
+    } catch (_error) {
         return null;
     }
 };
@@ -52,7 +52,7 @@ export const getFeaturedBlogs = async () => {
             .sort((a, b) => new Date(b.date_created).getTime() - new Date(a.date_created).getTime())
             .slice(0, 3);
         return featuredBlogs;
-    } catch (error) {
+    } catch (_error) {
         return [];
     }
 };
@@ -67,7 +67,7 @@ export const getLatestBlog = async () => {
             .sort((a, b) => new Date(b.date_created).getTime() - new Date(a.date_created).getTime())
             .slice(0, 1);
         return latestBlog;
-    } catch (error) {
+    } catch (_error) {
         return [];
     }
 };

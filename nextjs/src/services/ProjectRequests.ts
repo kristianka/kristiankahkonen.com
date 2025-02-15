@@ -15,7 +15,7 @@ export const getProjects = async () => {
             .filter((project) => project.status === "published")
             .sort((a, b) => a.order - b.order);
         return sortedProjects;
-    } catch (error) {
+    } catch (_error) {
         return [];
     }
 };

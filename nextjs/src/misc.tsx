@@ -139,7 +139,6 @@ export const otherSkills = [
 
 // return null if no image url is provided
 export async function generatePlaceholder(imageUrl: string) {
-    if (!imageUrl) "data:image/jpeg;base64,null";
     try {
         const response = await fetch(imageUrl);
         if (!response.ok) {

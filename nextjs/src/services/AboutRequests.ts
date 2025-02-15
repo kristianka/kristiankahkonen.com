@@ -6,7 +6,7 @@ export const getAboutMe = async () => {
     try {
         const res = (await client.request(readItem("aboutMe", 1))) as AboutMe;
         return res;
-    } catch (error) {
+    } catch (_error) {
         return null;
     }
 };
@@ -15,7 +15,7 @@ export const getEducations = async () => {
     try {
         const res = (await client.request(readItems("education"))) as Education[];
         return res;
-    } catch (error) {
+    } catch (_error) {
         return [];
     }
 };
@@ -25,7 +25,7 @@ export const getCertifications = async () => {
         const res = (await client.request(readItems("certification"))) as Certification[];
         const certs = res.sort((a, b) => a.order - b.order);
         return certs;
-    } catch (error) {
+    } catch (_error) {
         return [];
     }
 };
