@@ -31,7 +31,7 @@ export function Footer() {
                             <Links />
                         </div>
                         <p className="text-sm text-gray-500 dark:text-gray-400">
-                            © 2024{" "}
+                            © 2024 - {new Date().getFullYear()}{" "}
                             <Link target="_blank" href="/" className="hover:underline">
                                 Kristian Kähkönen
                             </Link>
