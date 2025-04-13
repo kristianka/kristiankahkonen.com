@@ -3,9 +3,7 @@
 services:
 
   database:
-    image: postgis/postgis:13-master
-    # Required when running on platform other than amd64, like Apple M1/M2:
-    # platform: linux/amd64
+    image: postgres:16.4
     volumes:
       - ./data/database:/var/lib/postgresql/data
     env_file:
@@ -15,7 +13,7 @@ services:
     image: redis:6
 
   directus:
-    image: directus/directus:11.3.5
+    image: directus/directus:11.6.1
     ports:
       - 8055:8055
     volumes:

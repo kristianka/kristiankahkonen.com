@@ -20,7 +20,7 @@ services:
 
   directus:
     container_name: directus
-    image: directus/directus:11.3.5
+    image: directus/directus:11.6.1
     volumes:
       - ./directus/uploads:/directus/uploads
       - ./directus/extensions:/directus/extensions
