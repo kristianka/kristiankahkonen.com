@@ -26,7 +26,7 @@ export const DateToLocal = ({ date, type }: DateToLocalProps) => {
         <div className="">
             <span>{type === "published" ? "Published" : "Updated"}: </span>
             <Transition show={!!formattedDate}>
-                <span className="transition duration-300 ease-in data-[closed]:opacity-0">
+                <span className="transition duration-300 ease-in data-closed:opacity-0">
                     {formattedDate}
                 </span>
             </Transition>
