@@ -26,15 +26,15 @@ export default function Content({
     const hasLiveUrl = liveUrl !== null && liveUrlShort !== null;
 
     return (
-        <div className="pb-24 pt-12">
+        <div className="pt-12 pb-24">
             <FadeIn>
                 <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 px-4 md:grid-cols-12">
                     <h2 className="col-span-1 text-3xl font-bold md:col-span-4">{title}</h2>
                     <div className="col-span-1 md:col-span-8">
-                        <p className="mb-4 text-xl text-neutral-600 dark:text-neutral-300 md:text-2xl">
+                        <p className="mb-4 text-xl text-neutral-600 md:text-2xl dark:text-neutral-300">
                             {description}
                         </p>
-                        <div className="mb-8 grid grid-cols-2 gap-1 text-neutral-600 dark:text-neutral-300 sm:grid-cols-3 sm:gap-3 sm:text-xl">
+                        <div className="mb-8 grid grid-cols-2 gap-1 text-neutral-600 sm:grid-cols-3 sm:gap-3 sm:text-xl dark:text-neutral-300">
                             {technologies &&
                                 technologies.map((tech) => (
                                     <div key={tech} className="flex">
@@ -50,7 +50,7 @@ export default function Content({
                                 <Link
                                     href={sourceCodeUrl}
                                     target="_blank"
-                                    className="flex items-center rounded bg-neutral-900 px-8 py-4 text-lg text-white transition-colors hover:bg-neutral-700 dark:bg-neutral-950 dark:hover:bg-neutral-800 sm:text-xl"
+                                    className="flex items-center rounded bg-neutral-900 px-8 py-4 text-lg text-white transition-colors hover:bg-neutral-700 sm:text-xl dark:bg-neutral-950 dark:hover:bg-neutral-800"
                                 >
                                     <FaGithub className="mr-3 h-6 w-6" />
                                     Source code
@@ -61,7 +61,7 @@ export default function Content({
                                 <Link
                                     href={liveUrl as string}
                                     target="_blank"
-                                    className="mt-5 flex items-center rounded bg-neutral-900 px-8 py-4 text-lg text-white transition-colors hover:bg-neutral-700 dark:bg-neutral-950 dark:hover:bg-neutral-800 sm:ml-5 sm:mt-0 sm:text-xl"
+                                    className="mt-5 flex items-center rounded bg-neutral-900 px-8 py-4 text-lg text-white transition-colors hover:bg-neutral-700 sm:mt-0 sm:ml-5 sm:text-xl dark:bg-neutral-950 dark:hover:bg-neutral-800"
                                 >
                                     <CiGlobe className="mr-3 h-6 w-6" />
                                     Live at {liveUrlShort}

@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Newsletter() {
     return (
         <div className="space-y-3">
-            <hr className="block border-gray-200 py-2 dark:border-gray-600 sm:hidden" />
+            <hr className="block border-gray-200 py-2 sm:hidden dark:border-gray-600" />
             <p className="text-primary-700 dark:text-primary-500 text-base font-medium">
                 Subscribe to the newsletter
             </p>

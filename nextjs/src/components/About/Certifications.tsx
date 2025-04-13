@@ -51,7 +51,7 @@ export default function Certifications({ certs, placeholders }: CertificationPro
 
     return (
         <FadeIn>
-            <p className="prose mx-auto my-5 text-center text-sm dark:prose-invert">
+            <p className="prose dark:prose-invert mx-auto my-5 text-center text-sm">
                 Tip: Click on a certification to fullscreen it
             </p>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">

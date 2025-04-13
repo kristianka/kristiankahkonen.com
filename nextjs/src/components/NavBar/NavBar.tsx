@@ -27,7 +27,7 @@ export const NavBar = () => {
 
     return (
         <header
-            className={`w-full items-center justify-between bg-slate-50 pb-3 pt-3 dark:bg-zinc-900 dark:text-white sm:flex ${
+            className={`w-full items-center justify-between bg-slate-50 pt-3 pb-3 sm:flex dark:bg-zinc-900 dark:text-white ${
                 isSticky ? "sticky top-0" : ""
             } z-10 mb-10`}
         >

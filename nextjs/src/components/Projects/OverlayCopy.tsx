@@ -24,7 +24,7 @@ export default function OverlayCopy({ appName, catchline }: OverlayCopyProps) {
                 opacity
             }}
             ref={targetRef}
-            className="absolute left-0 top-0 flex h-screen w-full flex-col items-center justify-center text-white"
+            className="absolute top-0 left-0 flex h-screen w-full flex-col items-center justify-center text-white"
         >
             <p className="mb-2 text-center text-xl md:mb-4 md:text-3xl">{appName}</p>
             <p className="text-center text-4xl font-bold md:text-7xl">{catchline}</p>

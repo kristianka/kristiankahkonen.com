@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Navigation() {
     return (
         <div>
-            <p className="mb-4 text-sm font-semibold uppercase text-gray-900 dark:text-white">
+            <p className="mb-4 text-sm font-semibold text-gray-900 uppercase dark:text-white">
                 Navigation
             </p>
             <ul aria-label="Footer site navigation" className="space-y-3">
