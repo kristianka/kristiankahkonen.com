@@ -26,14 +26,15 @@ export default function EducationCard({
             <h4 className="prose dark:prose-invert">{school}</h4>
             <p className="prose dark:prose-invert">{location}</p>
             <p className="prose dark:prose-invert">{date}</p>
-            <p className="prose font-bold dark:prose-invert">{gpa}</p>
-            <Markdown
-                className="prose mt-8 text-black dark:prose-invert dark:text-white"
-                remarkPlugins={[remarkGfm]}
-                rehypePlugins={[[rehypeRaw], [rehypeExternalLinks, { target: "_blank" }]]}
-            >
-                {description}
-            </Markdown>
+            <p className="prose dark:prose-invert font-bold">{gpa}</p>
+            <div className="prose dark:prose-invert mt-8 text-black dark:text-white">
+                <Markdown
+                    remarkPlugins={[remarkGfm]}
+                    rehypePlugins={[[rehypeRaw], [rehypeExternalLinks, { target: "_blank" }]]}
+                >
+                    {description}
+                </Markdown>
+            </div>
         </div>
     );
 }

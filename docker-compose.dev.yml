@@ -2,7 +2,7 @@
 services:
   database-dev:
     container_name: database-dev
-    image: postgis/postgis:13-master
+    image: postgres:16.4
     # Required when running on platform other than amd64, like Apple M1/M2:
     # platform: linux/amd64
     volumes:
@@ -22,7 +22,7 @@ services:
 
   directus-dev:
     container_name: directus-dev
-    image: directus/directus:11.3.5
+    image: directus/directus:11.6.1
     volumes:
       - ./directus/uploads:/directus/uploads
       - ./directus/extensions:/directus/extensions

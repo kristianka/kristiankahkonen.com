@@ -30,7 +30,7 @@ export const TitleAnimation = () => {
     return (
         <main className="flex">
             <div>
-                <h1 className="text-3xl tracking-wider dark:text-white md:text-4xl">
+                <h1 className="text-3xl tracking-wider md:text-4xl dark:text-white">
                     {text.map((el, i) => (
                         <motion.span
                             data-testid="nameAnimation"

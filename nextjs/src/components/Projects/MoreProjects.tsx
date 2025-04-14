@@ -6,7 +6,7 @@ export default function MoreProjects() {
     return (
         <div className="mt-10">
             <h1 className="text-center text-xl sm:text-3xl">More projects</h1>
-            <p className="prose mx-auto my-8 text-center dark:prose-invert">
+            <p className="prose dark:prose-invert mx-auto my-8 text-center">
                 I{"'"}m passionate about coding and always working on something new. Check out my
                 GitHub for more projects and to see what I{"'"}ve been up to lately!
             </p>

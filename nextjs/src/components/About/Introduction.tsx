@@ -30,7 +30,7 @@ export default async function Introduction() {
                                 priority
                                 className="col-span-1 m-auto mb-10 rounded-full sm:order-last sm:mb-auto"
                             />
-                            <div className="prose col-span-2 text-black dark:prose-invert dark:text-white sm:mt-0">
+                            <div className="prose dark:prose-invert col-span-2 text-black sm:mt-0 dark:text-white">
                                 <Markdown
                                     remarkPlugins={[remarkGfm]}
                                     rehypePlugins={[

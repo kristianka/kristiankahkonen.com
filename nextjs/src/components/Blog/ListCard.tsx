@@ -6,7 +6,7 @@ import { DateToLocal } from "../DateToLocal";
 export const ListCard = ({ blog }: { blog: Blog }) => {
     return (
         <>
-            <li className="divide-x pb-5 pt-5" key={blog.id}>
+            <li className="divide-x pt-5 pb-5" key={blog.id}>
                 <Link
                     className="hover:text-blue-700 dark:hover:text-blue-500"
                     href={`/blog/${blog.id}`}
@@ -14,7 +14,7 @@ export const ListCard = ({ blog }: { blog: Blog }) => {
                     <div className="flex flex-col">
                         <div>
                             <h2 className="text-xl font-bold sm:text-2xl">{blog.title}</h2>
-                            <h3 className="prose mt-3 dark:prose-invert">{blog.description}</h3>
+                            <h3 className="prose dark:prose-invert mt-3">{blog.description}</h3>
                         </div>
                         <div className="">
                             <div className="flex items-center justify-between">

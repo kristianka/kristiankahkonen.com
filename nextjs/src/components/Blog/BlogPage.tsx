@@ -32,7 +32,7 @@ export const BlogPage = async ({
         <div key={blog.id}>
             <div>
                 <h2 className="mb-5 text-2xl font-bold sm:text-4xl">{blog.title}</h2>
-                <h3 className="prose mb-3 italic dark:prose-invert sm:text-xl">
+                <h3 className="prose dark:prose-invert mb-3 italic sm:text-xl">
                     {blog.description}
                 </h3>
                 <div>
@@ -76,18 +76,19 @@ export const BlogPage = async ({
                     />
                 </div>
                 {/* Don't make the text gray on tailwind typography prose. It's hard to read. */}
-                <Markdown
-                    className="prose my-10 w-full max-w-full text-black dark:prose-invert dark:text-white"
-                    remarkPlugins={[remarkGfm]}
-                    rehypePlugins={[
-                        [rehypeRaw],
-                        [rehypeSlug],
-                        [rehypeExternalLinks, { target: "_blank" }]
-                    ]}
-                    components={MarkdownComponents}
-                >
-                    {blog.content}
-                </Markdown>
+                <div className="prose dark:prose-invert my-10 w-full max-w-full text-black dark:text-white">
+                    <Markdown
+                        remarkPlugins={[remarkGfm]}
+                        rehypePlugins={[
+                            [rehypeRaw],
+                            [rehypeSlug],
+                            [rehypeExternalLinks, { target: "_blank" }]
+                        ]}
+                        components={MarkdownComponents}
+                    >
+                        {blog.content}
+                    </Markdown>
+                </div>
                 <Buttons title={blog.title} text={blog.description} url={blogUrl} />
             </div>
         </div>

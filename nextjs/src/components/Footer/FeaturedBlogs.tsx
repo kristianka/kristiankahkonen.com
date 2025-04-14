@@ -8,8 +8,8 @@ export default async function FeaturedBlogs() {
 
     return (
         <div>
-            <hr className="block border-gray-200 py-5 dark:border-gray-600 sm:hidden" />
-            <p className="mb-4 text-sm font-semibold uppercase text-gray-900 dark:text-white">
+            <hr className="block border-gray-200 py-5 sm:hidden dark:border-gray-600" />
+            <p className="mb-4 text-sm font-semibold text-gray-900 uppercase dark:text-white">
                 Latest blogs
             </p>
             <ul aria-label="Footer latest blogs" className="space-y-3">
@@ -28,7 +28,7 @@ export default async function FeaturedBlogs() {
                         </li>
                     ))}
             </ul>
-            <p className="mb-4 mt-10 text-sm font-semibold uppercase text-gray-900 dark:text-white">
+            <p className="mt-10 mb-4 text-sm font-semibold text-gray-900 uppercase dark:text-white">
                 Featured blogs
             </p>
             <ul aria-label="Footer featured blogs" className="space-y-3">
