@@ -26,7 +26,7 @@ export const BlogPage = async ({
     toc: Toc[];
 }) => {
     const blogUrl = `${process.env.NEXT_PUBLIC_SITE_URL}/blog/${blog.id}`;
-    const placeholder = await generatePlaceholder(blog?.imgUrl || "");
+    const placeholder = await generatePlaceholder(blog?.imgUrl);
 
     return (
         <div key={blog.id}>
