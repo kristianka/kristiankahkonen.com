@@ -26,7 +26,7 @@ export const Header = (props: HeaderProps, level: number) => {
                 HeadingTag,
                 { key: slug, className: "flex items-center", id: slug },
                 <>
-                    <a className="mr-3 no-underline" href={`#${slug}`} {...props}></a>
+                    <a className="mr-3 font-bold no-underline" href={`#${slug}`} {...props}></a>
                     <GoLink className="p-0.5 text-gray-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 </>
             )}

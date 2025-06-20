@@ -138,8 +138,12 @@ export const otherSkills = [
 ];
 
 // return null if no image url is provided
-export async function generatePlaceholder(imageUrl: string) {
+export async function generatePlaceholder(imageUrl?: string) {
     try {
+        if (!imageUrl) {
+            return "data:image/jpeg;base64,null";
+        }
+
         const response = await fetch(imageUrl);
         if (!response.ok) {
             console.error(`Failed to fetch image: ${response.statusText}`);

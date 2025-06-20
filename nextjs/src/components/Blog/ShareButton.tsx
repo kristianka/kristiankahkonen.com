@@ -40,7 +40,7 @@ export const ShareButton = ({ title, text, url }: ShareButtonProps) => {
 
             <button
                 onClick={shareTo}
-                className="flex items-center rounded-md text-sm hover:text-blue-600 dark:hover:text-blue-500"
+                className="flex cursor-pointer items-center rounded-md text-sm hover:text-blue-600 dark:hover:text-blue-500"
             >
                 {shareHeart ? "❤️" : <VscShare className="h-4 w-4 sm:h-4 sm:w-4" />}
                 <span className="ml-3">Share</span>
