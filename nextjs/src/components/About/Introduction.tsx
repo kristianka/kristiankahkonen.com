@@ -10,7 +10,7 @@ import FadeIn from "../FadeIn";
 
 export default async function Introduction() {
     const aboutMe = await getAboutMe();
-    const placeholder = await generatePlaceholder(aboutMe?.imageUrl as string);
+    const placeholder = await generatePlaceholder(aboutMe?.imageUrl);
 
     return (
         <div>
