@@ -55,16 +55,23 @@ export const BlogPage = async ({
                         </h4>
                     )}
                     {blog.imgUrl && blog.imgUrlAlt && (
-                        <Image
-                            src={blog.imgUrl}
-                            alt={blog.imgUrlAlt}
-                            width={960}
-                            height={540}
-                            className="my-10 w-full rounded-lg"
-                            priority={true}
-                            placeholder="blur"
-                            blurDataURL={placeholder}
-                        />
+                        <div>
+                            <Image
+                                src={blog.imgUrl}
+                                alt={blog.imgUrlAlt}
+                                width={960}
+                                height={540}
+                                className="my-10 w-full rounded-lg"
+                                priority={true}
+                                placeholder="blur"
+                                blurDataURL={placeholder}
+                            />
+                            {blog.imgCaption && (
+                                <div className="prose dark:prose-invert -mt-5 ml-1 text-gray-600 dark:text-gray-400">
+                                    {blog.imgCaption}
+                                </div>
+                            )}
+                        </div>
                     )}
                 </div>
                 <div className="block sm:hidden">

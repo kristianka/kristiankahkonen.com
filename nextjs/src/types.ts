@@ -12,6 +12,7 @@ export interface Blog {
     date_updated: string;
     title: string;
     imgUrl?: string;
+    imgCaption?: string;
     imgUrlAlt?: string;
     description: string;
     content: string;
