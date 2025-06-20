@@ -29,7 +29,16 @@ export async function generateMetadata() {
         ],
         openGraph: {
             url: "https://kristiankahkonen.com",
-            images: "/opengraph-image.jpg"
+            title: "Kristian Kähkönen",
+            description: "Kristian Kähkönen's blog & portfolio. Blogs about software development.",
+            images: [
+                {
+                    url: "/opengraph-image.jpg",
+                    width: 960,
+                    height: 540,
+                    alt: "Kristian Kähkönen"
+                }
+            ]
         }
     };
 }
