@@ -18,7 +18,7 @@ export const Header = (props: HeaderProps, level: number) => {
     const slug = generateSlug(heading);
     // heading tag is h1, h2, h3, h4, h5, or h6
     let HeadingTag = `h${level}`;
-    let isHeading1 = HeadingTag === "h1";
+    const isHeading1 = HeadingTag === "h1";
 
     // render h1 especially as 3xl, otherwise larger than site title
     // but make it h2 so it doesn't conflict with site title (better for SEO)
