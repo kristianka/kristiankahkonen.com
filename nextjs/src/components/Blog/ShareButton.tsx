@@ -3,16 +3,18 @@ import { VscShare } from "react-icons/vsc";
 import { share } from "./Share";
 import { useState } from "react";
 import { useReward } from "react-rewards";
+import { Button } from "./Button";
 
 interface ShareButtonProps {
     title: string;
     text: string;
     url: string;
+    rewardPosition: string;
 }
 
-export const ShareButton = ({ title, text, url }: ShareButtonProps) => {
+export const ShareButton = ({ title, text, url, rewardPosition }: ShareButtonProps) => {
     const [shareHeart, setShareHeart] = useState(false);
-    const { reward, isAnimating } = useReward("shareRewardTop", "emoji", {
+    const { reward, isAnimating } = useReward(rewardPosition, "emoji", {
         emoji: ["❤️"],
         position: "absolute",
         zIndex: 100,
@@ -35,16 +37,14 @@ export const ShareButton = ({ title, text, url }: ShareButtonProps) => {
     };
 
     return (
-        <div className="ml-auto rounded-full border border-black px-8 py-1.5 dark:border-gray-500">
+        <div className="ml-auto">
             <span id="shareRewardTop" />
 
-            <button
+            <Button
+                text={shareHeart ? "Shared!" : "Share"}
+                icon={shareHeart ? "❤️" : <VscShare className="h-4 w-4 sm:h-4 sm:w-4" />}
                 onClick={shareTo}
-                className="flex cursor-pointer items-center rounded-md text-sm transition-all hover:text-blue-600 dark:hover:text-blue-400"
-            >
-                {shareHeart ? "❤️" : <VscShare className="h-4 w-4 sm:h-4 sm:w-4" />}
-                <span className="ml-3">Share</span>
-            </button>
+            />
         </div>
     );
 };

@@ -74,7 +74,7 @@ export const TableOfContentsMobile = ({ toc, title, text, url }: TableOfContents
                     On this page
                     {showTOC ? <FaAngleUp className="ml-3" /> : <FaAngleDown className="ml-3" />}
                 </button>
-                <ShareButton title={title} text={text} url={url} />
+                <ShareButton title={title} text={text} url={url} rewardPosition="shareRewardTop" />
             </div>
             {showTOC && (
                 <ul className="">
