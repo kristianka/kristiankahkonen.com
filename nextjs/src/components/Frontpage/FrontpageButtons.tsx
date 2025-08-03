@@ -1,32 +1,24 @@
 import Link from "next/link";
 
+const buttons = [
+    { href: "/blog", label: "Blog" },
+    { href: "/projects", label: "Projects" },
+    { href: "/about", label: "About" },
+    { href: "/contact", label: "Contact" }
+];
+
 export default function FrontpageButtons() {
     return (
-        <div className="mt-10 flex flex-wrap justify-start gap-3">
-            <Link
-                href="/blog"
-                className="rounded-full border border-black bg-white px-4 py-2 uppercase hover:bg-blue-500 sm:px-10 sm:py-2 dark:border-white dark:bg-black dark:text-white dark:hover:text-blue-500"
-            >
-                Blog
-            </Link>
-            <Link
-                href="/projects"
-                className="rounded-full border border-white bg-black px-4 py-2 text-white uppercase hover:text-blue-500 sm:px-10 sm:py-2 dark:border-black dark:bg-white dark:text-black dark:hover:bg-blue-500"
-            >
-                Projects
-            </Link>
-            <Link
-                href="/about"
-                className="rounded-full border border-black bg-white px-4 py-2 uppercase hover:bg-blue-500 sm:px-10 sm:py-2 dark:border-white dark:bg-black dark:text-white dark:hover:text-blue-500"
-            >
-                About
-            </Link>
-            <Link
-                href="/contact"
-                className="rounded-full border border-white bg-black px-4 py-2 text-white uppercase hover:text-blue-500 sm:px-10 sm:py-2 dark:border-black dark:bg-white dark:text-black dark:hover:bg-blue-500"
-            >
-                Contact
-            </Link>
+        <div className="mt-15 flex flex-wrap justify-start gap-3">
+            {buttons.map((button) => (
+                <Link
+                    key={button.href}
+                    href={button.href}
+                    className="inline-block overflow-hidden rounded-full border border-gray-500 px-16 py-2 transition-colors duration-300 hover:bg-black/10 dark:hover:bg-black/40"
+                >
+                    {button.label}
+                </Link>
+            ))}
         </div>
     );
 }
