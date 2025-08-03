@@ -14,7 +14,7 @@ export default function FrontpageButtons() {
                 <Link
                     key={button.href}
                     href={button.href}
-                    className="rounded-full border-1 border-black bg-white px-4 py-2 transition-all hover:bg-black/10 sm:px-10 sm:py-2 dark:border-white dark:bg-black dark:text-white dark:hover:bg-white/1"
+                    className="rounded-full border-1 border-black bg-white px-6 py-2 transition-all hover:bg-black/10 sm:px-12 sm:py-2 dark:border-white dark:bg-black dark:text-white dark:hover:bg-white/1"
                 >
                     {button.label}
                 </Link>
