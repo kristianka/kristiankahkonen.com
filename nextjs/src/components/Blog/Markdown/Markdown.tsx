@@ -8,9 +8,7 @@ import { CodeProps, HeaderProps, ParagraphProps } from "./types";
 
 export const MarkdownComponents: object = {
     // render h1, h2, h3, h4, h5, h6 tags
-    // h1 should not be used because it's bigger than site title,
-    // but just in case it's rendered as h2
-    h1: (props: HeaderProps) => Header(props, 2),
+    h1: (props: HeaderProps) => Header(props, 1),
     h2: (props: HeaderProps) => Header(props, 2),
     h3: (props: HeaderProps) => Header(props, 3),
     h4: (props: HeaderProps) => Header(props, 4),
