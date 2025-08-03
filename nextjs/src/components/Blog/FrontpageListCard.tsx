@@ -5,7 +5,7 @@ export const FrontpageListCard = ({ blog }: { blog: Blog }) => {
     return (
         <div className="mb-5" key={blog.id}>
             <Link
-                className="hover:text-blue-700 dark:hover:text-blue-500"
+                className="transition-all hover:text-blue-700 dark:hover:text-blue-500"
                 href={`/blog/${blog.id}`}
             >
                 <div className="flex flex-col">

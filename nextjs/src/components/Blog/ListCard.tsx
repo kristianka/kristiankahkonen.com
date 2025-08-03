@@ -8,7 +8,7 @@ export const ListCard = ({ blog }: { blog: Blog }) => {
         <>
             <li className="divide-x pt-5 pb-5" key={blog.id}>
                 <Link
-                    className="hover:text-blue-700 dark:hover:text-blue-500"
+                    className="transition-all hover:text-blue-700 dark:hover:text-blue-500"
                     href={`/blog/${blog.id}`}
                 >
                     <div className="flex flex-col">

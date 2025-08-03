@@ -43,7 +43,12 @@ export const BlogPage = async ({
                             </h4>
                         )}
                         <div className="ml-auto hidden sm:inline">
-                            <ShareButton title={blog.title} text={blog.description} url={blogUrl} />
+                            <ShareButton
+                                title={blog.title}
+                                text={blog.description}
+                                url={blogUrl}
+                                rewardPosition="shareRewardTop"
+                            />
                         </div>
                     </div>
                     <h4 className="prose dark:prose-invert">

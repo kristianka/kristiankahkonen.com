@@ -74,7 +74,7 @@ export const TableOfContentsMobile = ({ toc, title, text, url }: TableOfContents
                     On this page
                     {showTOC ? <FaAngleUp className="ml-3" /> : <FaAngleDown className="ml-3" />}
                 </button>
-                <ShareButton title={title} text={text} url={url} />
+                <ShareButton title={title} text={text} url={url} rewardPosition="shareRewardTop" />
             </div>
             {showTOC && (
                 <ul className="">
@@ -85,11 +85,11 @@ export const TableOfContentsMobile = ({ toc, title, text, url }: TableOfContents
                     {toc.map((heading, index) => {
                         const isActive = heading.id === activeHeading;
                         const delay = `${index * 50}ms`;
-                        const ml = heading.level - 1;
                         return (
                             <li
                                 key={index}
                                 style={{
+                                    marginLeft: `${heading.level - 1}rem`,
                                     transition: `opacity 0.5s ${delay}, transform 0.5s ${delay}`,
                                     opacity: isLoaded ? 1 : 0,
                                     transform: isLoaded ? "translateY(0)" : "translateY(-10px)"
@@ -97,7 +97,7 @@ export const TableOfContentsMobile = ({ toc, title, text, url }: TableOfContents
                             >
                                 <a
                                     href={`#${heading.id}`}
-                                    className={`ml-${ml} ${
+                                    className={`${
                                         isActive
                                             ? "prose dark:prose-invert font-bold text-blue-600 transition-all"
                                             : "prose dark:prose-invert font-semibold transition-all hover:text-black dark:hover:text-white"

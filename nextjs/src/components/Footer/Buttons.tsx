@@ -26,7 +26,7 @@ export default function Buttons() {
                 <div className="justify-start">
                     <button
                         onClick={reward}
-                        className="flex cursor-pointer items-center hover:text-blue-500"
+                        className="flex cursor-pointer items-center transition-all hover:text-blue-500"
                     >
                         <IoCodeSharp className="mr-2 h-6 w-auto sm:h-8" />
                         <p className="text-lg font-bold">Kristian Kähkönen</p>
@@ -36,7 +36,7 @@ export default function Buttons() {
                 <div className="justify-end">
                     <button
                         onClick={backToTop}
-                        className="flex cursor-pointer items-center text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                        className="flex cursor-pointer items-center text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
                     >
                         <span className="mr-3 hidden sm:block">Back to top</span>
                         <ArrowUp className="h-5 w-5" />
