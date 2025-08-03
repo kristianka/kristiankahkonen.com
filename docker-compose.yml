@@ -1,70 +1,74 @@
 # Used for deploying to production, with certs
 services:
+    # postgres here because running on ARM chips
+    database:
+        container_name: database
+        image: postgres:16.4
+        volumes:
+            - ./directus/data/database:/var/lib/postgresql/data
+        env_file:
+            - ./directus/.env
+        networks:
+            - app-network
+        restart: always
 
-  # postgres here because running on ARM chips
-  database:
-    container_name: database
-    image: postgres:16.4
-    volumes:
-      - ./directus/data/database:/var/lib/postgresql/data
-    env_file:
-      - ./directus/.env
-    networks:
-      - app-network
+    cache:
+        container_name: cache
+        image: redis:6
+        networks:
+            - app-network
+        restart: always
 
-  cache:
-    container_name: cache
-    image: redis:6
-    networks:
-      - app-network
+    directus:
+        container_name: directus
+        image: directus/directus:11.6.1
+        volumes:
+            - ./directus/uploads:/directus/uploads
+            - ./directus/extensions:/directus/extensions
+        env_file:
+            - ./directus/.env
+        environment:
+            CACHE_ENABLED: "true"
+            CACHE_AUTO_PURGE: "true"
+            CACHE_STORE: "redis"
+            REDIS: "redis://cache:6379"
+        depends_on:
+            - cache
+            - database
+        networks:
+            - app-network
+        restart: always
 
-  directus:
-    container_name: directus
-    image: directus/directus:11.6.1
-    volumes:
-      - ./directus/uploads:/directus/uploads
-      - ./directus/extensions:/directus/extensions
-    env_file:
-      - ./directus/.env
-    environment:
-        CACHE_ENABLED: "true"
-        CACHE_AUTO_PURGE: "true"
-        CACHE_STORE: "redis"
-        REDIS: "redis://cache:6379"
-    depends_on:
-      - cache
-      - database
-    networks:
-      - app-network
+    nextjs:
+        container_name: nextjs
+        build:
+            context: ./nextjs
+            dockerfile: Dockerfile.prod
+        env_file:
+            - ./nextjs/.env
+        environment:
+            - NODE_ENV=production
+        networks:
+            - app-network
+        restart: always
 
-  nextjs:
-    container_name: nextjs
-    build:
-      context: ./nextjs
-      dockerfile: Dockerfile.prod
-    env_file:
-      - ./nextjs/.env
-    environment:
-      - NODE_ENV=production  
-    networks:
-      - app-network
-
-  nginx:
-    container_name: nginx
-    image: nginx:1.26.0-alpine
-    # if hosting without root nginx, use 80:80 and 443:443
-    ports:
-      - 8080:80
-      - 8443:443
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
-      - ./nextjs/certs:/etc/nginx/certs 
-    depends_on:
-      - nextjs
-      - directus
-    networks:
-      - app-network
+    nginx:
+        container_name: nginx
+        image: nginx:1.26.0-alpine
+        # if hosting without root nginx, use 80:80 and 443:443
+        ports:
+            - 8080:80
+            - 8443:443
+        volumes:
+            - ./nginx.conf:/etc/nginx/nginx.conf
+            - ./nextjs/certs:/etc/nginx/certs
+        depends_on:
+            - nextjs
+            - directus
+        networks:
+            - app-network
+        restart: always
 
 networks:
-  app-network:
-    driver: bridge
+    app-network:
+        driver: bridge
