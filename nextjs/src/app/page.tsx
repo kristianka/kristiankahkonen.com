@@ -9,7 +9,9 @@ export default async function Home() {
         <main className="mx-auto max-w-6xl">
             <FadeIn>
                 <TitleAnimation />
-                <FrontpageButtons />
+                <div className="my-20">
+                    <FrontpageButtons />
+                </div>
                 <FrontpageBlogs />
             </FadeIn>
         </main>

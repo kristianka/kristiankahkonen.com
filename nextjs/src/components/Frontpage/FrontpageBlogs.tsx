@@ -7,7 +7,7 @@ export default async function FrontpageBlogs() {
 
     return (
         <div>
-            <h2 className="m-auto mt-20 mb-5 text-xl font-bold tracking-wide sm:text-2xl">
+            <h2 className="m-auto mb-5 text-xl font-bold tracking-wide sm:text-2xl">
                 Featured blog post
             </h2>
             <div className="mt-5">
