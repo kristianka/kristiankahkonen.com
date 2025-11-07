@@ -50,18 +50,17 @@ export const TableOfContentsMobile = ({ toc, title, text, url }: TableOfContents
         }
     };
 
-    // Set isLoaded to true after a short delay to trigger the transition
+    // Manage animation state: start loading when TOC opens, reset on cleanup when it closes
     useEffect(() => {
+        let timeoutId: ReturnType<typeof setTimeout> | null = null;
         if (showTOC) {
-            const timeoutId = setTimeout(() => {
-                setIsLoaded(true);
-            }, 100);
-
-            // Clean up the timeout if the component unmounts before it fires
-            return () => clearTimeout(timeoutId);
-        } else {
-            setIsLoaded(false);
+            timeoutId = setTimeout(() => setIsLoaded(true), 100);
         }
+        return () => {
+            if (timeoutId) clearTimeout(timeoutId);
+            // Always reset when TOC closes or component unmounts
+            setIsLoaded(false);
+        };
     }, [showTOC]);
 
     return (

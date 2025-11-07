@@ -1,6 +1,8 @@
 import { defineConfig, globalIgnores } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
 import prettierPlugin from "eslint-plugin-prettier";
+import tseslintPlugin from "@typescript-eslint/eslint-plugin";
+import tseslintParser from "@typescript-eslint/parser";
 
 const eslintConfig = defineConfig([
     ...nextVitals,
@@ -15,7 +17,11 @@ const eslintConfig = defineConfig([
     ]),
     {
         plugins: {
-            prettier: prettierPlugin
+            prettier: prettierPlugin,
+            "@typescript-eslint": tseslintPlugin
+        },
+        languageOptions: {
+            parser: tseslintParser
         },
         rules: {
             "prettier/prettier": [

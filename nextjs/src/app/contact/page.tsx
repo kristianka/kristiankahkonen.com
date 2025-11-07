@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import { Contact } from "@/components/Contact";
 import FadeIn from "@/components/FadeIn";
 

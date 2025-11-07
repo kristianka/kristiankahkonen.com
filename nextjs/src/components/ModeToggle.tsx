@@ -17,6 +17,8 @@ export function ModeToggle() {
 
     // Ensure we're only switching themes client-side
     useEffect(() => {
+        // Safe: one-time mount flag to avoid SSR hydration mismatch
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setMounted(true);
     }, []);
 
