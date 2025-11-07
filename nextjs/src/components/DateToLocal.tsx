@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
 import { Transition } from "@headlessui/react"; // import Transition from headlessui
 
 interface DateToLocalProps {
@@ -9,17 +9,14 @@ interface DateToLocalProps {
 }
 
 export const DateToLocal = ({ date, type }: DateToLocalProps) => {
-    const [formattedDate, setFormattedDate] = useState<string | null>(null);
-
-    useEffect(() => {
+    const formattedDate = useMemo(() => {
         const dateTimeOptions: Intl.DateTimeFormatOptions = {
             year: "numeric",
             month: "long",
             day: "numeric",
             hour12: false
         };
-
-        setFormattedDate(new Date(date).toLocaleString(undefined, dateTimeOptions));
+        return new Date(date).toLocaleString(undefined, dateTimeOptions);
     }, [date]);
 
     return (
