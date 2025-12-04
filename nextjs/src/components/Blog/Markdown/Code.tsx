@@ -27,7 +27,7 @@ export const Code = async ({ className, children, "data-meta": meta }: CodeProps
     // clean the code content
     const code = typeof children === "string" ? children.trim() : String(children).trim();
 
-    // stil highlight inline code without language specified
+    // still highlight inline code without language specified
     if (!hasLanguageClass) {
         const html = await codeToHtml(code, {
             lang: "typescript",
