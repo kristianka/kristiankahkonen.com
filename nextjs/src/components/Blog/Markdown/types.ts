@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 export interface CodeProps {
     className?: string;
     children: ReactNode;
+    "data-meta"?: string;
 }
 
 export interface HeaderProps {

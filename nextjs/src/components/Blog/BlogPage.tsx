@@ -5,6 +5,7 @@ import rehypeSlug from "rehype-slug";
 import rehypeExternalLinks from "rehype-external-links";
 
 import { MarkdownComponents } from "./Markdown/Markdown";
+import { remarkCodeMeta } from "./Markdown/remarkCodeMeta";
 import { DateToLocal } from "../DateToLocal";
 import { Blog, Toc, User } from "@/types";
 
@@ -90,7 +91,7 @@ export const BlogPage = async ({
                 {/* Don't make the text gray on tailwind typography prose. It's hard to read. */}
                 <div className="prose dark:prose-invert my-10 w-full max-w-full text-black dark:text-white">
                     <Markdown
-                        remarkPlugins={[remarkGfm]}
+                        remarkPlugins={[remarkGfm, remarkCodeMeta]}
                         rehypePlugins={[
                             [rehypeRaw],
                             [rehypeSlug],
