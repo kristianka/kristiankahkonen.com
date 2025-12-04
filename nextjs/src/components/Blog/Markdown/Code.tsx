@@ -1,63 +1,44 @@
 import { CodeProps } from "./types";
 import "./styles.css";
 
-import rangeParser from "parse-numeric-range";
-import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { codeToHtml } from "shiki";
 
-import javascript from "react-syntax-highlighter/dist/cjs/languages/prism/javascript";
-import jsx from "react-syntax-highlighter/dist/cjs/languages/prism/jsx";
-import typescript from "react-syntax-highlighter/dist/cjs/languages/prism/typescript";
-import tsx from "react-syntax-highlighter/dist/cjs/languages/prism/tsx";
-import markdown from "react-syntax-highlighter/dist/cjs/languages/prism/markdown";
-import json from "react-syntax-highlighter/dist/cjs/languages/prism/json";
+// Async component for syntax highlighted code blocks
+export const Code = async ({ className, children }: CodeProps) => {
+    const langMatch = /language-(\w+)/.exec(className || "");
+    const language = langMatch?.[1] || "typescript";
 
-SyntaxHighlighter.registerLanguage("javascript", javascript);
-SyntaxHighlighter.registerLanguage("jsx", jsx);
-SyntaxHighlighter.registerLanguage("typescript", typescript);
-SyntaxHighlighter.registerLanguage("tsx", tsx);
-SyntaxHighlighter.registerLanguage("markdown", markdown);
-SyntaxHighlighter.registerLanguage("json", json);
+    // clean the code content
+    const code = typeof children === "string" ? children.trim() : String(children).trim();
 
-const syntaxTheme = vscDarkPlus;
+    // stil highlight inline code without language specified
+    if (!langMatch) {
+        const html = await codeToHtml(code, {
+            lang: "typescript",
+            themes: {
+                light: "github-light",
+                dark: "github-dark"
+            },
+            defaultColor: false
+        });
 
-export const Code = ({ className, ...props }: CodeProps) => {
-    const hasLang = /language-(\w+)/.exec(className || "");
-    const text = className;
-    const regex = /\{([^{}]*)\}/;
-    const match = text.match(regex);
+        return <span className="inline-code-wrapper" dangerouslySetInnerHTML={{ __html: html }} />;
+    }
 
-    const hasMeta = match !== null;
+    // code block with syntax highlighting using Shiki
+    const html = await codeToHtml(code, {
+        lang: language,
+        themes: {
+            light: "github-light",
+            dark: "github-dark"
+        },
+        defaultColor: false
+    });
 
-    const applyHighlights = (lineNumber: number) => {
-        if (hasMeta) {
-            const highlightLines = rangeParser(match[1]);
-            const data = highlightLines.includes(lineNumber)
-                ? { style: { background: "#333" } }
-                : {};
-            return data;
-        } else {
-            return {};
-        }
-    };
-
-    return hasLang ? (
-        <SyntaxHighlighter
-            style={syntaxTheme}
-            language={hasLang[1]}
-            PreTag="div"
-            className="rounded-lg"
-            showLineNumbers={true}
-            lineNumberStyle={{ display: "none" }}
-            wrapLines={hasMeta}
-            useInlineStyles={true}
-            lineProps={applyHighlights}
-        >
-            {props.children}
-        </SyntaxHighlighter>
-    ) : (
-        <code className={className} {...props}>
-            {props.children}
-        </code>
+    return (
+        <div
+            className="shiki-wrapper overflow-x-auto rounded-lg text-sm"
+            dangerouslySetInnerHTML={{ __html: html }}
+        />
     );
 };
