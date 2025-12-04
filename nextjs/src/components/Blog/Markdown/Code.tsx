@@ -2,6 +2,7 @@ import { CodeProps } from "./types";
 import "./styles.css";
 
 import { codeToHtml } from "shiki";
+import { CopyButton } from "./CopyButton";
 
 // Async component for syntax highlighted code blocks
 export const Code = async ({ className, children }: CodeProps) => {
@@ -36,9 +37,19 @@ export const Code = async ({ className, children }: CodeProps) => {
     });
 
     return (
-        <div
-            className="shiki-wrapper overflow-x-auto rounded-lg text-sm"
-            dangerouslySetInnerHTML={{ __html: html }}
-        />
+        <div className="code-block-wrapper group relative my-4">
+            {/* Language badge */}
+            <div className="flex items-center justify-between rounded-t-lg bg-neutral-200 px-4 py-2 dark:bg-neutral-800">
+                <span className="text-xs font-medium text-neutral-600 dark:text-neutral-400">
+                    {language}
+                </span>
+                <CopyButton code={code} />
+            </div>
+            {/* Code content */}
+            <div
+                className="shiki-wrapper overflow-x-auto rounded-b-lg text-sm"
+                dangerouslySetInnerHTML={{ __html: html }}
+            />
+        </div>
     );
 };

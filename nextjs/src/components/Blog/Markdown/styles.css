@@ -5,8 +5,18 @@
 
 .shiki-wrapper pre {
     padding: 1rem;
-    border-radius: 0.5rem;
+    margin: 0;
     overflow-x: auto;
+}
+
+/* Remove top border radius when inside code-block-wrapper */
+.code-block-wrapper .shiki-wrapper pre {
+    border-radius: 0 0 0.5rem 0.5rem;
+}
+
+/* Standalone shiki-wrapper (fallback) */
+.shiki-wrapper:not(.code-block-wrapper .shiki-wrapper) pre {
+    border-radius: 0.5rem;
 }
 
 .shiki-wrapper code {
@@ -30,7 +40,7 @@ html:not(.dark) .shiki span {
 
 /* Override light theme background to gray */
 html:not(.dark) .shiki {
-    background-color: #e5e7eb !important;
+    background-color: #f5f5f5 !important;
 }
 
 html:not(.dark) .shiki span {
