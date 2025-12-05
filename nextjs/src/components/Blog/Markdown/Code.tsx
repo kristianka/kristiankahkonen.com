@@ -41,15 +41,23 @@ export const Code = async ({ className, children, "data-meta": meta }: CodeProps
         return <span className="inline-code-wrapper" dangerouslySetInnerHTML={{ __html: html }} />;
     }
 
-    // code block with syntax highlighting using Shiki
-    const html = await codeToHtml(code, {
-        lang: language,
-        themes: {
-            light: "github-light",
-            dark: "github-dark"
-        },
-        defaultColor: false
-    });
+    let html = "";
+
+    try {
+        // code block with syntax highlighting using Shiki
+        html = await codeToHtml(code, {
+            lang: language,
+            themes: {
+                light: "github-light",
+                dark: "github-dark"
+            },
+            defaultColor: false
+        });
+    } catch (error) {
+        console.error("Error highlighting code:", error);
+        // Fallback: render without highlighting
+        html = `<pre><code>${code}</code></pre>`;
+    }
 
     return (
         <div className="code-block-wrapper group relative my-4">
