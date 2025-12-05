@@ -1,9 +1,70 @@
-/* highlighted code is full width */
-code {
-    transform: translateZ(0);
-    min-width: 100%;
-    float: left;
-    & > span {
-        display: block;
-    }
+/* Shiki code block styles */
+.shiki-wrapper {
+    margin: 0;
+}
+
+.shiki-wrapper pre {
+    padding: 1rem;
+    margin: 0;
+    overflow-x: auto;
+}
+
+/* Remove top border radius when inside code-block-wrapper */
+.code-block-wrapper .shiki-wrapper pre {
+    border-radius: 0 0 0.5rem 0.5rem;
+}
+
+/* Standalone shiki-wrapper (fallback) */
+.shiki-wrapper:not(.code-block-wrapper .shiki-wrapper) pre {
+    border-radius: 0.5rem;
+}
+
+.shiki-wrapper code {
+    font-family:
+        ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 0.875rem;
+    line-height: 1.7;
+}
+
+/* Light/Dark theme switching */
+html.dark .shiki,
+html.dark .shiki span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+}
+
+html:not(.dark) .shiki,
+html:not(.dark) .shiki span {
+    color: var(--shiki-light) !important;
+}
+
+/* Override light theme background to gray */
+html:not(.dark) .shiki {
+    background-color: #f5f5f5 !important;
+}
+
+html:not(.dark) .shiki span {
+    background-color: transparent !important;
+}
+
+/* Inline code styling */
+.inline-code-wrapper {
+    display: inline;
+}
+
+.inline-code-wrapper pre {
+    display: inline;
+    padding: 0.125rem 0.375rem;
+    margin: 0;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+}
+
+.inline-code-wrapper code {
+    font-family:
+        ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+.inline-code-wrapper .line {
+    display: inline;
 }

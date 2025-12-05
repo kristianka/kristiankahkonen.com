@@ -1,13 +1,9 @@
 import { ReactNode } from "react";
 
 export interface CodeProps {
-    className: string;
-    node: ReactNode;
-    children: string;
-}
-
-export interface HeaderProps {
+    className?: string;
     children: ReactNode;
+    "data-meta"?: string;
 }
 
 export interface HeaderProps {

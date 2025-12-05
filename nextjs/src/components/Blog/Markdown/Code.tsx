@@ -1,63 +1,81 @@
 import { CodeProps } from "./types";
 import "./styles.css";
 
-import rangeParser from "parse-numeric-range";
-import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { codeToHtml } from "shiki";
+import { CopyButton } from "./CopyButton";
+import { LanguageIcon, getLanguageLabel } from "./LanguageIcon";
 
-import javascript from "react-syntax-highlighter/dist/cjs/languages/prism/javascript";
-import jsx from "react-syntax-highlighter/dist/cjs/languages/prism/jsx";
-import typescript from "react-syntax-highlighter/dist/cjs/languages/prism/typescript";
-import tsx from "react-syntax-highlighter/dist/cjs/languages/prism/tsx";
-import markdown from "react-syntax-highlighter/dist/cjs/languages/prism/markdown";
-import json from "react-syntax-highlighter/dist/cjs/languages/prism/json";
+// supports formats: filename="example.ts" or filename=example.ts or title="example.ts"
+const parseMetaString = (meta: string | undefined): string | undefined => {
+    if (!meta) return undefined;
 
-SyntaxHighlighter.registerLanguage("javascript", javascript);
-SyntaxHighlighter.registerLanguage("jsx", jsx);
-SyntaxHighlighter.registerLanguage("typescript", typescript);
-SyntaxHighlighter.registerLanguage("tsx", tsx);
-SyntaxHighlighter.registerLanguage("markdown", markdown);
-SyntaxHighlighter.registerLanguage("json", json);
+    // Try to match filename="..." or filename=... or title="..." or title=...
+    const filenameMatch = meta.match(/(?:filename|title)=["']?([^"'\s]+)["']?/);
+    return filenameMatch?.[1];
+};
 
-const syntaxTheme = vscDarkPlus;
+// Async component for syntax highlighted code blocks
+export const Code = async ({ className, children, "data-meta": meta }: CodeProps) => {
+    // Extract language from className
+    const langMatch = /language-(\w+)/.exec(className || "");
+    const language = langMatch?.[1] || "typescript";
+    const hasLanguageClass = !!langMatch;
 
-export const Code = ({ className, ...props }: CodeProps) => {
-    const hasLang = /language-(\w+)/.exec(className || "");
-    const text = className;
-    const regex = /\{([^{}]*)\}/;
-    const match = text.match(regex);
+    // Get filename from meta string (passed via data-meta attribute from remarkCodeMeta)
+    const filename = parseMetaString(meta);
 
-    const hasMeta = match !== null;
+    // clean the code content
+    const code = typeof children === "string" ? children.trim() : String(children).trim();
 
-    const applyHighlights = (lineNumber: number) => {
-        if (hasMeta) {
-            const highlightLines = rangeParser(match[1]);
-            const data = highlightLines.includes(lineNumber)
-                ? { style: { background: "#333" } }
-                : {};
-            return data;
-        } else {
-            return {};
-        }
-    };
+    // still highlight inline code without language specified
+    if (!hasLanguageClass) {
+        const html = await codeToHtml(code, {
+            lang: "typescript",
+            themes: {
+                light: "github-light",
+                dark: "github-dark"
+            },
+            defaultColor: false
+        });
 
-    return hasLang ? (
-        <SyntaxHighlighter
-            style={syntaxTheme}
-            language={hasLang[1]}
-            PreTag="div"
-            className="rounded-lg"
-            showLineNumbers={true}
-            lineNumberStyle={{ display: "none" }}
-            wrapLines={hasMeta}
-            useInlineStyles={true}
-            lineProps={applyHighlights}
-        >
-            {props.children}
-        </SyntaxHighlighter>
-    ) : (
-        <code className={className} {...props}>
-            {props.children}
-        </code>
+        return <span className="inline-code-wrapper" dangerouslySetInnerHTML={{ __html: html }} />;
+    }
+
+    let html = "";
+
+    try {
+        // code block with syntax highlighting using Shiki
+        html = await codeToHtml(code, {
+            lang: language,
+            themes: {
+                light: "github-light",
+                dark: "github-dark"
+            },
+            defaultColor: false
+        });
+    } catch (error) {
+        console.error("Error highlighting code:", error);
+        // Fallback: render without highlighting
+        html = `<pre><code>${code}</code></pre>`;
+    }
+
+    return (
+        <div className="code-block-wrapper group relative my-4">
+            {/* Header with language icon, filename/language, and copy button */}
+            <div className="flex items-center justify-between rounded-t-lg bg-neutral-200 px-4 py-2 dark:bg-neutral-800">
+                <div className="flex items-center gap-2">
+                    <LanguageIcon language={language} />
+                    <span className="text-xs font-medium text-neutral-600 dark:text-neutral-400">
+                        {filename || getLanguageLabel(language)}
+                    </span>
+                </div>
+                <CopyButton code={code} />
+            </div>
+            {/* Code content */}
+            <div
+                className="shiki-wrapper overflow-x-auto rounded-b-lg text-sm"
+                dangerouslySetInnerHTML={{ __html: html }}
+            />
+        </div>
     );
 };

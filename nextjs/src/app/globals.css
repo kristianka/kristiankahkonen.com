@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+@plugin "tailwindcss-animate";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -103,6 +104,12 @@
     .prose code {
         background-color: transparent;
         padding: 0;
+    }
+
+    /* Remove backticks added by Tailwind Typography for inline code */
+    .prose code::before,
+    .prose code::after {
+        content: none;
     }
 }
 
