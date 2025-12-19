@@ -28,24 +28,22 @@ export async function POST(req: Request) {
         }
 
         return new ImageResponse(
-            (
-                <div
-                    style={{
-                        height: "100%",
-                        width: "100%",
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        backgroundColor: "#fff"
-                    }}
-                >
-                    <h1 style={{ fontSize: 32, fontWeight: 800 }}>{data.title}</h1>
-                    <h2>{data.description}</h2>
-                    <h3>{data.author}</h3>
-                    <h4>{url}</h4>
-                </div>
-            ),
+            <div
+                style={{
+                    height: "100%",
+                    width: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    backgroundColor: "#fff"
+                }}
+            >
+                <h1 style={{ fontSize: 32, fontWeight: 800 }}>{data.title}</h1>
+                <h2>{data.description}</h2>
+                <h3>{data.author}</h3>
+                <h4>{url}</h4>
+            </div>,
             {
                 width: 800,
                 height: 400
