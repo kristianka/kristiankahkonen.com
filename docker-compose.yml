@@ -14,7 +14,7 @@ services:
 
     cache:
         container_name: cache
-        image: redis:6
+        image: redis:8
         networks:
             - app-network
         restart: always

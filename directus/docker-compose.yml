@@ -10,7 +10,7 @@ services:
       - .env
 
   cache:
-    image: redis:6
+    image: redis:8
 
   directus:
     image: directus/directus:11.6.1
