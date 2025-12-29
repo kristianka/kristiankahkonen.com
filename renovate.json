@@ -1,0 +1,50 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "labels": ["dependencies"],
+  "packageRules": [
+    {
+      "groupName": "React & Next.js",
+      "matchPackagePatterns": ["^react", "^@types/react"],
+      "matchPackageNames": ["next", "eslint-config-next", "next-themes"]
+    },
+    {
+      "groupName": "Radix UI & Headless UI",
+      "matchPackagePatterns": ["^@radix-ui", "^@headlessui"]
+    },
+    {
+      "groupName": "Tailwind CSS",
+      "matchPackagePatterns": ["^tailwind", "^@tailwindcss"],
+      "matchPackageNames": ["postcss"]
+    },
+    {
+      "groupName": "Styling utilities",
+      "matchPackageNames": ["clsx", "class-variance-authority", "tailwind-merge"]
+    },
+    {
+      "groupName": "Directus",
+      "matchPackagePatterns": ["^@directus"]
+    },
+    {
+      "groupName": "Testing",
+      "matchPackagePatterns": ["playwright", "^@playwright"],
+      "matchPackageNames": ["cross-env"]
+    },
+    {
+      "groupName": "Markdown & syntax highlighting",
+      "matchPackagePatterns": ["^rehype", "^remark", "^unist"],
+      "matchPackageNames": ["unified", "shiki", "react-markdown"]
+    },
+    {
+      "groupName": "Code formatting",
+      "matchPackagePatterns": ["^prettier", "^eslint"]
+    },
+    {
+      "description": "Ignore icon libraries",
+      "matchPackageNames": ["lucide-react", "react-icons"],
+      "enabled": false
+    }
+  ],
+  "schedule": ["before 5am on monday"],
+  "timezone": "Europe/Helsinki"
+}
