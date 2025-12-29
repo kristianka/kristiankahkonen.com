@@ -2,7 +2,24 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended"],
   "labels": ["dependencies"],
+  "separateMinorPatch": true,
   "packageRules": [
+    {
+      "matchUpdateTypes": ["patch"],
+      "groupName": "all patch updates"
+    },
+    {
+      "matchUpdateTypes": ["minor"],
+      "groupName": "all minor updates"
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "groupName": "GitHub Actions"
+    },
+    {
+      "matchManagers": ["dockerfile", "docker-compose"],
+      "groupName": "Docker"
+    },
     {
       "groupName": "React & Next.js",
       "matchPackagePatterns": ["^react", "^@types/react"],
