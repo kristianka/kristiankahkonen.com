@@ -5,10 +5,30 @@
 # Displays the downtime during deployment.
 # Make the script executable with: chmod +x ./deploy.sh
 # Run with: ./deploy.sh
+# Run with: ./deploy.sh --force  (to force rebuild even without changes)
 
 set -e  # Exit immediately if a command exits with a non-zero status
 
-echo "📦 Pulling latest changes from the repository..."
+# Check for --force flag
+FORCE_DEPLOY=false
+if [ "$1" = "--force" ]; then
+    FORCE_DEPLOY=true
+    echo "🔧 Force deploy enabled, will rebuild regardless of changes."
+fi
+
+echo "📦 Fetching latest changes from the repository..."
+git fetch
+
+# Check if there are any changes
+LOCAL=$(git rev-parse HEAD)
+REMOTE=$(git rev-parse @{u})
+
+if [ "$LOCAL" = "$REMOTE" ] && [ "$FORCE_DEPLOY" = false ]; then
+    echo "✅ Already up to date. No deployment needed."
+    exit 0
+fi
+
+echo "🔄 Changes detected! Pulling updates..."
 git pull
 
 echo "🔧 Building new Docker containers..."

@@ -21,6 +21,19 @@
       "groupName": "Docker"
     },
     {
+      "description": "PostgreSQL - minor and patch only (major requires manual migration)",
+      "matchManagers": ["dockerfile", "docker-compose"],
+      "matchPackageNames": ["postgres"],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
+    },
+    {
+      "description": "Directus docker image",
+      "matchManagers": ["dockerfile", "docker-compose"],
+      "matchPackageNames": ["directus/directus"],
+      "groupName": "Directus"
+    },
+    {
       "groupName": "React & Next.js",
       "matchPackagePatterns": ["^react", "^@types/react"],
       "matchPackageNames": ["next", "eslint-config-next", "next-themes"]
