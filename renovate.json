@@ -37,7 +37,8 @@
     },
     {
       "groupName": "Code formatting",
-      "matchPackagePatterns": ["^prettier", "^eslint"]
+      "matchPackagePatterns": ["^prettier", "^eslint"],
+      "excludePackageNames": ["eslint-config-next"]
     },
     {
       "description": "Ignore icon libraries",
