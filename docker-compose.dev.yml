@@ -2,7 +2,7 @@
 services:
   database-dev:
     container_name: database-dev
-    image: postgres:16.4
+    image: postgres:18.1
     # Required when running on platform other than amd64, like Apple M1/M2:
     # platform: linux/amd64
     volumes:
