@@ -16,7 +16,7 @@ jobs:
             NEXT_TELEMETRY_DISABLED: 1
         steps:
             - uses: actions/checkout@v4.1.7
-            - uses: actions/setup-node@v4.0.2
+            - uses: actions/setup-node@v4.4.0
               with:
                   node-version: "20"
 
