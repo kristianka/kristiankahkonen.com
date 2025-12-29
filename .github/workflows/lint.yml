@@ -11,14 +11,14 @@ on:
 jobs:
     lint:
         name: Lint
-        runs-on: ubuntu-22.04
+        runs-on: ubuntu-24.04
         env:
             NEXT_TELEMETRY_DISABLED: 1
         steps:
-            - uses: actions/checkout@v4.1.7
-            - uses: actions/setup-node@v4.0.2
+            - uses: actions/checkout@v6.0.1
+            - uses: actions/setup-node@v6.1.0
               with:
-                  node-version: "20"
+                  node-version: "24"
 
             - name: Install dependencies
               run: cd nextjs && npm ci
