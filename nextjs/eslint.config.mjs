@@ -1,27 +1,22 @@
-import { defineConfig, globalIgnores } from "eslint/config";
-import nextVitals from "eslint-config-next/core-web-vitals";
+import nextConfig from "eslint-config-next";
 import prettierPlugin from "eslint-plugin-prettier";
-import tseslintPlugin from "@typescript-eslint/eslint-plugin";
-import tseslintParser from "@typescript-eslint/parser";
 
-const eslintConfig = defineConfig([
-    ...nextVitals,
-    globalIgnores([
-        "node_modules/**",
-        ".next/**",
-        "out/**",
-        "build/**",
-        "next-env.d.ts",
-        // Ignore shadcn files
-        "src/components/ui/"
-    ]),
+const eslintConfig = [
+    ...nextConfig,
+    {
+        ignores: [
+            "node_modules/**",
+            ".next/**",
+            "out/**",
+            "build/**",
+            "next-env.d.ts",
+            // Ignore shadcn files
+            "src/components/ui/**"
+        ]
+    },
     {
         plugins: {
-            prettier: prettierPlugin,
-            "@typescript-eslint": tseslintPlugin
-        },
-        languageOptions: {
-            parser: tseslintParser
+            prettier: prettierPlugin
         },
         rules: {
             "prettier/prettier": [
@@ -38,6 +33,6 @@ const eslintConfig = defineConfig([
             ]
         }
     }
-]);
+];
 
 export default eslintConfig;

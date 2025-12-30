@@ -99,6 +99,9 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0
     devDependencies:
+      '@eslint/eslintrc':
+        specifier: ^3.3.3
+        version: 3.3.3
       '@playwright/test':
         specifier: ^1.57.0
         version: 1.57.0

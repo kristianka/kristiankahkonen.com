@@ -53,6 +53,7 @@
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.3",
     "@playwright/test": "^1.57.0",
     "@tailwindcss/postcss": "^4.1.18",
     "@tailwindcss/typography": "^0.5.19",
