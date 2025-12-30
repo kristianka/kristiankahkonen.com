@@ -1,5 +1,5 @@
+import { generateSlug } from "@/components/GenerateSlug";
 import { describe, it, expect } from "vitest";
-import { generateSlug } from "../src/components/GenerateSlug";
 
 // some basic tests for generating slugs from strings
 describe("generateSlug", () => {

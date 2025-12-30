@@ -14,8 +14,8 @@ import {
     getBlogAuthor,
     getFeaturedBlogs,
     getLatestBlog
-} from "../../src/services/BlogRequests";
-import client from "../../src/services/DirectusClient";
+} from "../../../src/services/BlogRequests";
+import client from "../../../src/services/DirectusClient";
 
 describe("BlogRequests", () => {
     beforeEach(() => {

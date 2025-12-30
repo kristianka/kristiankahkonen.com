@@ -8,8 +8,8 @@ vi.mock("../../src/services/DirectusClient", () => ({
     }
 }));
 
-import { getProjects } from "../../src/services/ProjectRequests";
-import client from "../../src/services/DirectusClient";
+import { getProjects } from "../../../src/services/ProjectRequests";
+import client from "../../../src/services/DirectusClient";
 
 describe("ProjectRequests", () => {
     beforeEach(() => {
