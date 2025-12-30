@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
 // Mock DirectusClient before importing services
-vi.mock("../../src/services/DirectusClient", () => ({
+vi.mock("../../../src/services/DirectusClient", () => ({
     default: {
         request: vi.fn(),
         setToken: vi.fn().mockReturnValue(Promise.resolve())
