@@ -41,14 +41,17 @@ describe("BlogRequests", () => {
 
         it("filters out unpublished blogs", async () => {
             const mockBlogs = [
-                { id: "1", title: "Blog 1", published: false, date_created: "2024-01-01" }
+                { id: "1", title: "Blog 1", published: false, date_created: "2024-01-01" },
+                { id: "2", title: "Blog 2", published: true, date_created: "2024-01-02" },
+                { id: "3", title: "Blog 3", published: false, date_created: "2024-01-03" }
             ];
 
             vi.mocked(client.request).mockResolvedValue(mockBlogs);
 
             const result = await getBlogs();
 
-            expect(result).toHaveLength(0);
+            expect(result).toHaveLength(1);
+            expect(result[0].id).toBe("2");
         });
 
         it("returns empty array on error", async () => {
@@ -65,6 +68,38 @@ describe("BlogRequests", () => {
             const result = await getBlogs();
 
             expect(result).toEqual([]);
+        });
+
+        it("handles blogs with null or undefined tags", async () => {
+            const mockBlogs = [
+                {
+                    id: "1",
+                    title: "Blog 1",
+                    published: true,
+                    date_created: "2024-01-01",
+                    tags: null
+                },
+                {
+                    id: "2",
+                    title: "Blog 2",
+                    published: true,
+                    date_created: "2024-01-02",
+                    tags: undefined
+                },
+                {
+                    id: "3",
+                    title: "Blog 3",
+                    published: true,
+                    date_created: "2024-01-03",
+                    tags: ["tech"]
+                }
+            ];
+
+            vi.mocked(client.request).mockResolvedValue(mockBlogs);
+
+            const result = await getBlogs();
+
+            expect(result).toHaveLength(3);
         });
     });
 
@@ -154,7 +189,9 @@ describe("BlogRequests", () => {
         it("filters out non-featured blogs", async () => {
             const mockBlogs = [
                 { id: "1", published: true, tags: ["other"], date_created: "2024-01-01" },
-                { id: "2", published: true, tags: ["featured"], date_created: "2024-01-02" }
+                { id: "2", published: true, tags: ["featured"], date_created: "2024-01-02" },
+                { id: "3", published: true, tags: ["tech"], date_created: "2024-01-03" },
+                { id: "4", published: true, tags: ["news"], date_created: "2024-01-04" }
             ];
 
             vi.mocked(client.request).mockResolvedValue(mockBlogs);
@@ -183,6 +220,36 @@ describe("BlogRequests", () => {
             const result = await getFeaturedBlogs();
 
             expect(result).toEqual([]);
+        });
+
+        it("returns fewer than 3 blogs when less than 3 featured blogs exist", async () => {
+            const mockBlogs = [
+                { id: "1", published: true, tags: ["featured"], date_created: "2024-01-01" },
+                { id: "2", published: true, tags: ["featured"], date_created: "2024-01-02" }
+            ];
+
+            vi.mocked(client.request).mockResolvedValue(mockBlogs);
+
+            const result = await getFeaturedBlogs();
+
+            expect(result).toHaveLength(2);
+            expect(result[0].id).toBe("2");
+            expect(result[1].id).toBe("1");
+        });
+
+        it("handles blogs with null or undefined tags in featured filter", async () => {
+            const mockBlogs = [
+                { id: "1", published: true, tags: null, date_created: "2024-01-01" },
+                { id: "2", published: true, tags: ["featured"], date_created: "2024-01-02" },
+                { id: "3", published: true, tags: undefined, date_created: "2024-01-03" }
+            ];
+
+            vi.mocked(client.request).mockResolvedValue(mockBlogs);
+
+            const result = await getFeaturedBlogs();
+
+            expect(result).toHaveLength(1);
+            expect(result[0].id).toBe("2");
         });
     });
 

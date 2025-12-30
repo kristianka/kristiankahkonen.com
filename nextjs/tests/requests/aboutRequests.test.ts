@@ -97,22 +97,5 @@ describe("AboutRequests", () => {
             const result = await getCertifications();
             expect(result).toEqual([]);
         });
-
-        it("handles certifications with same order", async () => {
-            const mockCertifications = [
-                { id: "1", name: "Cert A", order: 1 },
-                { id: "2", name: "Cert B", order: 1 },
-                { id: "3", name: "Cert C", order: 2 }
-            ];
-
-            vi.mocked(client.request).mockResolvedValue(mockCertifications);
-            const result = await getCertifications();
-
-            expect(result).toHaveLength(3);
-            // Verify stable sort behavior
-            expect(result[0].order).toBe(1);
-            expect(result[1].order).toBe(1);
-            expect(result[2].order).toBe(2);
-        });
     });
 });

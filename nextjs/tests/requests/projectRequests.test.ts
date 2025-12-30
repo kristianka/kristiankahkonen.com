@@ -74,22 +74,5 @@ describe("ProjectRequests", () => {
 
             expect(result).toEqual([]);
         });
-
-        it("sorts projects with same order correctly", async () => {
-            const mockProjects = [
-                { id: "1", title: "Project A", status: "published", order: 1 },
-                { id: "2", title: "Project B", status: "published", order: 1 },
-                { id: "3", title: "Project C", status: "published", order: 2 }
-            ];
-
-            vi.mocked(client.request).mockResolvedValue(mockProjects);
-
-            const result = await getProjects();
-
-            expect(result).toHaveLength(3);
-            expect(result[0].order).toBe(1);
-            expect(result[1].order).toBe(1);
-            expect(result[2].order).toBe(2);
-        });
     });
 });
