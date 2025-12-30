@@ -1,4 +1,4 @@
-name: NextJS lint
+name: NextJS lint and unit tests
 on:
   push:
     branches:
@@ -31,17 +31,25 @@ jobs:
       - name: Run NextJS lint
         run: cd nextjs && pnpm run lint
 
-  # test:
-  #     name: Vitest tests
-  #     runs-on: ubuntu-22.04
-  #     steps:
-  #         - uses: actions/checkout@v3
-  #         - uses: actions/setup-node@v3
-  #           with:
-  #               node-version: "22"
+  # unit tests are here as they are fast to run
+  test:
+    name: Vitest unit tests
+    runs-on: ubuntu-24.04
+    env:
+      NEXT_TELEMETRY_DISABLED: 1
+    steps:
+      - uses: actions/checkout@v6.0.1
+      - uses: actions/setup-node@v6.1.0
+        with:
+          node-version: "24"
 
-  #         - name: Install dependencies for frontend
-  #           run: npm install
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          package_json_file: nextjs/package.json
 
-  #         - name: Run frontend tests
-  #           run: npm run test:vite
+      - name: Install dependencies
+        run: cd nextjs && pnpm install --frozen-lockfile
+
+      - name: Run Vitest unit tests
+        run: cd nextjs && pnpm run test:run
