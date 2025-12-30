@@ -20,11 +20,14 @@ jobs:
               with:
                   node-version: "24"
 
+            - name: Setup pnpm
+              uses: pnpm/action-setup@v4
+
             - name: Install dependencies
-              run: cd nextjs && npm ci
+              run: cd nextjs && pnpm install --frozen-lockfile
 
             - name: Run NextJS lint
-              run: cd nextjs && npm run lint
+              run: cd nextjs && pnpm run lint
 
     # test:
     #     name: Vitest tests
