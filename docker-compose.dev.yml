@@ -9,16 +9,19 @@ services:
       - ./directus/data/database:/var/lib/postgresql/data
     env_file:
       - ./directus/.dev.env
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
     networks:
       - app-network
-
 
   # cache-dev:
   #   container_name: cache-dev
   #   image: redis:6
   #   networks:
   #     - app-network
-
 
   directus-dev:
     container_name: directus-dev
@@ -40,10 +43,11 @@ services:
     #     REDIS: "redis://cache-dev:6379"
     depends_on:
       # - cache-dev
-      - database-dev
+      database-dev:
+        condition: service_healthy
+    restart: unless-stopped
     networks:
       - app-network
-
 
   nextjs-dev:
     container_name: nextjs-dev
@@ -54,14 +58,12 @@ services:
     env_file:
       - ./nextjs/.dev.env
     environment:
-      - NODE_ENV=development 
+      - NODE_ENV=development
       - WATCHPACK_POLLING=true
     volumes:
       - ./nextjs:/app
     networks:
       - app-network
-    
-
 
   nginx-dev:
     container_name: nginx-dev
@@ -75,7 +77,6 @@ services:
       - directus-dev
     networks:
       - app-network
-
 
 networks:
   app-network:

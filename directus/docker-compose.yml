@@ -1,16 +1,25 @@
 # perfect for local development, no need to dockerized anything else
 # remember to update the nextjs .env file with the correct directus backend values
 services:
-
   database:
     image: postgres:16.4
     volumes:
       - ./data/database:/var/lib/postgresql/data
     env_file:
       - .env
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   cache:
     image: redis:6
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
 
   directus:
     image: directus/directus:11.14.0
@@ -22,12 +31,13 @@ services:
     env_file:
       - .env
     environment:
-        CACHE_ENABLED: "true"
-        CACHE_AUTO_PURGE: "true"
-        CACHE_STORE: "redis"
-        REDIS: "redis://cache:6379"
+      CACHE_ENABLED: "true"
+      CACHE_AUTO_PURGE: "true"
+      CACHE_STORE: "redis"
+      REDIS: "redis://cache:6379"
     depends_on:
-      - cache
-      - database
-
-
+      cache:
+        condition: service_healthy
+      database:
+        condition: service_healthy
+    restart: unless-stopped
