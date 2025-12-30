@@ -60,6 +60,7 @@
     "@types/node": "^25",
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.3",
+    "@types/unist": "^3.0.3",
     "cross-env": "^10.1.0",
     "eslint": "^9.39.2",
     "eslint-config-next": "^16.1.0",
