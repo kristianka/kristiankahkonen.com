@@ -1,42 +1,47 @@
 name: NextJS lint
 on:
-    push:
-        branches:
-            - main
+  push:
+    branches:
+      - main
 
-    pull_request:
-        branches: [main]
-        types: [opened, synchronize]
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize]
 
 jobs:
-    lint:
-        name: Lint
-        runs-on: ubuntu-24.04
-        env:
-            NEXT_TELEMETRY_DISABLED: 1
-        steps:
-            - uses: actions/checkout@v6.0.1
-            - uses: actions/setup-node@v6.1.0
-              with:
-                  node-version: "24"
+  lint:
+    name: Lint
+    runs-on: ubuntu-24.04
+    env:
+      NEXT_TELEMETRY_DISABLED: 1
+    steps:
+      - uses: actions/checkout@v6.0.1
+      - uses: actions/setup-node@v6.1.0
+        with:
+          node-version: "24"
 
-            - name: Install dependencies
-              run: cd nextjs && npm ci
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          package_json_file: nextjs/package.json
 
-            - name: Run NextJS lint
-              run: cd nextjs && npm run lint
+      - name: Install dependencies
+        run: cd nextjs && pnpm install --frozen-lockfile
 
-    # test:
-    #     name: Vitest tests
-    #     runs-on: ubuntu-22.04
-    #     steps:
-    #         - uses: actions/checkout@v3
-    #         - uses: actions/setup-node@v3
-    #           with:
-    #               node-version: "22"
+      - name: Run NextJS lint
+        run: cd nextjs && pnpm run lint
 
-    #         - name: Install dependencies for frontend
-    #           run: npm install
+  # test:
+  #     name: Vitest tests
+  #     runs-on: ubuntu-22.04
+  #     steps:
+  #         - uses: actions/checkout@v3
+  #         - uses: actions/setup-node@v3
+  #           with:
+  #               node-version: "22"
 
-    #         - name: Run frontend tests
-    #           run: npm run test:vite
+  #         - name: Install dependencies for frontend
+  #           run: npm install
+
+  #         - name: Run frontend tests
+  #           run: npm run test:vite

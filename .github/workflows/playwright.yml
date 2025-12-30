@@ -1,43 +1,48 @@
 name: Playwright Tests
 on:
-    push:
-        branches: [main]
-    pull_request:
-        branches: [main]
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 jobs:
-    test:
-        name: Playwright E2E tests
-        timeout-minutes: 15
-        runs-on: ubuntu-latest
+  test:
+    name: Playwright E2E tests
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
 
-        steps:
-            - uses: actions/checkout@v6.0.1
-            - uses: actions/setup-node@v6.1.0
-              with:
-                  node-version: "24"
+    steps:
+      - uses: actions/checkout@v6.0.1
+      - uses: actions/setup-node@v6.1.0
+        with:
+          node-version: "24"
 
-            - name: Setup .env for services
-              run: |
-                  echo "${{ secrets.ENV_VALUES }}" > nextjs/.env
+      - name: Setup .env for services
+        run: |
+          echo "${{ secrets.ENV_VALUES }}" > nextjs/.env
 
-            - name: Start Docker
-              run: docker compose -f "docker-compose.test.yml" up --build -d
+      - name: Start Docker
+        run: docker compose -f "docker-compose.test.yml" up --build -d
 
-            - name: Install dependencies
-              run: cd nextjs && npm ci
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          package_json_file: nextjs/package.json
 
-            # # Cache Playwright browsers. This will speed up the workflow by reusing the browsers
-            # # invalidate when package-lock.json changes, like when you update Playwright
-            # - name: Cache Playwright browsers
-            #   uses: actions/cache@v3
-            #   with:
-            #       path: ~/.cache/ms-playwright
-            #       key: playwright-browsers-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
-            #       restore-keys: |
-            #           playwright-browsers-${{ runner.os }}-
+      - name: Install dependencies
+        run: cd nextjs && pnpm install --frozen-lockfile
 
-            - name: Install Playwright Browsers
-              run: cd nextjs && npx playwright install --with-deps
+      # # Cache Playwright browsers. This will speed up the workflow by reusing the browsers
+      # # invalidate when package-lock.json changes, like when you update Playwright
+      # - name: Cache Playwright browsers
+      #   uses: actions/cache@v3
+      #   with:
+      #       path: ~/.cache/ms-playwright
+      #       key: playwright-browsers-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+      #       restore-keys: |
+      #           playwright-browsers-${{ runner.os }}-
 
-            - name: Run Playwright tests
-              run: cd nextjs && npm run test:e2e-dockerized
+      - name: Install Playwright Browsers
+        run: cd nextjs && pnpm exec playwright install --with-deps
+
+      - name: Run Playwright tests
+        run: cd nextjs && pnpm run test:e2e-dockerized

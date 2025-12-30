@@ -2,6 +2,7 @@
   "name": "kristiankahkonen.com",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.26.2",
   "author": {
     "name": "Kristian Kähkönen"
   },
@@ -52,12 +53,15 @@
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.3",
     "@playwright/test": "^1.57.0",
     "@tailwindcss/postcss": "^4.1.18",
     "@tailwindcss/typography": "^0.5.19",
+    "@types/mdast": "^4.0.4",
     "@types/node": "^25",
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.3",
+    "@types/unist": "^3.0.3",
     "cross-env": "^10.1.0",
     "eslint": "^9.39.2",
     "eslint-config-next": "^16.1.0",
