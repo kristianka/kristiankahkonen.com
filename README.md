@@ -43,5 +43,6 @@ Behind the scenes:
 
 Make sure the app is running, instructions above
 
+-   Vitest: `pnpm run test`
 -   Inside Docker: `pnpm run test:e2e-dockerized`
 -   Outside Docker: `pnpm run test:e2e-local`
