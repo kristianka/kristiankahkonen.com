@@ -57,6 +57,7 @@
     "@playwright/test": "^1.57.0",
     "@tailwindcss/postcss": "^4.1.18",
     "@tailwindcss/typography": "^0.5.19",
+    "@types/mdast": "^4.0.4",
     "@types/node": "^25",
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.3",
