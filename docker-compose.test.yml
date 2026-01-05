@@ -10,7 +10,7 @@ services:
 
   nginx-test:
     container_name: nginx-test
-    image: nginx:1.26.3-alpine
+    image: nginx:1.29.4-alpine
     ports:
       - 80:80
     volumes:
