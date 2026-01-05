@@ -2,7 +2,7 @@
 services:
   database-dev:
     container_name: database-dev
-    image: postgres:16.4
+    image: postgres:16.11
     # Required when running on platform other than amd64, like Apple M1/M2:
     # platform: linux/amd64
     volumes:
@@ -67,7 +67,7 @@ services:
 
   nginx-dev:
     container_name: nginx-dev
-    image: nginx:1.26.3-alpine
+    image: nginx:1.29.4-alpine
     ports:
       - 80:80
     volumes:

@@ -3,7 +3,7 @@ services:
     # postgres here because running on ARM chips
     database:
         container_name: database
-        image: postgres:16.4
+        image: postgres:16.11
         volumes:
             - ./directus/data/database:/var/lib/postgresql/data
         env_file:
@@ -67,7 +67,7 @@ services:
 
     nginx:
         container_name: nginx
-        image: nginx:1.26.3-alpine
+        image: nginx:1.29.4-alpine
         # if hosting without root nginx, use 80:80 and 443:443
         ports:
             - 8080:80
