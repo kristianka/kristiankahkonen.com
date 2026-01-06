@@ -177,3 +177,140 @@
         @apply bg-background text-foreground;
     }
 }
+
+/* snowflakes :) */
+/* thanks https://pajasevi.github.io/CSSnowflakes/ */
+.snowflakes {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0;
+    transition: opacity 500ms ease;
+}
+
+.snowflakes--on {
+    opacity: 1;
+}
+
+.snowflake {
+    position: fixed;
+    top: -10%;
+    font-size: 2em;
+    opacity: 0.5;
+    user-select: none;
+    pointer-events: none;
+    animation: snowflakes-shake 4s ease-in-out infinite;
+    will-change: transform;
+}
+
+.snowflake .inner {
+    animation: snowflakes-fall 15s linear infinite;
+    will-change: transform;
+}
+
+@keyframes snowflakes-fall {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(0, 110vh, 0);
+    }
+}
+
+@keyframes snowflakes-shake {
+    0%,
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+    50% {
+        transform: translate3d(80px, 0, 0);
+    }
+}
+
+.snowflake:first-of-type {
+    left: 10%;
+    animation-delay: 2s;
+}
+.snowflake:first-of-type .inner,
+.snowflake:nth-of-type(8) .inner {
+    animation-delay: 2s;
+}
+
+.snowflake:nth-of-type(2) {
+    left: 20%;
+    animation-delay: 1s;
+}
+.snowflake:nth-of-type(2) .inner,
+.snowflake:nth-of-type(6) .inner {
+    animation-delay: 12s;
+}
+
+.snowflake:nth-of-type(3) {
+    left: 30%;
+    animation-delay: 4s;
+}
+.snowflake:nth-of-type(3) .inner,
+.snowflake:nth-of-type(11) .inner {
+    animation-delay: 4s;
+}
+
+.snowflake:nth-of-type(4) {
+    left: 40%;
+    animation-delay: 2s;
+}
+.snowflake:nth-of-type(4) .inner,
+.snowflake:nth-of-type(10) .inner {
+    animation-delay: 2s;
+}
+
+.snowflake:nth-of-type(5) {
+    left: 50%;
+    animation-delay: 3s;
+}
+.snowflake:nth-of-type(5) .inner {
+    animation-delay: 8s;
+}
+
+.snowflake:nth-of-type(6) {
+    left: 60%;
+    animation-delay: 2s;
+}
+
+.snowflake:nth-of-type(7) {
+    left: 70%;
+    animation-delay: 1s;
+}
+.snowflake:nth-of-type(7) .inner {
+    animation-delay: 2.5s;
+}
+
+.snowflake:nth-of-type(8) {
+    left: 80%;
+    animation-delay: 0s;
+}
+
+.snowflake:nth-of-type(9) {
+    left: 90%;
+    animation-delay: 1.5s;
+}
+.snowflake:nth-of-type(9) .inner {
+    animation-delay: 3s;
+}
+
+.snowflake:nth-of-type(10) {
+    left: 25%;
+    animation-delay: 0s;
+}
+
+.snowflake:nth-of-type(11) {
+    left: 65%;
+    animation-delay: 2.5s;
+}
+
+/* accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .snowflakes {
+        display: none;
+    }
+}
