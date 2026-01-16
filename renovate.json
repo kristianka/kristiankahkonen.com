@@ -1,85 +1,144 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
-  "labels": ["dependencies"],
+  "extends": [
+    "config:recommended"
+  ],
+  "labels": [
+    "dependencies"
+  ],
   "separateMinorPatch": true,
   "platformAutomerge": true,
   "packageRules": [
     {
-      "matchUpdateTypes": ["patch"],
+      "matchUpdateTypes": [
+        "patch"
+      ],
       "groupName": "all patch updates",
       "automerge": true,
       "automergeType": "pr",
       "automergeStrategy": "squash"
     },
     {
-      "matchUpdateTypes": ["minor"],
+      "matchUpdateTypes": [
+        "minor"
+      ],
       "groupName": "all minor updates"
     },
     {
-      "matchManagers": ["github-actions"],
+      "matchManagers": [
+        "github-actions"
+      ],
       "groupName": "GitHub Actions"
     },
     {
-      "matchManagers": ["dockerfile", "docker-compose"],
+      "matchManagers": [
+        "dockerfile",
+        "docker-compose"
+      ],
       "groupName": "Docker"
     },
     {
       "description": "PostgreSQL - minor and patch only (major requires manual migration)",
-      "matchManagers": ["dockerfile", "docker-compose"],
-      "matchPackageNames": ["postgres"],
-      "matchUpdateTypes": ["major"],
+      "matchManagers": [
+        "dockerfile",
+        "docker-compose"
+      ],
+      "matchPackageNames": [
+        "postgres"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ],
       "enabled": false
     },
     {
       "description": "Directus docker image",
-      "matchManagers": ["dockerfile", "docker-compose"],
-      "matchPackageNames": ["directus/directus"],
+      "matchManagers": [
+        "dockerfile",
+        "docker-compose"
+      ],
+      "matchPackageNames": [
+        "directus/directus"
+      ],
       "groupName": "Directus"
     },
     {
       "groupName": "React & Next.js",
-      "matchPackagePatterns": ["^react", "^@types/react"],
-      "matchPackageNames": ["next", "eslint-config-next", "next-themes"]
+      "matchPackageNames": [
+        "next",
+        "eslint-config-next",
+        "next-themes",
+        "/^react/",
+        "/^@types/react/"
+      ]
     },
     {
       "groupName": "Radix UI & Headless UI",
-      "matchPackagePatterns": ["^@radix-ui", "^@headlessui"]
+      "matchPackageNames": [
+        "/^@radix-ui/",
+        "/^@headlessui/"
+      ]
     },
     {
       "groupName": "Tailwind CSS",
-      "matchPackagePatterns": ["^tailwind", "^@tailwindcss"],
-      "matchPackageNames": ["postcss"]
+      "matchPackageNames": [
+        "postcss",
+        "/^tailwind/",
+        "/^@tailwindcss/"
+      ]
     },
     {
       "groupName": "Styling utilities",
-      "matchPackageNames": ["clsx", "class-variance-authority", "tailwind-merge"]
+      "matchPackageNames": [
+        "clsx",
+        "class-variance-authority",
+        "tailwind-merge"
+      ]
     },
     {
       "groupName": "Directus",
-      "matchPackagePatterns": ["^@directus"]
+      "matchPackageNames": [
+        "/^@directus/"
+      ]
     },
     {
       "groupName": "Testing",
-      "matchPackagePatterns": ["playwright", "^@playwright"],
-      "matchPackageNames": ["cross-env"]
+      "matchPackageNames": [
+        "cross-env",
+        "/playwright/",
+        "/^@playwright/"
+      ]
     },
     {
       "groupName": "Markdown & syntax highlighting",
-      "matchPackagePatterns": ["^rehype", "^remark", "^unist"],
-      "matchPackageNames": ["unified", "shiki", "react-markdown"]
+      "matchPackageNames": [
+        "unified",
+        "shiki",
+        "react-markdown",
+        "/^rehype/",
+        "/^remark/",
+        "/^unist/"
+      ]
     },
     {
       "groupName": "Code formatting",
-      "matchPackagePatterns": ["^prettier", "^eslint"],
-      "excludePackageNames": ["eslint-config-next"]
+      "matchPackageNames": [
+        "/^prettier/",
+        "/^eslint/",
+        "!eslint-config-next"
+      ]
     },
     {
       "description": "Ignore icon libraries",
-      "matchPackageNames": ["lucide-react", "react-icons"],
+      "matchPackageNames": [
+        "lucide-react",
+        "react-icons"
+      ],
       "enabled": false
     }
   ],
-  "schedule": ["before 5am on monday"],
+  "schedule": [
+    "before 5am on monday"
+  ],
   "timezone": "Europe/Helsinki"
 }
