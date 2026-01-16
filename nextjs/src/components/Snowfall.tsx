@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import { Snowflake } from "lucide-react";
 
-const SNOWFLAKE_COUNT = 12;
+const SNOWFLAKE_COUNT = 11;
 
 function isWinterSeason(d = new Date()) {
     const month = d.getMonth();
