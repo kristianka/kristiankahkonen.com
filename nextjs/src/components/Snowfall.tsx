@@ -20,7 +20,7 @@ export function Snowfall() {
     return (
         <div className={`snowflakes ${active && "snowflakes--on"}`} aria-hidden="true">
             {Array.from({ length: SNOWFLAKE_COUNT }).map((_, i) => (
-                <div key={i} className="snowflake">
+                <div key={`snowflake-${i}`} className="snowflake">
                     <div className="inner">
                         <Snowflake className="text-gray-300 dark:text-white" />
                     </div>
