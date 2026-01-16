@@ -10,6 +10,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { NavBar } from "@/components/NavBar/NavBar";
 import Loading from "./loading";
 import { Footer } from "@/components/Footer/Footer";
+import { Snowfall } from "@/components/Snowfall";
 import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -58,6 +59,7 @@ export default function RootLayout({
                     enableSystem
                     disableTransitionOnChange
                 >
+                    <Snowfall />
                     {/* Basic anonymous site view analytics, no cookies or tracking */}
                     <Script
                         src={process.env.ANALYTICS_URL as string}

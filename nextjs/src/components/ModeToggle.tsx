@@ -22,8 +22,18 @@ export function ModeToggle() {
         setMounted(true);
     }, []);
 
+    // show icons to avoid layout shift
     if (!mounted) {
-        return <span className="sr-only">Toggle theme</span>;
+        return (
+            <button
+                className="cursor-pointer hover:text-gray-400"
+                disabled
+                aria-label="Loading theme toggle"
+            >
+                <Sun className="h-6 w-6 dark:hidden" />
+                <Moon className="hidden h-6 w-6 dark:block" />
+            </button>
+        );
     }
 
     return (

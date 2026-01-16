@@ -3,10 +3,14 @@
   "extends": ["config:recommended"],
   "labels": ["dependencies"],
   "separateMinorPatch": true,
+  "platformAutomerge": true,
   "packageRules": [
     {
       "matchUpdateTypes": ["patch"],
-      "groupName": "all patch updates"
+      "groupName": "all patch updates",
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeStrategy": "squash"
     },
     {
       "matchUpdateTypes": ["minor"],
