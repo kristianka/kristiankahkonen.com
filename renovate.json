@@ -1,133 +1,91 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
-  ],
-  "labels": [
-    "dependencies"
-  ],
-  "separateMinorPatch": true,
+  "extends": ["config:recommended"],
+  "labels": ["dependencies"],
   "platformAutomerge": true,
+
+  "prHourlyLimit": 2,
+  "prConcurrentLimit": 6,
+
   "packageRules": [
     {
-      "matchUpdateTypes": [
-        "patch"
-      ],
+      "description": "All patch updates in a single PR",
+      "matchUpdateTypes": ["patch"],
       "groupName": "all patch updates",
       "automerge": true,
       "automergeType": "pr",
       "automergeStrategy": "squash"
     },
+
     {
-      "matchUpdateTypes": [
-        "minor"
-      ],
-      "groupName": "all minor updates"
-    },
-    {
-      "matchManagers": [
-        "github-actions"
-      ],
-      "groupName": "GitHub Actions"
-    },
-    {
-      "matchManagers": [
-        "dockerfile",
-        "docker-compose"
-      ],
-      "groupName": "Docker"
-    },
-    {
-      "description": "PostgreSQL - minor and patch only (major requires manual migration)",
-      "matchManagers": [
-        "dockerfile",
-        "docker-compose"
-      ],
-      "matchPackageNames": [
-        "postgres"
-      ],
-      "matchUpdateTypes": [
-        "major"
-      ],
-      "enabled": false
-    },
-    {
-      "description": "Directus docker image",
-      "matchManagers": [
-        "dockerfile",
-        "docker-compose"
-      ],
-      "matchPackageNames": [
-        "directus/directus"
-      ],
-      "groupName": "Directus"
-    },
-    {
-      "groupName": "React & Next.js",
+      "description": "All frontend libraries together",
+      "matchManagers": ["npm"],
+      "matchUpdateTypes": ["minor"],
+      "groupName": "Frontend libraries",
       "matchPackageNames": [
         "next",
         "eslint-config-next",
         "next-themes",
         "/^react/",
-        "/^@types/react/"
-      ]
-    },
-    {
-      "groupName": "Radix UI & Headless UI",
-      "matchPackageNames": [
+        "/^@types/react/",
+
         "/^@radix-ui/",
-        "/^@headlessui/"
-      ]
-    },
-    {
-      "groupName": "Tailwind CSS",
-      "matchPackageNames": [
+        "/^@headlessui/",
+
         "postcss",
         "/^tailwind/",
-        "/^@tailwindcss/"
-      ]
-    },
-    {
-      "groupName": "Styling utilities",
-      "matchPackageNames": [
+        "/^@tailwindcss/",
+
         "clsx",
         "class-variance-authority",
-        "tailwind-merge"
-      ]
-    },
-    {
-      "groupName": "Directus",
-      "matchPackageNames": [
-        "/^@directus/"
-      ]
-    },
-    {
-      "groupName": "Testing",
-      "matchPackageNames": [
+        "tailwind-merge",
+
         "cross-env",
         "/playwright/",
-        "/^@playwright/"
-      ]
-    },
-    {
-      "groupName": "Markdown & syntax highlighting",
-      "matchPackageNames": [
+        "/^@playwright/",
+
         "unified",
         "shiki",
         "react-markdown",
         "/^rehype/",
         "/^remark/",
-        "/^unist/"
-      ]
-    },
-    {
-      "groupName": "Code formatting",
-      "matchPackageNames": [
+        "/^unist/",
+
         "/^prettier/",
         "/^eslint/",
         "!eslint-config-next"
       ]
     },
+
+    {
+      "description": "Other npm minor updates (non-frontend)",
+      "matchManagers": ["npm"],
+      "matchUpdateTypes": ["minor"],
+      "groupName": "Other npm dependencies"
+    },
+
+    {
+      "description": "GitHub Actions and Docker images",
+      "matchManagers": ["github-actions", "dockerfile", "docker-compose"],
+      "groupName": "CI/CD and Docker"
+    },
+
+    {
+      "description": "PostgreSQL - major disabled",
+      "matchManagers": ["dockerfile", "docker-compose"],
+      "matchPackageNames": ["postgres"],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
+    },
+
+    {
+      "groupName": "Directus",
+      "matchPackageNames": [
+        "/^@directus/",
+        "directus/directus"
+      ]
+    },
+
     {
       "description": "Ignore icon libraries",
       "matchPackageNames": [
@@ -137,8 +95,7 @@
       "enabled": false
     }
   ],
-  "schedule": [
-    "before 5am on monday"
-  ],
+
+  "schedule": ["before 5am on monday"],
   "timezone": "Europe/Helsinki"
 }
