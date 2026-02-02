@@ -2,7 +2,7 @@
   "name": "kristiankahkonen.com",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@10.28.1",
+  "packageManager": "pnpm@10.28.2",
   "author": {
     "name": "Kristian Kähkönen"
   },
@@ -64,7 +64,7 @@
     "@testing-library/react": "^16.3.1",
     "@types/mdast": "^4.0.4",
     "@types/node": "^25",
-    "@types/react": "19.2.9",
+    "@types/react": "19.2.10",
     "@types/react-dom": "19.2.3",
     "@types/unist": "^3.0.3",
     "@vitejs/plugin-react": "^5.1.2",
@@ -83,7 +83,7 @@
     "vitest": "^4.0.16"
   },
   "overrides": {
-    "@types/react": "19.2.9",
+    "@types/react": "19.2.10",
     "@types/react-dom": "19.2.3"
   }
 }
