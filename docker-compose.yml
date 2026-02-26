@@ -3,7 +3,7 @@ services:
     # postgres here because running on ARM chips
     database:
         container_name: database
-        image: postgres:16.11
+        image: postgres:16.13
         volumes:
             - ./directus/data/database:/var/lib/postgresql/data
         env_file:
