@@ -3,99 +3,59 @@
   "extends": ["config:recommended"],
   "labels": ["dependencies"],
   "platformAutomerge": true,
-
   "prHourlyLimit": 2,
-  "prConcurrentLimit": 6,
-
+  "prConcurrentLimit": 4,
+  "schedule": ["before 5am on monday every 2 weeks"],
+  "timezone": "Europe/Helsinki",
+  "osvVulnerabilityAlerts": true,
+  "vulnerabilityAlerts": {
+    "schedule": ["at any time"],
+    "labels": ["dependencies", "security"]
+  },
   "packageRules": [
     {
-      "description": "All patch updates in a single PR",
-      "matchUpdateTypes": ["patch"],
-      "groupName": "all patch updates",
+      "description": "Critical CVEs (CVSS 9+), bypass schedule, no grouping",
+      "matchSeverity": ["critical"],
+      "schedule": ["at any time"],
+      "groupName": null,
+      "labels": ["dependencies", "security", "critical"]
+    },
+    {
+      "description": "All npm patch and minor updates in one automerging PR",
+      "matchManagers": ["npm"],
+      "matchUpdateTypes": ["patch", "minor"],
+      "groupName": "npm dependencies",
       "automerge": true,
       "automergeType": "pr",
       "automergeStrategy": "squash"
     },
-
     {
-      "description": "All frontend libraries together",
+      "description": "npm major updates, grouped but require review",
       "matchManagers": ["npm"],
-      "matchUpdateTypes": ["minor"],
-      "groupName": "Frontend libraries",
-      "matchPackageNames": [
-        "next",
-        "eslint-config-next",
-        "next-themes",
-        "/^react/",
-        "/^@types/react/",
-
-        "/^@radix-ui/",
-        "/^@headlessui/",
-
-        "postcss",
-        "/^tailwind/",
-        "/^@tailwindcss/",
-
-        "clsx",
-        "class-variance-authority",
-        "tailwind-merge",
-
-        "cross-env",
-        "/playwright/",
-        "/^@playwright/",
-
-        "unified",
-        "shiki",
-        "react-markdown",
-        "/^rehype/",
-        "/^remark/",
-        "/^unist/",
-
-        "/^prettier/",
-        "/^eslint/",
-        "!eslint-config-next"
-      ]
+      "matchUpdateTypes": ["major"],
+      "groupName": "npm major updates"
     },
-
     {
-      "description": "Other npm minor updates (non-frontend)",
-      "matchManagers": ["npm"],
-      "matchUpdateTypes": ["minor"],
-      "groupName": "Other npm dependencies"
-    },
-
-    {
-      "description": "GitHub Actions and Docker images",
+      "description": "CI/CD and Docker",
       "matchManagers": ["github-actions", "dockerfile", "docker-compose"],
       "groupName": "CI/CD and Docker"
     },
-
     {
-      "description": "PostgreSQL - major disabled",
+      "description": "Directus, kept separate due to migration risk",
+      "matchPackageNames": ["/^@directus/", "directus/directus"],
+      "groupName": "Directus"
+    },
+    {
+      "description": "PostgreSQL major, disabled",
       "matchManagers": ["dockerfile", "docker-compose"],
       "matchPackageNames": ["postgres"],
       "matchUpdateTypes": ["major"],
       "enabled": false
     },
-
-    {
-      "groupName": "Directus",
-      "matchPackageNames": [
-        "/^@directus/",
-        "directus/directus"
-      ]
-    },
-
     {
       "description": "Ignore icon libraries",
-      "matchPackageNames": [
-        "lucide-react",
-        "react-icons"
-      ],
+      "matchPackageNames": ["lucide-react", "react-icons"],
       "enabled": false
     }
-  ],
-
-  "schedule": ["before 5am on monday"],
-  "timezone": "Europe/Helsinki"
+  ]
 }
