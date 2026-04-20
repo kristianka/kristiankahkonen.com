@@ -32,7 +32,7 @@ services:
 
     directus:
         container_name: directus
-        image: directus/directus:11.16.1
+        image: directus/directus:11.17.3
         volumes:
             - ./directus/uploads:/directus/uploads
             - ./directus/extensions:/directus/extensions
@@ -67,7 +67,7 @@ services:
 
     nginx:
         container_name: nginx
-        image: nginx:1.29.6-alpine
+        image: nginx:1.30.0-alpine
         # if hosting without root nginx, use 80:80 and 443:443
         ports:
             - 8080:80
