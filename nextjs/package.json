@@ -2,7 +2,7 @@
   "name": "kristiankahkonen.com",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@10.33.0",
+  "packageManager": "pnpm@10.33.2",
   "author": {
     "name": "Kristian Kähkönen"
   },
@@ -77,7 +77,7 @@
     "jsdom": "^27.4.0",
     "postcss": "^8.5.8",
     "prettier": "^3.8.1",
-    "prettier-plugin-tailwindcss": "^0.7.2",
+    "prettier-plugin-tailwindcss": "^0.8.0",
     "tailwindcss": "^4.2.2",
     "typescript": "^5.9.3",
     "vitest": "^4.1.0"
