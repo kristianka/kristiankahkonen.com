@@ -14,7 +14,7 @@ services:
       retries: 5
 
   cache:
-    image: redis:6
+    image: redis:8
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 5s
@@ -22,7 +22,7 @@ services:
       retries: 5
 
   directus:
-    image: directus/directus:11.17.4
+    image: directus/directus:12.1.1
     ports:
       - 8055:8055
     volumes:
