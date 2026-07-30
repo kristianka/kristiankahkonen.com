@@ -67,7 +67,7 @@ services:
 
   nginx-dev:
     container_name: nginx-dev
-    image: nginx:1.31.2-alpine
+    image: nginx:1.31.3-alpine
     ports:
       - 80:80
     volumes:
