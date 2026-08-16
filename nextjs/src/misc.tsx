@@ -1,5 +1,6 @@
-import { FaReact, FaNodeJs, FaCss3Alt } from "react-icons/fa";
+import { FaReact, FaNodeJs, FaCss3Alt, FaCubes } from "react-icons/fa";
 import {
+    SiBun,
     SiCloudflare,
     SiCypress,
     SiDirectus,
@@ -8,8 +9,10 @@ import {
     SiFastify,
     SiFirebase,
     SiFramer,
+    SiGooglecloud,
     SiI18Next,
     SiJavascript,
+    SiKubernetes,
     SiMapbox,
     SiMicrosoftsqlserver,
     SiMongodb,
@@ -19,6 +22,7 @@ import {
     SiPlaywright,
     SiPostgresql,
     SiPrisma,
+    SiRabbitmq,
     SiReactquery,
     SiRedis,
     SiTailwindcss,
@@ -56,85 +60,93 @@ export const iconMapping: Record<string, JSX.Element> = {
     i18next: <SiI18Next />,
     Redis: <SiRedis />,
     Supabase: <SiSupabase />,
-    Vercel: <SiVercel />
+    Vercel: <SiVercel />,
+    Kubernetes: <SiKubernetes />,
+    Bun: <SiBun />,
+    RabbitMQ: <SiRabbitmq />,
+    "Google Cloud": <SiGooglecloud />,
+    Microservices: <FaCubes />
 };
 
 export const frontendSkills = [
     "React",
-    "TypeScript",
-    "JavaScript",
-    "TailwindCSS",
-    "React Query",
-    "Redux (RTK)",
-    "SEO",
     "Next.js",
-    "Framer Motion",
+    "TypeScript",
+    // "JavaScript",
+    "TailwindCSS",
+    "State",
+    // "React Query",
+    // "Redux (RTK)",
     "Firebase Auth",
-    "UI/UX Design",
+    "Framer Motion",
     "Playwright",
-    "Cypress",
-    "Jest",
+    // "Cypress",
+    // "Jest",
     "Vitest",
-    "HTML",
-    "CSS"
+    "SEO",
+    "Accessibility",
+    "UI/UX Design"
+    // "HTML",
+    // "CSS"
 ];
 
 export const backendSkills = [
+    "Node.js / Bun",
     "TypeScript",
-    "Node.js",
     "Express",
     "Fastify",
+    "REST API",
+    "Integrations",
+    "GraphQL",
     "Prisma",
     "PostgreSQL",
     "SQLServer",
-    "MySQL",
-    "SQLite",
+    // "MySQL",
+    // "SQLite",
     "MongoDB",
-    "REST API",
-    "GraphQL",
-    "JWT",
-    "Firebase Auth",
-    "Hoppscotch",
-    "Postman"
+    // "JWT",
+    "Firebase"
+    // "Hoppscotch",
+    // "Postman"
 ];
 
 export const devOpsSkills = [
     "Docker",
-    "Linux",
     "CI/CD",
-    "GitHub",
-    "GitLab",
-    // "Kubernetes",
+    "Linux",
+    "Git",
+    // "GitLab",
+    "Kubernetes",
     "NGINX",
     "Bash",
-    "PowerShell",
+    // "PowerShell",
     "Python",
-    "Security",
     "AWS",
     "Firebase",
     "Google Cloud",
     "Oracle Cloud",
-    "Server management",
-    "Domain & SSL management"
+    "Security",
+    "Servers"
+    // "Domain & SSL management"
 ];
 
 export const otherSkills = [
+    "React Native",
+    "Kotlin",
+    "Jetpack Compose",
+    "Rust",
+    "Figma",
     "Agile",
     "Scrum",
-    "Figma",
     "Leadership",
-    "Communication",
-    "Building PCs",
-    "C++",
-    "C#",
-    "Rust",
-    "Java",
-    "Flutter",
-    "Dart",
-    "Troubleshooting",
-    "Team Management",
-    "Jetpack Compose",
-    "React Native"
+    "Communication"
+    // "Building PCs",
+    // "C++",
+    // "C#",
+    // "Java",
+    // "Flutter",
+    // "Dart",
+    // "Troubleshooting",
 ];
 
 // return null if no image url is provided
