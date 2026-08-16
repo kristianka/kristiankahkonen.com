@@ -14,7 +14,8 @@ export const getAboutMe = async () => {
 export const getEducations = async () => {
     try {
         const res = (await client.request(readItems("education"))) as Education[];
-        return res;
+        const educations = res.sort((a, b) => a.order - b.order);
+        return educations;
     } catch (_error) {
         return [];
     }

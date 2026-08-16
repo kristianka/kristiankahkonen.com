@@ -86,6 +86,7 @@ export interface Certification {
 
 export interface Education {
     id: string;
+    order: number;
     title: string;
     school: string;
     date: string;
