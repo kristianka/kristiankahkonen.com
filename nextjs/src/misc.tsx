@@ -1,4 +1,12 @@
-import { FaReact, FaNodeJs, FaCss3Alt, FaCubes } from "react-icons/fa";
+import {
+    FaReact,
+    FaNodeJs,
+    FaCss3Alt,
+    FaCubes,
+    FaNetworkWired,
+    FaProjectDiagram,
+    FaYoutube
+} from "react-icons/fa";
 import {
     SiBun,
     SiCloudflare,
@@ -28,7 +36,8 @@ import {
     SiTailwindcss,
     SiTypescript,
     SiSupabase,
-    SiVercel
+    SiVercel,
+    SiVite
 } from "react-icons/si";
 import type { JSX } from "react";
 
@@ -65,7 +74,11 @@ export const iconMapping: Record<string, JSX.Element> = {
     Bun: <SiBun />,
     RabbitMQ: <SiRabbitmq />,
     "Google Cloud": <SiGooglecloud />,
-    Microservices: <FaCubes />
+    Microservices: <FaCubes />,
+    Vite: <SiVite />,
+    WebSockets: <FaNetworkWired />,
+    Raft: <FaProjectDiagram />,
+    "YouTube API": <FaYoutube />
 };
 
 export const frontendSkills = [
