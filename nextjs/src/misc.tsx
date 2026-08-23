@@ -1,4 +1,15 @@
-import { FaReact, FaNodeJs, FaCss3Alt, FaCubes } from "react-icons/fa";
+import {
+    FaReact,
+    FaNodeJs,
+    FaCss3Alt,
+    FaCubes,
+    FaNetworkWired,
+    FaProjectDiagram,
+    FaExchangeAlt,
+    FaShieldAlt,
+    FaRoute,
+    FaYoutube
+} from "react-icons/fa";
 import {
     SiBun,
     SiCloudflare,
@@ -9,6 +20,7 @@ import {
     SiFastify,
     SiFirebase,
     SiFramer,
+    SiGithubactions,
     SiGooglecloud,
     SiI18Next,
     SiJavascript,
@@ -24,11 +36,14 @@ import {
     SiPrisma,
     SiRabbitmq,
     SiReactquery,
+    SiReactrouter,
     SiRedis,
+    SiShadcnui,
     SiTailwindcss,
     SiTypescript,
     SiSupabase,
-    SiVercel
+    SiVercel,
+    SiVite
 } from "react-icons/si";
 import type { JSX } from "react";
 
@@ -65,7 +80,17 @@ export const iconMapping: Record<string, JSX.Element> = {
     Bun: <SiBun />,
     RabbitMQ: <SiRabbitmq />,
     "Google Cloud": <SiGooglecloud />,
-    Microservices: <FaCubes />
+    Microservices: <FaCubes />,
+    Vite: <SiVite />,
+    WebSockets: <FaNetworkWired />,
+    Raft: <FaProjectDiagram />,
+    "YouTube API": <FaYoutube />,
+    "React Router": <SiReactrouter />,
+    "shadcn/ui": <SiShadcnui />,
+    "GitHub Actions": <SiGithubactions />,
+    RPC: <FaExchangeAlt />,
+    "Fault Tolerance": <FaShieldAlt />,
+    "Saga Pattern": <FaRoute />
 };
 
 export const frontendSkills = [
