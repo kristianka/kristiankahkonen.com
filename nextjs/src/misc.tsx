@@ -5,6 +5,9 @@ import {
     FaCubes,
     FaNetworkWired,
     FaProjectDiagram,
+    FaExchangeAlt,
+    FaShieldAlt,
+    FaRoute,
     FaYoutube
 } from "react-icons/fa";
 import {
@@ -17,6 +20,7 @@ import {
     SiFastify,
     SiFirebase,
     SiFramer,
+    SiGithubactions,
     SiGooglecloud,
     SiI18Next,
     SiJavascript,
@@ -32,7 +36,9 @@ import {
     SiPrisma,
     SiRabbitmq,
     SiReactquery,
+    SiReactrouter,
     SiRedis,
+    SiShadcnui,
     SiTailwindcss,
     SiTypescript,
     SiSupabase,
@@ -78,7 +84,13 @@ export const iconMapping: Record<string, JSX.Element> = {
     Vite: <SiVite />,
     WebSockets: <FaNetworkWired />,
     Raft: <FaProjectDiagram />,
-    "YouTube API": <FaYoutube />
+    "YouTube API": <FaYoutube />,
+    "React Router": <SiReactrouter />,
+    "shadcn/ui": <SiShadcnui />,
+    "GitHub Actions": <SiGithubactions />,
+    RPC: <FaExchangeAlt />,
+    "Fault Tolerance": <FaShieldAlt />,
+    "Saga Pattern": <FaRoute />
 };
 
 export const frontendSkills = [
