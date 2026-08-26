@@ -2,7 +2,7 @@
 # remember to update the nextjs .env file with the correct directus backend values
 services:
   database:
-    image: postgres:16.14
+    image: postgres:16.15
     volumes:
       - ./data/database:/var/lib/postgresql/data
     env_file:
