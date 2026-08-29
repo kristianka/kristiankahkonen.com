@@ -14,6 +14,11 @@ const parseMetaString = (meta: string | undefined): string | undefined => {
     return filenameMatch?.[1];
 };
 
+const themes = {
+    light: "github-light",
+    dark: "github-dark"
+};
+
 // Async component for syntax highlighted code blocks
 export const Code = async ({ className, children, "data-meta": meta }: CodeProps) => {
     // Extract language from className
@@ -31,14 +36,17 @@ export const Code = async ({ className, children, "data-meta": meta }: CodeProps
     if (!hasLanguageClass) {
         const html = await codeToHtml(code, {
             lang: "typescript",
-            themes: {
-                light: "github-light",
-                dark: "github-dark"
-            },
-            defaultColor: false
+            themes,
+            defaultColor: false,
+            structure: "inline"
         });
 
-        return <span className="inline-code-wrapper" dangerouslySetInnerHTML={{ __html: html }} />;
+        return (
+            <code
+                className="inline-code-wrapper shiki not-prose"
+                dangerouslySetInnerHTML={{ __html: html }}
+            />
+        );
     }
 
     let html = "";
@@ -47,10 +55,7 @@ export const Code = async ({ className, children, "data-meta": meta }: CodeProps
         // code block with syntax highlighting using Shiki
         html = await codeToHtml(code, {
             lang: language,
-            themes: {
-                light: "github-light",
-                dark: "github-dark"
-            },
+            themes,
             defaultColor: false
         });
     } catch (error) {

@@ -1,32 +1,27 @@
-"use client";
-
-import { useMemo } from "react";
-import { Transition } from "@headlessui/react"; // import Transition from headlessui
-
 interface DateToLocalProps {
     date: string;
     type: "published" | "updated";
+    locale?: string;
+    timeZone?: string;
 }
 
-export const DateToLocal = ({ date, type }: DateToLocalProps) => {
-    const formattedDate = useMemo(() => {
-        const dateTimeOptions: Intl.DateTimeFormatOptions = {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-            hour12: false
-        };
-        return new Date(date).toLocaleString(undefined, dateTimeOptions);
-    }, [date]);
+export const DateToLocal = ({
+    date,
+    type,
+    locale = "en-FI",
+    timeZone = "Europe/Helsinki"
+}: DateToLocalProps) => {
+    const formattedDate = new Intl.DateTimeFormat(locale, {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        timeZone
+    }).format(new Date(date));
 
     return (
-        <div className="">
+        <div>
             <span>{type === "published" ? "Published" : "Updated"}: </span>
-            <Transition show={!!formattedDate}>
-                <span className="transition duration-300 ease-in data-closed:opacity-0">
-                    {formattedDate}
-                </span>
-            </Transition>
+            <time dateTime={date}>{formattedDate}</time>
         </div>
     );
 };
