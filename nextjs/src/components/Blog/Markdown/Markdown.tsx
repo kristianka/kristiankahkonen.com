@@ -19,5 +19,12 @@ export const MarkdownComponents: object = {
     p: (props: ParagraphProps) => Paragraph(props),
 
     // render codeblock with syntax highlighting
-    code: (props: CodeProps) => Code(props)
+    code: (props: CodeProps) => Code(props),
+
+    // fixes table overflow on mobile
+    table: (props: React.HTMLAttributes<HTMLTableElement>) => (
+        <div className="overflow-x-auto">
+            <table className="" {...props} />
+        </div>
+    )
 };
