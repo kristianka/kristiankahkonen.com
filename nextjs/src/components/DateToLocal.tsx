@@ -8,8 +8,8 @@ interface DateToLocalProps {
 export const DateToLocal = ({
     date,
     type,
-    locale = "en-US",
-    timeZone = "UTC"
+    locale = "en-FI",
+    timeZone = "Europe/Helsinki"
 }: DateToLocalProps) => {
     const formattedDate = new Intl.DateTimeFormat(locale, {
         year: "numeric",
