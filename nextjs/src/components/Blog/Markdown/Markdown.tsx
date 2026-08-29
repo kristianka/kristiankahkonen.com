@@ -2,6 +2,7 @@ import { Code } from "./Code";
 import { Header } from "./Header";
 import { Paragraph } from "./Paragraph";
 import { CodeProps, HeaderProps, ParagraphProps } from "./types";
+import type { HTMLAttributes } from "react";
 
 // Thanks to Amir Ardalan for the following code!
 // https://amirardalan.com/blog/use-next-image-with-react-markdown
@@ -22,7 +23,7 @@ export const MarkdownComponents: object = {
     code: (props: CodeProps) => Code(props),
 
     // fixes table overflow on mobile
-    table: (props: React.HTMLAttributes<HTMLTableElement>) => (
+    table: (props: HTMLAttributes<HTMLTableElement>) => (
         <div className="overflow-x-auto">
             <table className="" {...props} />
         </div>
